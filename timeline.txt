@@ -1,0 +1,59 @@
+Monday:
+Concept ideas
+Timeline
+Talk about both wireframes - Viv and Lewis
+Quiz - Kate
+Seed database - Kate
+
+
+Tuesday:
+Go over wireframes
+Sorting out backend templates
+Talk about new package
+Talk theme for presentation
+
+Data
+model
+routing
+
+
+Thursday:
+finalize the new package
+Routing sorted
+Express Sorted
+
+
+
+Feature:
+Login
+
+Signup
+Quiz option (code we made for the quiz!)
+Tutor option (must take quiz)
+
+Homepage (treading Questions)
+searchbar / profile / log out
+
+My Profile page
+- BADGES - rep
+- Forums that we are apart of
+- Saved notes
+- quiz - retake
+
+
+Side bar
+Auto select tutors
+- order by rep (TOP 5 AND RANDOM 5)
+Note taker
+
+multiple foreign keys
+see relational mapping
+
+
+questions
+database
+join
+css
+
+randomize questions based on how they are answering the questions - to get harder if answering correctly
+
