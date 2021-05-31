@@ -4,24 +4,53 @@ Timeline
 Talk about both wireframes - Viv and Lewis
 Quiz - Kate
 Seed database - Kate
+Sorting out backend templates
 
 
 Tuesday:
 Go over wireframes
-Sorting out backend templates
 Talk about new package
 Talk theme for presentation
+Go over template files
 
+Do in the mean time:
 Data
-model
+models
 routing
+Login - login
+Sign up
+quiz - quiz template from homework
+
 
 
 Thursday:
 finalize the new package
 Routing sorted
 Express Sorted
+Go over anything else
 
+Do in the mean time:
+My Profile Page
+Homepage
+Sidebar - Tutor/Note Taker
+
+
+
+Saturday (WINE TIME):
+Carry on with projects
+Help each other
+Drink wine
+Figure out what needs to get done before Tuesday's class
+
+
+Monday:
+Hopefully have most of it working
+Solve any issues
+
+
+Tuesday:
+Go over talking points
+Any last minute issues
 
 
 Feature:
@@ -29,7 +58,9 @@ Login
 
 Signup
 Quiz option (code we made for the quiz!)
-Tutor option (must take quiz)
+Tutor option must take quiz
+- front end
+- back end
 
 Homepage (treading Questions)
 searchbar / profile / log out
@@ -38,7 +69,9 @@ My Profile page
 - BADGES - rep
 - Forums that we are apart of
 - Saved notes
-- quiz - retake
+Quiz - retake as many times
+- front end
+- back end
 
 
 Side bar
@@ -46,6 +79,11 @@ Auto select tutors
 - order by rep (TOP 5 AND RANDOM 5)
 Note taker
 
+
+
+
+
+Notes from teachers:
 multiple foreign keys
 see relational mapping
 
