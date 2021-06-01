@@ -1,10 +1,3 @@
-// id int unsigned primary key auto_increment,
-// comment_text text not null,
-// question_id int unsigned not null,
-// user_id int unsigned not null,
-// foreign key (question_id) references questions(id),
-// foreign key (user_id) references users(id)
-
 const { Model, DataTypes } = require("sequelize");
 
 const sequelize = require("../config/connection.js");
@@ -14,7 +7,7 @@ class Comments extends Model {}
 Comments.init(
   {
     id: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.INTEGER.UNSIGNED,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
@@ -45,7 +38,7 @@ Comments.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "category",
+    modelName: "Comments",
   }
 );
 

@@ -1,12 +1,3 @@
-// create table questions (
-//     id int unsigned primary key auto_increment,
-//     question_title varchar(52) not null,
-//     question_text text not null,
-//     user_id int unsigned not null,
-//     question_tag varchar(12) not null,
-//     foreign KEY (user_id) references users(id)
-// );
-
 const { Model, DataTypes } = require("sequelize");
 
 const sequelize = require("../config/connection.js");
@@ -48,8 +39,8 @@ Questions.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "category",
+    modelName: "Questions",
   }
 );
 
-module.exports = Comments;
+module.exports = Questions;
