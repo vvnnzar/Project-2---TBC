@@ -62,3 +62,5 @@ Tutor.init(
         underscored: true,
     }
 );
+
+module.exports = Tutor;
