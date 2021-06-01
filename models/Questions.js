@@ -39,7 +39,7 @@ Questions.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "Questions",
+    modelName: "questions",
   }
 );
 
