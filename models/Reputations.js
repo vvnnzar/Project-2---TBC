@@ -1,9 +1,9 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const { Model, DataTypes } = require("sequelize");
+const sequelize = require("../config/connection");
 
-class Reputations extends Model {}
+class Reputation extends Model {}
 
-Reputations.init(
+Reputation.init(
     {
         id: {
             type: DataTypes.INTEGER.UNSIGNED,
@@ -42,8 +42,8 @@ Reputations.init(
         user_id: {
             type: DataTypes.INTEGER,
             references: {
-                model: 'user',
-                key: 'id',
+                model: "user",
+                key: "id",
             },
         },
     },
@@ -52,6 +52,6 @@ Reputations.init(
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'reputations',
+        modelName: "reputation",
     }
 );
