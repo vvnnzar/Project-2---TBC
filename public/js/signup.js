@@ -7,8 +7,8 @@ const signupForm = async (event) => {
     const email = document.querySelector('#email-signup').value.trim();
     const password = document.querySelector('#password-signup').value.trim();
     const reconfirmPassword = document.querySelector('#reconfirmPassword-signup').value.trim();
-    const termsConditions = document.querySelector('#termsConditions')
-    
+    // const termsConditions = document.querySelector('#termsConditions')
+
 
     if (password !== reconfirmPassword) {
         alert('Passwords do not match');
