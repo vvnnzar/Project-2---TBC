@@ -1,14 +1,13 @@
 const { Model, DataTypes } = require("sequelize");
 
-const sequelize = require("../config/connection");
+const sequelize = require('../config/connection');
 
 class User extends Model {}
 
 User.init(
     {
         id: {
-            type: DataTypes.INTEGER,
-            // allowNull: false,
+            type: DataTypes.INTEGER.UNSIGNED,
             primaryKey: true,
             autoIncrement: true,
         },

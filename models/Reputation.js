@@ -14,6 +14,10 @@ Reputation.init(
         user_id: {
             type: DataTypes.INTEGER.UNSIGNED,
             allowNull: false,
+            references: {
+                model: 'user',
+                key: 'id',
+            },
         },
         html_reputation: {
             type: DataTypes.BOOLEAN,
@@ -39,19 +43,14 @@ Reputation.init(
             type: DataTypes.BOOLEAN,
             allowNull: false,
         },
-        user_id: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: "user",
-                key: "id",
-            },
-        },
     },
     {
         sequelize,
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: "reputation",
+        modelName: 'reputation',
     }
 );
+
+module.exports = Reputation;

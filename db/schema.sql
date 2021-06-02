@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 drop database if exists interviewer;
 
 create database interviewer;
@@ -69,3 +70,7 @@ create table tutors (
     
     
 );
+=======
+DROP DATABASE IF EXISTS techReady_db;
+CREATE DATABASE techReady_db;
+>>>>>>> d402544e6770f01845301861ecc2cd9100aaf19d
