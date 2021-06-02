@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Reputations extends Model {}
+class Reputation extends Model {}
 
-Reputations.init(
+Reputation.init(
     {
         id: {
             type: DataTypes.INTEGER.UNSIGNED,
@@ -14,6 +14,10 @@ Reputations.init(
         user_id: {
             type: DataTypes.INTEGER.UNSIGNED,
             allowNull: false,
+            references: {
+                model: 'user',
+                key: 'id',
+            },
         },
         html_reputation: {
             type: DataTypes.BOOLEAN,
@@ -39,19 +43,15 @@ Reputations.init(
             type: DataTypes.BOOLEAN,
             allowNull: false,
         },
-        user_id: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: 'user',
-                key: 'id',
-            },
-        },
+
     },
     {
         sequelize,
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'reputations',
+        modelName: 'reputation',
     }
 );
+
+module.exports = Reputation;
