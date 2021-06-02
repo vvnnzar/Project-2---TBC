@@ -7,15 +7,15 @@ class User extends Model {}
 User.init(
     {
         id: {
-            type: DataTypes.NUMBER.UNSIGNED,
+            type: DataTypes.INTEGER,
+            // allowNull: false,
             primaryKey: true,
             autoIncrement: true,
-            allowNull: false,
         },
         username: {
-            type: DataTypes.STRING(22),
-            unique: true,
-            allowNull: false,
+            type: DataTypes.STRING(26),
+            // allowNull: false,
+            // unique: true,
         },
         password: { type: DataTypes.STRING(66), allowNull: false },
         firstName: { type: DataTypes.STRING(56), allowNull: false },

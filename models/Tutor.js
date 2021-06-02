@@ -7,13 +7,13 @@ class Tutor extends Model {}
 Tutor.init(
     {
         id: {
-            type: DataTypes.NUMBER.UNSIGNED,
+            type: DataTypes.INTEGER.UNSIGNED,
             primaryKey: true,
             autoIncrement: true,
             allowNull: false,
         },
         userId: {
-            type: DataTypes.NUMBER.UNSIGNED,
+            type: DataTypes.INTEGER.UNSIGNED,
             allowNull: false,
             references: {
                 model: "user",
