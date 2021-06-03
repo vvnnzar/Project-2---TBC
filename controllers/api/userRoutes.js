@@ -26,8 +26,13 @@ router.post("/signup", async (req, res) => {
         // TODO: trigger Handle Bars if statment
     }
 
+    // TODO: find more optiam solution for next two ifd statements
     if (!req.body.isTutor) {
         req.body.isTutor = false;
+    }
+
+    if (req.body.isTutor === "on") {
+        req.body.isTutor = true;
     }
     const userData = {
         username: req.body.username,
