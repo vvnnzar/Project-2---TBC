@@ -1,5 +1,5 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const { Model, DataTypes } = require("sequelize");
+const sequelize = require("../config/connection");
 
 class Reputation extends Model {}
 
@@ -43,7 +43,6 @@ Reputation.init(
             type: DataTypes.BOOLEAN,
             allowNull: false,
         },
-
     },
     {
         sequelize,
