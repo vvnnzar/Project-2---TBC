@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const bcrypt = require("bcryptjs");
 const { User } = require("../../models");
 
 router.post("/", async (req, res) => {
@@ -17,35 +18,38 @@ router.post("/", async (req, res) => {
 });
 
 router.post("/signup", async (req, res) => {
-    console.log(req.body.password);
     // hashing password
-    let hashedPass = await bcrypt.hash(
-        req.body.password,
-        process.env.BCRYPT_WORK_FACTOR
-    );
-    req.body.password = hashedPass;
-    // creating User Model after registration
+    req.body.password = await bcrypt.hash(req.body.password, 10);
 
-    const userReg = await User.create(req.body);
-    users.push(req.body);
-    res.status(201).send(req.body);
+    // creating User Model after registration
+    const userRegistration = await User.create(req.body);
+    req.session.save(() => {
+        req.session.user_id = userRegistration.id;
+        req.session.logged_in = true;
+
+        res.status(201).json(userRegistration);
+    });
+    // users.push(req.body);
+    // res.status(201).send(req.body);
+    // handle unique username
 });
 
 router.post("/login", async (req, res) => {
-    const currentUser = User.findOne({
-        where: { username: req.bodt.username },
+    const currentUser = await User.findOne({
+        where: { username: req.body.username },
     });
     if (!currentUser) {
-        res.status(404).redirect("/signup").render("signup");
+        res.status(404).send("Incorrect User name, would you like to sign up?");
     }
+    console.log("this is current" + currentUser);
     try {
         if (await bcrypt.compare(req.body.password, currentUser.password)) {
             res.send("logged in");
         } else {
             res.status(404).send("Incorrect Password");
         }
-    } catch {
-        res.status(500).send("Server Error");
+    } catch (err) {
+        res.status(500).send(`${err}`);
     }
 });
 
