@@ -2,6 +2,7 @@ const router = require("express").Router();
 // const { User, IsTutor, Comment, Question, Reputation, QuizResult } = require('../models');
 const withAuth = require("../utils/auth");
 const { User } = require("../models");
+require("dotenv").config();
 
 router.get("/", async (req, res) => {
     res.render("homepage");

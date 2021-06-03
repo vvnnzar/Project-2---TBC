@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const bcrypt = require("bcryptjs");
 const { User } = require("../../models");
+require("dotenv").config();
 
 router.post("/", async (req, res) => {
     try {
@@ -49,6 +50,8 @@ router.post("/signup", async (req, res) => {
 
         res.status(201).json(userRegistration);
     });
+
+    // TODO: if (isTutor === true) {res.render('quiz')}
     // users.push(req.body);
     // res.status(201).send(req.body);
     // handle unique username
