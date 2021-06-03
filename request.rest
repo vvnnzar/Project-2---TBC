@@ -1,0 +1,25 @@
+
+GET http://localhost:3001/api/signup
+
+###
+POST http://localhost:3001/api/signup
+Content-Type: application/JSON
+
+{
+    "username":"lewis12345",
+    "firstName":"lewis",
+    "lastName":"tedt",
+    "email":"lewis.james.hill@outlook.com",
+    "password":"testingPassword"
+
+}
+
+###
+
+POST http://localhost:3001/api/signup/login
+Content-Type: application/json
+
+{
+    "username":"lewis12345",
+    "password":"testingPassword"
+}

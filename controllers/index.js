@@ -1,5 +1,5 @@
 // const express = require("express");
-const router = require('express').Router();
+const router = require("express").Router();
 
 // const withAuth = require("./auth");
 //
@@ -15,10 +15,9 @@ const router = require('express').Router();
 //     res.render("askQuestionPage", { userobj: JSON.stringify(userdetails) });
 // });
 
-const apiRoutes = require('./api');
-const homeRoutes = require('./homeRoutes');
+const apiRoutes = require("./api");
+const homeRoutes = require("./homeRoutes");
 
-<<<<<<< HEAD
 // router.get("/questions/ask", authMiddleWearGoesHere, (req, res) => {
 //     // assign user data to an object
 
@@ -26,9 +25,8 @@ const homeRoutes = require('./homeRoutes');
 //     // adds user data to the rendered page
 //     res.render("askQuestionPage", { userobj: JSON.stringify(userdetails) });
 // });
-=======
-router.use('/', homeRoutes);
-router.use('/api', apiRoutes);
->>>>>>> d402544e6770f01845301861ecc2cd9100aaf19d
+
+router.use("/", homeRoutes);
+router.use("/api", apiRoutes);
 
 module.exports = router;
