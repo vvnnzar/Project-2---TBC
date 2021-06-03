@@ -9,24 +9,32 @@
 </head>
 
 <body>
-<header>
     <div>
-        <h1>Tech</h1>
-        <h1>READY</h1>
+        <header>
+            <div>
+                <h1>Tech</h1>
+                <h1>READY</h1>
+            </div>
+            <nav>
+                <a href="/signup">Sign Up</a>
+                {{#if logged_in}}
+                    <a href="/profile">profile</a> |
+                    <button class="no-button" id="logout">Logout</button>
+                {{else}}
+                    <a href="/login">Login</a>
+                {{/if}}
+            </nav>
+
+        </header>
+        <main>
+            {{{ body }}}
+        </main>
+        <footer>
+
+        </footer>
     </div>
-    <nav>
-        <a href="/signup">Sign Up</a>
-        {{#if logged_in}}
-            <a href="/profile">profile</a> |
-            <button class="no-button" id="logout">Logout</button>
-        {{else}}
-            <a href="/login">Login</a>
-        {{/if}}
-    </nav>
-    <main>
-        {{{ body }}}
-    </main>
-</header>
+
+
 
 {{#if logged_in}}
     <script src="/js/logout.js"></script>
