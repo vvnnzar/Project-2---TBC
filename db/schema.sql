@@ -68,4 +68,8 @@ create table tutors (
     foreign key (user_id) references users(id)
     
     
+<<<<<<< HEAD
 );
+=======
+);
+>>>>>>> ecf9603 (minor updates)
