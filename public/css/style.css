@@ -1,7 +1,9 @@
 :root {
     --oxford-blue: #1D263B;
-    --white: #ffffff;
+    --white: #FFFFFF;
     --orange: #FF9D00;
+    --green: #40FF00;
+    --purple: #FF03FF;
 }
 
 *, *::before, *::after {
@@ -11,6 +13,9 @@
 
 body {
     margin: 0;
+    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Space Mono', monospace;
+    font-family: 'Trispace', sans-serif;
 }
 
 
@@ -28,12 +33,23 @@ a {
     text-decoration: none;
 }
 
+.flex {
+    display: flex;
+}
+
 #logo-white {
     color: var(--white);
 }
 
 #logo-orange {
     color: var(--orange);
+    font-weight: 900;
+    letter-spacing: 0.25rem;
+    text-transform: uppercase;
+}
+.logo-purple {
+    color: var(--purple);
+    font-size: 60px;
 }
 
 nav {
@@ -46,6 +62,41 @@ nav a {
     padding-left: 10px;
 }
 
+.hero {
+    background-image: url(../images/code-oxford-blue.jpg);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 50vh;
+    display: flex;
+    padding-left: 30px;
+    align-items: center;
+    color: var(--white);
+
+}
+
+.hero h1 {
+    font-size: 125px;
+}
+
+.hero h2 {
+    margin-top: 25px;
+    display: flex;
+}
+
+
+#typewriter {
+    display: block;
+    color: var(--white);
+}
+
+#cursor {
+    border-left: 4px solid;
+    animation: caret 1s steps(1) infinite;
+    padding: 0 1rem 0 1rem;
+    margin-left: 0.5rem;
+}
 
 form {
     display: inline-grid;
