@@ -28,6 +28,7 @@ finalize the new package
 Routing sorted
 Express Sorted
 Go over anything else
+jest
 
 Do in the mean time:
 My Profile Page

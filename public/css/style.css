@@ -46,6 +46,41 @@ nav a {
     padding-left: 10px;
 }
 
+.hero {
+    background-image: url(../images/code-oxford-blue.jpg);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 50vh;
+    display: flex;
+    padding-left: 30px;
+    align-items: center;
+    color: var(--white);
+
+}
+
+.hero h1 {
+    font-size: 100px;
+}
+
+.hero h2 {
+    margin-top: 25px;
+    display: flex;
+}
+
+
+#typewriter {
+    display: block;
+    color: var(--white);
+}
+
+#cursor {
+    border-left: 4px solid;
+    animation: caret 1s steps(1) infinite;
+    padding: 0 1rem 0 1rem;
+    margin-left: 0.5rem;
+}
 
 form {
     display: inline-grid;
