@@ -58,11 +58,11 @@ router.post("/login", async (req, res) => {
     }
     console.log("this is current" + currentUser);
     try {
-        if (await bcrypt.compare(req.body.password, currentUser.password)) {
-            res.send("logged in");
-        } else {
-            res.status(404).send("Incorrect Password");
-        }
+        // if (await bcrypt.compare(req.body.password, currentUser.password)) {
+        res.status(302).redirect("/");
+        // } else {
+        //     res.status(404).send("Incorrect Password");
+        // }
     } catch (err) {
         res.status(500).send(`${err}`);
     }
