@@ -34,10 +34,6 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use(routes);
 
-<<<<<<< HEAD
-sequelize.sync({ force: false }).then(() => {
-=======
 sequelize.sync({ force: true }).then(() => {
->>>>>>> ecf9603 (minor updates)
     app.listen(PORT, () => console.log("Now listening"));
 });
