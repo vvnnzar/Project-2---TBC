@@ -1,6 +1,7 @@
 const router = require("express").Router();
 // const { User, IsTutor, Comment, Question, Reputation, QuizResult } = require('../models');
 const withAuth = require("../utils/auth");
+const { User } = require("../models");
 
 router.get("/", async (req, res) => {
     res.render("homepage");
@@ -21,6 +22,20 @@ router.get("/signup", (req, res) => {
         return;
     }
     res.render("signup");
+});
+
+// main pages
+
+router.get("/tutors", async (req, res) => {
+    const allTutors = await User.findAll({ where: { isTutor: true } }).catch(
+        (err) => {
+            res.json(err);
+        }
+    );
+    const tutors = allTutors.map((tutor) => {
+        tutor.get({ plain: true });
+    });
+    res.render("tutors", { tutors });
 });
 
 module.exports = router;

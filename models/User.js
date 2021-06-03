@@ -25,6 +25,8 @@ User.init(
             validate: { isEmail: true, notEmpty: true },
         },
         isTutor: { type: DataTypes.BOOLEAN, allowNull: false },
+        // TODO: add github username
+        // TODO: add linkedin username
     },
     {
         sequelize,

@@ -73,4 +73,18 @@ router.post("/login", async (req, res) => {
     }
 });
 
+router.post("/tutor", async (req, res) => {
+    const plainTutor = await User.findOne({
+        where: { username: req.body.tutorUsername },
+    });
+    if (!searchedTutor) {
+        // TODO: replace .send with a view modification
+        res.status(404).send(
+            "This Tutor does not exist or that user is not a tutor"
+        );
+    }
+    const plainTutor = searchedTutor.get({ plain: true });
+    res.render("tutors", { plainTutor });
+});
+
 module.exports = router;
