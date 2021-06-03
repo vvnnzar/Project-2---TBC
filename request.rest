@@ -2,7 +2,7 @@
 GET http://localhost:3001/api/signup
 
 ###
-POST http://localhost:3001/api/signup
+POST http://localhost:3001/api/users/signup
 Content-Type: application/JSON
 
 {
@@ -10,7 +10,8 @@ Content-Type: application/JSON
     "firstName":"lewis",
     "lastName":"tedt",
     "email":"lewis.james.hill@outlook.com",
-    "password":"testingPassword"
+    "password":"testingPassword",
+    "isTutor":"false"
 
 }
 
@@ -21,5 +22,5 @@ Content-Type: application/json
 
 {
     "username":"lewis12345",
-    "password":"testingPassword"
+    "password":"testingpassword"
 }

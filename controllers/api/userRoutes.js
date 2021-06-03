@@ -18,11 +18,26 @@ router.post("/", async (req, res) => {
 });
 
 router.post("/signup", async (req, res) => {
+    console.log(req.body);
     // hashing password
-    req.body.password = await bcrypt.hash(req.body.password, 10);
-
+    // req.body.password = await bcrypt.hash(req.body.password, 10);
     // creating User Model after registration
-    const userRegistration = await User.create(req.body);
+    if (!req.body.password === req.body.confirmPassword) {
+        // TODO: trigger Handle Bars if statment
+    }
+
+    if (!req.body.isTutor) {
+        req.body.isTutor = false;
+    }
+    const userData = {
+        username: req.body.username,
+        firstName: req.body.firstname,
+        lastName: req.body.lastname,
+        email: req.body.email,
+        password: req.body.password,
+        isTutor: req.body.isTutor,
+    };
+    const userRegistration = await User.create(userData);
     req.session.save(() => {
         req.session.user_id = userRegistration.id;
         req.session.logged_in = true;
