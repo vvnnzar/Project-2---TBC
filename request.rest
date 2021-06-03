@@ -17,10 +17,10 @@ Content-Type: application/JSON
 
 ###
 
-POST http://localhost:3001/api/signup/login
+POST http://localhost:3001/api/users/login
 Content-Type: application/json
 
 {
     "username":"lewis12345",
-    "password":"testingpassword"
+    "password":"testingPassword"
 }

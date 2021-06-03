@@ -25,11 +25,8 @@ const homeRoutes = require("./homeRoutes");
 //     // adds user data to the rendered page
 //     res.render("askQuestionPage", { userobj: JSON.stringify(userdetails) });
 // });
-<<<<<<< HEAD
 
 router.use("/", homeRoutes);
 router.use("/api", apiRoutes);
-=======
->>>>>>> ecf9603 (minor updates)
 
 module.exports = router;
