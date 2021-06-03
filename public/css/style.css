@@ -1,7 +1,9 @@
 :root {
     --oxford-blue: #1D263B;
-    --white: #ffffff;
+    --white: #FFFFFF;
     --orange: #FF9D00;
+    --green: #40FF00;
+    --purple: #FF03FF;
 }
 
 *, *::before, *::after {
@@ -31,6 +33,10 @@ a {
     text-decoration: none;
 }
 
+.flex {
+    display: flex;
+}
+
 #logo-white {
     color: var(--white);
 }
@@ -40,6 +46,10 @@ a {
     font-weight: 900;
     letter-spacing: 0.25rem;
     text-transform: uppercase;
+}
+.logo-purple {
+    color: var(--purple);
+    font-size: 60px;
 }
 
 nav {
