@@ -98,6 +98,12 @@ nav a {
     margin-left: 0.5rem;
 }
 
+@keyframes caret {
+    50% {
+        border-color: transparent;
+    }
+}
+
 form {
     display: inline-grid;
 }
