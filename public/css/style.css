@@ -33,8 +33,9 @@ a {
     text-decoration: none;
 }
 
-.flex {
+#logo {
     display: flex;
+    align-items: center;
 }
 
 #logo-white {
@@ -49,7 +50,8 @@ a {
 }
 .logo-purple {
     color: var(--purple);
-    font-size: 60px;
+    font-size: 70px;
+    padding-bottom: 10px;
 }
 
 nav {
