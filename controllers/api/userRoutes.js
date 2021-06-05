@@ -25,13 +25,6 @@ router.post("/signup", async (req, res) => {
     req.body.password = await bcrypt.hash(req.body.password, salt);
     // creating User Model after registration
     // TODO: find more optiam solution for next two if statements
-    if (!req.body.isTutor) {
-        req.body.isTutor = false;
-    }
-
-    if (req.body.isTutor === "on") {
-        req.body.isTutor = true;
-    }
     const userData = {
         username: req.body.username,
         firstName: req.body.firstname,

@@ -36,8 +36,6 @@ const signupForm = async (event) => {
         errorMessage.classList.add("error-message");
         const formElements = document.querySelector(".submit-form");
         formElements.insertBefore(errorMessage, formElements.children[6]);
-        document.querySelector("#password-signup").value = "";
-        document.querySelector("#confirm-password").value = "";
     }
 
     if (
@@ -58,16 +56,8 @@ const signupForm = async (event) => {
         const response = await fetch("/api/users/signup", {
             method: "POST",
             body: JSON.stringify(bodyContent),
-            credentials: "omit",
             headers: { "Content-Type": "application/json" },
         });
-        username.value = "";
-        email.value = "";
-        firstName.value = "";
-        lastName.value = "";
-        password.value = "";
-        passwordToConfirm.value = "";
-
         if (response.ok) {
             document.location.replace("/");
         } else {
@@ -79,7 +69,7 @@ document.querySelector(".submit-form").addEventListener("submit", signupForm);
 
 // // terms and condition and tutor check box
 isTutorValue = () => {
-    if (!document.querySelector("#is-tutor").value == "on") {
+    if (document.querySelector("#is-tutor:checked") === null) {
         return false;
     } else {
         return true;
