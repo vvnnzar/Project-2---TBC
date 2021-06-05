@@ -1,23 +1,24 @@
 :root {
-    --oxford-blue: #1D263B;
-    --white: #FFFFFF;
-    --orange: #FF9D00;
-    --green: #40FF00;
-    --purple: #FF03FF;
+    --oxford-blue: #1d263b;
+    --white: #ffffff;
+    --orange: #ff9d00;
+    --green: #40ff00;
+    --purple: #ff03ff;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
     margin: 0;
 }
 
 body {
     margin: 0;
-    font-family: 'Space Grotesk', sans-serif;
-    font-family: 'Space Mono', monospace;
-    font-family: 'Trispace', sans-serif;
+    font-family: "Space Grotesk", sans-serif;
+    font-family: "Space Mono", monospace;
+    font-family: "Trispace", sans-serif;
 }
-
 
 header,
 footer {
@@ -26,7 +27,6 @@ footer {
     background-color: var(--oxford-blue);
     color: var(--white);
     padding: 20px;
-
 }
 
 a {
@@ -53,7 +53,7 @@ a {
 }
 
 nav {
-    align-self: center
+    align-self: center;
 }
 
 nav a {
@@ -73,7 +73,6 @@ nav a {
     padding-left: 30px;
     align-items: center;
     color: var(--white);
-
 }
 
 .hero h1 {
@@ -84,7 +83,6 @@ nav a {
     margin-top: 25px;
     display: flex;
 }
-
 
 #typewriter {
     display: block;
@@ -100,4 +98,9 @@ nav a {
 
 form {
     display: inline-grid;
+}
+
+.error-message {
+    color: red;
+    padding-top: 10px;
 }
