@@ -34,8 +34,9 @@ a {
     text-decoration: none;
 }
 
-.flex {
+#logo {
     display: flex;
+    align-items: center;
 }
 
 #logo-white {
@@ -50,7 +51,8 @@ a {
 }
 .logo-purple {
     color: var(--purple);
-    font-size: 60px;
+    font-size: 70px;
+    padding-bottom: 10px;
 }
 
 nav {
@@ -99,7 +101,6 @@ nav a {
     margin-left: 0.5rem;
 }
 
-
 /* Signup */
 
 .background {
@@ -125,12 +126,18 @@ nav a {
     width: 60vw;
     height: 40vh;
     box-shadow: 0px 2px 30px 1px rgba(10,13,20,0.54);
-
-    /*box-shadow: 0px 2px 25px 20px rgba(77,101,158,0.54);*/
 }
+
 .viv-image {
     width: 50vw;
     background-color: var(--pastel-green);
+
+  
+@keyframes caret {
+    50% {
+        border-color: transparent;
+    }
+
 }
 
 form {
@@ -164,6 +171,36 @@ form button {
     font-weight: 900;
     font-size: 15px;
 }
+  
+  /* Homepage */
+
+#homepage-container {
+    margin: 30px;
+}
+
+#sort-by {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    list-style: none;
+    color: var(--oxford-blue);
+    padding: 20px 0;
+
+}
+
+.sort-by-tab {
+    margin-right: 30px;
+}
+
+li {
+    padding-bottom: 3px;
+    border-bottom: 0.2rem solid var(--oxford-blue);
+}
+
+li:hover {
+    border-bottom: 0.2rem solid var(--purple);
+}
+
 
 
 @media screen and (max-width: 1024px) {
@@ -213,3 +250,5 @@ form button {
         width: 100%;
     }
 }
+
+

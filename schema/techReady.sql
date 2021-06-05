@@ -1,10 +1,10 @@
-drop database if exists interviewer;
+drop database if exists techReady_db;
 
-create database interviewer;
+create database techReady_db;
 
-use interviewer;
+use techReady_db;
 
-create table users ( 
+create table users (
     id int unsigned primary key auto_increment,
     -- username column of 20 characters long
     username varchar(22) not null unique,
@@ -66,6 +66,6 @@ create table tutors (
     node boolean not null,
     react boolean not null,
     foreign key (user_id) references users(id)
-    
-    
+
+
 );
