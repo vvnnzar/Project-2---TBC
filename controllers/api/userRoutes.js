@@ -18,14 +18,6 @@ router.post("/", async (req, res) => {
 });
 
 router.post("/signup", async (req, res) => {
-    console.log(req.body);
-    // hashing password
-    // req.body.password = await bcrypt.hash(req.body.password, 10);
-    // creating User Model after registration
-    if (!req.body.password === req.body.confirmPassword) {
-        // TODO: trigger Handle Bars if statment
-    }
-
     // TODO: find more optiam solution for next two ifd statements
     if (!req.body.isTutor) {
         req.body.isTutor = false;
@@ -34,15 +26,8 @@ router.post("/signup", async (req, res) => {
     if (req.body.isTutor === "on") {
         req.body.isTutor = true;
     }
-    const userData = {
-        username: req.body.username,
-        firstName: req.body.firstname,
-        lastName: req.body.lastname,
-        email: req.body.email,
-        password: req.body.password,
-        isTutor: req.body.isTutor,
-    };
-    const userRegistration = await User.create(userData);
+
+    const userRegistration = await User.create(req.body);
     req.session.save(() => {
         req.session.user_id = userRegistration.id;
         req.session.logged_in = true;
@@ -53,6 +38,8 @@ router.post("/signup", async (req, res) => {
     // res.status(201).send(req.body);
     // handle unique username
 });
+
+
 
 router.post("/login", async (req, res) => {
     const currentUser = await User.findOne({

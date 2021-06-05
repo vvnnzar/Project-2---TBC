@@ -6,7 +6,7 @@ const signupForm = async (event) => {
     const lastName = document.querySelector('#lastName-signup').value.trim();
     const email = document.querySelector('#email-signup').value.trim();
     const password = document.querySelector('#password-signup').value.trim();
-    const reconfirmPassword = document.querySelector('#reconfirmPassword-signup').value.trim();
+    const reconfirmPassword = document.querySelector('#reconfirmPassword').value.trim();
     // const termsConditions = document.querySelector('#termsConditions')
 
 
@@ -23,7 +23,7 @@ const signupForm = async (event) => {
         });
 
         if (response.ok) {
-            document.location.replace('/');
+            document.location.replace('/profile');
         } else {
             alert('Failed to sign up')
         }
