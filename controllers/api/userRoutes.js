@@ -17,6 +17,7 @@ router.post("/", async (req, res) => {
   }
 });
 
+
 router.post("/signup", async (req, res) => {
   console.log(req.body);
   // hashing password
