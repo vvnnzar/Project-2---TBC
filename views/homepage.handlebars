@@ -7,17 +7,17 @@
     </div>
 </section>
 
-<section>
-    <ul>
-        <li>Trending</li>
-        <li>Recent</li>
+<section id="homepage-container">
+    <ul id="sort-by">
+        <li class="sort-by-tab">Trending</li>
+        <li class="sort-by-tab">Recent</li>
     </ul>
 
-    {{#each question as |question| }}
-        <a href="/question/{{id}}">
+    {{#each questions as |question| }}
+        <a href="/question/{{question.id}}">
             <div class="card">
-                <h3 class="question_title">{{question_title}}</h3>
-                <p>{{format_date date_created}}</p>
+                <h3 class="question_title">{{question.question_title}}</h3>
+                <p>{{format_date question.date_created}}</p>
             </div>
         </a>
     {{/each}}
