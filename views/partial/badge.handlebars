@@ -1,9 +1,9 @@
 <div>   
-    {{#if score <= 33.3 }}
-    <div></div>
-    {{else}} {{#if score <= 66.6}}
-    {{!-- DO THIS BADGE --}}
-    {{else}}
-
+    {{#if score ==50 }}
+    <div class="badge-bronze"><i class="fas fa-medal"></i></div>
+    {{else}} {{#if score <= 75}}
+    <div class="badge-silver"><i class="fas fa-medal"></i></div>
+    {{else}} {{#if score <= 100}}
+     <div class="badge-gold"><i class="fas fa-medal"></i></div>
     {{/if}}
 </div>
