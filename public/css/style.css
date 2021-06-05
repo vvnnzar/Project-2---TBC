@@ -120,12 +120,21 @@ form {
     flex-wrap: nowrap;
     list-style: none;
     color: var(--oxford-blue);
+    padding: 20px 0;
 
 }
 
 .sort-by-tab {
     margin-right: 30px;
+}
 
+li {
+    padding-bottom: 3px;
+    border-bottom: 0.2rem solid var(--oxford-blue);
+}
+
+li:hover {
+    border-bottom: 0.2rem solid var(--purple);
 }
 
 
