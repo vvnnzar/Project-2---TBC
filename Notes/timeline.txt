@@ -17,8 +17,7 @@ Do in the mean time:
 Data
 models
 routing
-Login - login
-Sign up
+
 quiz - quiz template from homework
 
 
@@ -34,7 +33,7 @@ Do in the mean time:
 My Profile Page
 Homepage
 Sidebar - Tutor/Note Taker
-
+tutor page
 
 
 Saturday (WINE TIME):
@@ -45,11 +44,13 @@ Figure out what needs to get done before Tuesday's class
 
 
 Monday:
+Go over presentation
 Hopefully have most of it working
 Solve any issues
 
 
 Tuesday:
+Finalise presentation
 Go over talking points
 Any last minute issues
 
@@ -80,6 +81,8 @@ Auto select tutors
 - order by rep (TOP 5 AND RANDOM 5)
 Note taker
 
+Forum
+you can only comment and ask questions is you are logged in
 
 
 
