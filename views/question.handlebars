@@ -1,0 +1,21 @@
+<div class="card">
+    <h3 class="question_title card-header">{{question_title}}</h3>
+    <div>
+        <p class="card-body">{{question_text}}</p>
+        <p>{{format_date date_created}}</p>
+    </div>
+</div>
+{{#each comments as |comment| }}
+    <div class="card">
+        <h3 class="card-header"> </h3>
+        <div class="card-body">
+            <p>{{comment.comment_text}}</p>
+            <p>- {{comment.user.username}}, {{format_date date_created}}</p>
+        </div>
+    </div>
+{{/each}}
+
+
+
+
+
