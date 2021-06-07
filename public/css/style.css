@@ -1,5 +1,6 @@
 :root {
-    --oxford-blue: #1D263B;
+    --oxford-blue: #1d263b;
+    --grey-blue: #50597b;
     --white: #FFFFFF;
     --orange: #FF9D00;
     --pastel-green: #96b88b;
@@ -8,6 +9,7 @@
     --light-purple: #e3c9e3;
     --note-purple: #e76fe7;
     --note-green: #71bc60;
+    --turquoise: #11a8ab;
 }
 
 *,
@@ -331,52 +333,6 @@ aside {
   background-color: var(--light-purple);
 }
 
-@media screen and (max-width: 1024px) {
-  .signup-container,
-  .login-container {
-    width: 80%;
-  }
-}
-
-/* Medium devices (portrait tablets and large phones, 769px and down) */
-@media screen and (max-width: 769px) {
-  .signup-container,
-  .login-container {
-    width: 80%;
-  }
-
-  .viv-image {
-    display: none;
-  }
-
-  form {
-    width: 100%;
-  }
-}
-
-/* Small devices (phones, 426px and down) */
-@media screen and (max-width: 426px) {
-  header {
-    display: grid;
-    justify-content: center;
-    justify-items: center;
-  }
-
-  .background {
-    align-items: flex-start;
-  }
-
-  .signup-container,
-  .login-container {
-    width: 100%;
-    margin-top: 15%;
-  }
-
-  form {
-    width: 100%;
-  }
-}
-
 /* Profile CSS */
 
 .profile-card {
@@ -552,18 +508,11 @@ aside {
 
 /** Inspired by: http://graphicburger.com/flat-design-ui-components/ **/
 
-a {
-  text-decoration: none;
-  font-size: 15px;
-}
+/*a {*/
+/*  text-decoration: none;*/
+/*  font-size: 15px;*/
+/*}*/
 
-h1,
-h2,
-p,
-a,
-span {
-  color: #fff;
-}
 .scnd-font-color {
   color: #9099b7;
 }
@@ -626,10 +575,9 @@ span {
 } */
 
 /** CONTAINERS **/
-.container {
-  width: 600px;
-  height: 300px;
-  margin-left: 300px;
+#profile-container {
+  width: 40%;
+  margin: 20px;
 }
 
 .block {
@@ -641,18 +589,15 @@ span {
 
 /******************************************** Menu *****************************************/
 
-.menu-box {
-  height: 360px;
-}
-
 .menu-box .titular {
-  background: #11a8ab;
+  background-color: var(--turquoise);
+  color: var(--white);
 }
 
 .menu-box-number {
   width: 36px;
   line-height: 22px;
-  background: #50597b;
+  background-color: var(--oxford-blue);
   text-align: center;
   border-radius: 15px;
   position: absolute;
@@ -669,14 +614,13 @@ span {
 }
 
 .menu-box-tab {
+  color: var(--white);
   line-height: 60px;
   display: block;
-  border-bottom: 1px solid #1f253d;
   text-decoration: none;
 }
 .menu-box-tab:hover {
-  background: #50597b;
-  border-top: 1px solid #1f253d;
+  background-color: var(--grey-blue);
 }
 .menu-box-tab:hover .icon {
   color: rgb(114, 104, 104);
@@ -723,3 +667,49 @@ span {
   border-radius: 100%;
 }
 
+
+@media screen and (max-width: 1024px) {
+  .signup-container,
+  .login-container {
+    width: 80%;
+  }
+}
+
+/* Medium devices (portrait tablets and large phones, 769px and down) */
+@media screen and (max-width: 769px) {
+  .signup-container,
+  .login-container {
+    width: 80%;
+  }
+
+  .viv-image {
+    display: none;
+  }
+
+  form {
+    width: 100%;
+  }
+}
+
+/* Small devices (phones, 426px and down) */
+@media screen and (max-width: 426px) {
+  header {
+    display: grid;
+    justify-content: center;
+    justify-items: center;
+  }
+
+  .background {
+    align-items: flex-start;
+  }
+
+  .signup-container,
+  .login-container {
+    width: 100%;
+    margin-top: 15%;
+  }
+
+  form {
+    width: 100%;
+  }
+}
