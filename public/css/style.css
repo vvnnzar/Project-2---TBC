@@ -55,6 +55,11 @@ a {
     padding-bottom: 10px;
 }
 
+#text-orange {
+    color: var(--orange);
+    padding-left: 8px;
+}
+
 nav {
     align-self: center
 }
@@ -131,6 +136,11 @@ nav a {
 .viv-image {
     width: 50vw;
     background-color: var(--pastel-green);
+    background-image: url(../images/people-using-app.png);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 
   
 @keyframes caret {
