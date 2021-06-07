@@ -165,12 +165,6 @@ form {
     padding-top: 10px;
 }
 
-    background-color: var(--white);
-    color: var(--oxford-blue);
-    padding: 39px;
-    width: 80%;
-}
-
 form h2 {
   padding-bottom: 20px;
 }

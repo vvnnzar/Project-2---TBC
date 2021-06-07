@@ -22,8 +22,8 @@ require("dotenv").config();
 
 
 
-router.post("/signup", async (req, res) => 
-    console.log(req.body);
+router.post("/signup", async (req, res) => {
+    // console.log(req.body);
     // hashing password
     // console.log(req.body.username);
     // console.log("password: " + req.body.password);
@@ -51,17 +51,19 @@ router.post("/signup", async (req, res) =>
     // users.push(req.body);
 
     // handle unique username
+});
 
 
 router.post("/login", async (req, res) => {
-  const currentUser = await User.findOne({
-    where: { username: req.body.username },
-  });
-  if (!currentUser) {
-    res.status(404).send("Incorrect User name, would you like to sign up?");
-  }
-  console.log("this is current" + currentUser);
+
   try {
+      const currentUser = await User.findOne({
+          where: { username: req.body.username },
+      });
+      if (!currentUser) {
+          res.status(404).send("Incorrect User name, would you like to sign up?");
+      }
+      console.log("this is current" + currentUser);
     // if (await bcrypt.compare(req.body.password, currentUser.password)) {
     res.status(302).redirect("/");
     // } else {
@@ -73,22 +75,25 @@ router.post("/login", async (req, res) => {
 });
 
 //profile page update user data
-router.put("/user/:id", (req, res) => {
-  // update product data
-  try {
-    User.update(req.body, {
-      where: {
-        id: req.params.id,
-      },
-    });
-    if (!currentUser) {
-        res.status(404).send("Incorrect User name, would you like to sign up?");
-    }
+router.put("/user/:id", async (req, res) => {
+    // update product data
     try {
-        if (bcrypt.compareSync(req.body.password, currentUser.password)) {
-            res.status(302).redirect("/profile");
-        } else {
-            res.status(404).send("Incorrect Password");
+        const currentUser = await User.update(req.body, {
+            where: {
+                id: req.params.id,
+            },
+        });
+        if (!currentUser) {
+            res.status(404).send("Incorrect User name, would you like to sign up?");
+        }
+        try {
+            if (bcrypt.compareSync(req.body.password, currentUser.password)) {
+                res.status(302).redirect("/profile");
+            } else {
+                res.status(404).send("Incorrect Password");
+            }
+        } catch (err) {
+            res.status(500).send(`${err}`);
         }
     } catch (err) {
         res.status(500).send(`${err}`);
