@@ -47,22 +47,28 @@ const signupForm = async (event) => {
     ) {
         const bodyContent = {
             username: username.value.trim(),
-            firstname: firstName.value.trim(),
-            lastname: lastName.value.trim(),
+            firstName: firstName.value.trim(),
+            lastName: lastName.value.trim(),
             email: email.value.trim(),
             password: password.value.trim(),
             isTutor: isTutorValue(),
         };
-        const response = await fetch("/api/users/signup", {
+        const response = fetch("/api/signup", {
             method: "POST",
-            body: JSON.stringify(bodyContent),
+            body: JSON.stringify({ bodyContent }),
             headers: { "Content-Type": "application/json" },
-        });
-        if (response.ok) {
-            document.location.replace("/");
-        } else {
-            alert("Failed to sign up");
-        }
+        })
+            .then((res) => {
+                console.log(res);
+                if (res.ok) {
+                    document.location.replace("/");
+                } else {
+                    alert("Failed to sign up");
+                }
+            })
+            .catch((err) => {
+                console.log(err);
+            });
     }
 };
 document.querySelector(".submit-form").addEventListener("submit", signupForm);

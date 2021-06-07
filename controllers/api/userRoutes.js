@@ -21,29 +21,33 @@ require("dotenv").config();
 router.post("/signup", async (req, res) => {
     console.log(req.body);
     // hashing password
-    const salt = await bcrypt.genSalt(10);
-    req.body.password = await bcrypt.hash(req.body.password, salt);
+    // console.log(req.body.username);
+    // console.log("password: " + req.body.password);
+    const salt = bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(
+        req.body.bodyContent.password,
+        salt
+    );
     // creating User Model after registration
-    // TODO: find more optiam solution for next two if statements
     const userData = {
-        username: req.body.username,
-        firstName: req.body.firstname,
-        lastName: req.body.lastname,
-        email: req.body.email,
-        password: req.body.password,
-        isTutor: req.body.isTutor,
+        username: req.body.bodyContent.username,
+        firstName: req.body.bodyContent.firstName,
+        lastName: req.body.bodyContent.lastName,
+        email: req.body.bodyContent.email,
+        password: req.body.bodyContent.password,
+        isTutor: req.body.bodyContent.isTutor,
     };
     const userRegistration = await User.create(userData);
+    console.log("user created");
     req.session.save(() => {
         req.session.user_id = userRegistration.id;
         req.session.logged_in = true;
-
-        res.status(201);
     });
-
+    console.log("session created");
+    res.status(201).json();
     // TODO: if (isTutor === true) {res.render('quiz')}
     // users.push(req.body);
-    // res.status(201).send(req.body);
+
     // handle unique username
 });
 
