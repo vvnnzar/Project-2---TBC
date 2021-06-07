@@ -103,4 +103,36 @@ router.get("/profile", async (req, res) => {
   }
 });
 
+
+router.get('/interview-question', withAuth, async (req, res) => {
+
+    try {
+        const questionData = await Question.findAll({
+            include: [
+                {
+                    model: User,
+                    attributes: ['username'],
+                },
+            ],
+        });
+        const questions = questionData.map((question) => question.get({ plain: true }));
+
+        res.render('interview-question', {
+            questions: questions,
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+router.get('/ask-question', (req, res) => {
+
+    res.render('ask-question', {
+        logged_in: true
+    });
+
+});
+
+
+
 module.exports = router;
