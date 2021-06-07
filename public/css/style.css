@@ -1,9 +1,10 @@
 :root {
-    --oxford-blue: #1d263b;
-    --white: #ffffff;
-    --orange: #ff9d00;
-    --green: #40ff00;
-    --purple: #ff03ff;
+
+    --oxford-blue: #1D263B;
+    --white: #FFFFFF;
+    --orange: #FF9D00;
+    --pastel-green: #86b877;
+    --purple: #FF03FF;
 }
 
 *,
@@ -20,6 +21,9 @@ body {
     font-family: "Trispace", sans-serif;
 }
 
+
+/* Main */
+
 header,
 footer {
     display: flex;
@@ -27,14 +31,19 @@ footer {
     background-color: var(--oxford-blue);
     color: var(--white);
     padding: 20px;
+
+    box-shadow: inset 0px -24px 30px -12px rgba(10,13,20,0.54);
+
+
 }
 
 a {
     text-decoration: none;
 }
 
-.flex {
+#logo {
     display: flex;
+    align-items: center;
 }
 
 #logo-white {
@@ -49,7 +58,13 @@ a {
 }
 .logo-purple {
     color: var(--purple);
-    font-size: 60px;
+    font-size: 70px;
+    padding-bottom: 10px;
+}
+
+#text-orange {
+    color: var(--orange);
+    padding-left: 8px;
 }
 
 nav {
@@ -96,11 +111,171 @@ nav a {
     margin-left: 0.5rem;
 }
 
+/* Signup */
+
+.background {
+    background-image: url(../images/code-oxford-blue.jpg);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.signup-container {
+    display: inline-flex;
+    width: 60vw;
+    box-shadow: 0px 2px 30px 1px rgba(10,13,20,0.54);
+}
+
+.login-container {
+    display: inline-flex;
+    width: 60vw;
+    height: 40vh;
+    box-shadow: 0px 2px 30px 1px rgba(10,13,20,0.54);
+}
+
+.viv-image {
+    width: 50vw;
+    background-color: var(--pastel-green);
+    background-image: url(../images/people-using-app.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+  
+@keyframes caret {
+    50% {
+        border-color: transparent;
+    }
+
+}
+
 form {
     display: inline-grid;
+
 }
 
 .error-message {
     color: red;
     padding-top: 10px;
 }
+
+    background-color: var(--white);
+    color: var(--oxford-blue);
+    padding: 39px;
+    width: 80%;
+}
+
+form h2 {
+    padding-bottom: 20px;
+}
+
+form label,
+form input {
+    margin: 5px 0;
+}
+
+#isTutor-checkbox {
+    padding: 15px 0 18px;
+}
+
+form button {
+    padding: 10px 0 10px;
+    margin: 10px 0 0;
+    background-color: var(--orange);
+    color: var(--white);
+    border-radius: 6px;
+    border-color: white;
+    font-weight: 900;
+    font-size: 15px;
+}
+
+.flex {
+    display: flex;
+}
+  
+  /* Homepage */
+
+#homepage-container {
+    margin: 30px;
+}
+
+#sort-by {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    list-style: none;
+    color: var(--oxford-blue);
+    padding: 20px 0;
+
+}
+
+.sort-by-tab {
+    margin-right: 30px;
+}
+
+li {
+    padding-bottom: 3px;
+    border-bottom: 0.2rem solid var(--oxford-blue);
+}
+
+li:hover {
+    border-bottom: 0.2rem solid var(--purple);
+}
+
+
+
+@media screen and (max-width: 1024px) {
+    .signup-container,
+    .login-container {
+        width: 80%;
+    }
+}
+
+/* Medium devices (portrait tablets and large phones, 769px and down) */
+@media screen and (max-width: 769px) {
+    .signup-container,
+    .login-container {
+        width: 80%;
+    }
+
+    .viv-image {
+        display: none;
+    }
+
+    form {
+        width: 100%;
+    }
+
+}
+
+/* Small devices (phones, 426px and down) */
+@media screen and (max-width: 426px) {
+
+    header {
+        display: grid;
+        justify-content: center;
+        justify-items: center;
+    }
+
+    .background {
+        align-items: flex-start;
+    }
+
+    .signup-container,
+    .login-container {
+        width: 100%;
+        margin-top: 15%;
+    }
+
+    form {
+        width: 100%;
+    }
+}
+
+
+

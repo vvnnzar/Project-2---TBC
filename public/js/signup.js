@@ -1,3 +1,4 @@
+
 const signupForm = async (event) => {
     event.preventDefault();
 
@@ -115,3 +116,4 @@ passwordValidation = (password, passwordToConfirm) => {
         return false;
     } else return true;
 };
+

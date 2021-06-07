@@ -20,7 +20,9 @@ require("dotenv").config();
 
 // body.sessionID
 
-router.post("/signup", async (req, res) => {
+
+
+router.post("/signup", async (req, res) => 
     console.log(req.body);
     // hashing password
     // console.log(req.body.username);
@@ -49,11 +51,35 @@ router.post("/signup", async (req, res) => {
     // users.push(req.body);
 
     // handle unique username
-});
+
 
 router.post("/login", async (req, res) => {
-    const currentUser = await User.findOne({
-        where: { username: req.body.username },
+  const currentUser = await User.findOne({
+    where: { username: req.body.username },
+  });
+  if (!currentUser) {
+    res.status(404).send("Incorrect User name, would you like to sign up?");
+  }
+  console.log("this is current" + currentUser);
+  try {
+    // if (await bcrypt.compare(req.body.password, currentUser.password)) {
+    res.status(302).redirect("/");
+    // } else {
+    //     res.status(404).send("Incorrect Password");
+    // }
+  } catch (err) {
+    res.status(500).send(`${err}`);
+  }
+});
+
+//profile page update user data
+router.put("/user/:id", (req, res) => {
+  // update product data
+  try {
+    User.update(req.body, {
+      where: {
+        id: req.params.id,
+      },
     });
     if (!currentUser) {
         res.status(404).send("Incorrect User name, would you like to sign up?");
@@ -67,6 +93,7 @@ router.post("/login", async (req, res) => {
     } catch (err) {
         res.status(500).send(`${err}`);
     }
+
 });
 
 // router.post("/tutor", async (req, res) => {
