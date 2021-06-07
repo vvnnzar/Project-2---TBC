@@ -1,4 +1,3 @@
-
 const signupForm = async (event) => {
     event.preventDefault();
 
@@ -45,7 +44,7 @@ const signupForm = async (event) => {
                 console.log(res);
                 if (res.ok) {
                     console.log(res.headers);
-                    document.location.replace("/");
+                    document.location.replace("/profile");
                 } else {
                     alert("Failed to sign up");
                 }
@@ -116,4 +115,3 @@ passwordValidation = (password, passwordToConfirm) => {
         return false;
     } else return true;
 };
-
