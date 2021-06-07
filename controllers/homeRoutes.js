@@ -22,11 +22,13 @@ router.get("/", async (req, res) => {
         const questions = questionData.map((question) => question.get({ plain: true }));
 
         res.render('homepage', {
+
             questions: questions,
         });
     } catch (err) {
         res.status(500).json(err);
     }
+
 });
 
 router.get('/question/:id', async (req, res) => {
@@ -59,7 +61,6 @@ router.get('/question/:id', async (req, res) => {
     } catch (err) {
         res.status(500).json(err);
     }
-
 });
 
 router.get("/login", (req, res) => {

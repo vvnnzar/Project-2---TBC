@@ -1,13 +1,13 @@
-<div class="background">
-    <div class="login-container">
-        <div class="viv-image"></div>
-        <form action="/api/users/login" method="POST" class="login-form">
-            <h2>Login</h2>
-            <label for="username-login">Username:</label>
-            <input type="text" name="username" />
-            <label for="password-login">Password:</label>
-            <input type="text" name="password" />
-            <button type="submit" value="Login" value="true">Login</button>
-        </form>
+
+<div class="login-card-container">
+    <div class="login-card">
+        <h3 class="card-login-header">Login</h3>
+        <div class="login-content">
+            <form action="/api/login" method="POST" class="login-form">
+                <input type="text" name="username" placeholder="Username" />
+                <input type="text" name="password" placeholder="Password" />
+                <input type="submit" value="Login" class="submit-button" />
+            </form>
+        </div>
     </div>
 </div>

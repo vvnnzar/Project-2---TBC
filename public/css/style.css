@@ -1,13 +1,13 @@
 :root {
-  --oxford-blue: #1d263b;
-  --white: #ffffff;
-  --orange: #ff9d00;
-  --pastel-green: #96b88b;
-  --purple: #ff03ff;
-  --light-grey: #f8f8f8;
-  --light-purple: #e3c9e3;
-  --note-purple: #e76fe7;
-  --note-green: #71bc60;
+    --oxford-blue: #1D263B;
+    --white: #FFFFFF;
+    --orange: #FF9D00;
+    --pastel-green: #96b88b;
+    --purple: #FF03FF;
+    --light-grey: #f8f8f8;
+    --light-purple: #e3c9e3;
+    --note-purple: #e76fe7;
+    --note-green: #71bc60;
 }
 
 *,
@@ -26,6 +26,7 @@ body {
 }
 
 /* Main */
+
 header,
 footer {
   display: flex;
@@ -157,6 +158,17 @@ form {
   color: var(--oxford-blue);
   padding: 39px;
   width: 80%;
+}
+
+.error-message {
+    color: red;
+    padding-top: 10px;
+}
+
+    background-color: var(--white);
+    color: var(--oxford-blue);
+    padding: 39px;
+    width: 80%;
 }
 
 form h2 {
@@ -700,3 +712,4 @@ span {
   background: #e64c65;
   border-radius: 100%;
 }
+
