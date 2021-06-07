@@ -25,19 +25,16 @@ router.post("/signup", async (req, res) => {
     // hashing password
     // console.log(req.body.username);
     // console.log("password: " + req.body.password);
-    // const salt = bcrypt.genSalt(10);
-    // const hashedPassword = await bcrypt.hash(
-    //     req.body.bodyContent.password,
-    //     salt
-    // );
+    const salt = bcrypt.genSaltSync(10);
+    const hashedPassword = bcrypt.hashSync(req.body.password, salt);
     // creating User Model after registration
     const userData = {
-        username: req.body.bodyContent.username,
-        firstName: req.body.bodyContent.firstName,
-        lastName: req.body.bodyContent.lastName,
-        email: req.body.bodyContent.email,
-        password: req.body.bodyContent.password,
-        isTutor: req.body.bodyContent.isTutor,
+        username: req.body.username,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email,
+        password: hashedPassword,
+        isTutor: req.body.isTutor,
     };
     const userRegistration = await User.create(userData);
     console.log("user created");
@@ -62,8 +59,8 @@ router.post("/login", async (req, res) => {
         res.status(404).send("Incorrect User name, would you like to sign up?");
     }
     try {
-        if (await bcrypt.compare(req.body.password, currentUser.password)) {
-            res.status(302).redirect("/");
+        if (bcrypt.compareSync(req.body.password, currentUser.password)) {
+            res.status(302).redirect("/profile");
         } else {
             res.status(404).send("Incorrect Password");
         }
