@@ -1,49 +1,53 @@
-<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tech Ready</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Trispace:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css">
-</head>
-<body>
-<div>
-    <header>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Trispace:wght@100;200;300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+    <script
+      src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"
+    ></script>
+  </head>
+  <body>
+    <div>
+      <header>
         <div>
-            <a  id="logo" href="/">
-                <h1 class="logo-purple">&lt</h1>
-                <h1 id="logo-white">Tech</h1>
-                <h1 id="logo-orange">READY</h1>
-                <h1 class="logo-purple">&gt</h1>
-            </a>
+          <a id="logo" href="/">
+            <h1 class="logo-purple">&lt</h1>
+            <h1 id="logo-white">Tech</h1>
+            <h1 id="logo-orange">READY</h1>
+            <h1 class="logo-purple">&gt</h1>
+          </a>
         </div>
         <nav>
 
-            {{#if logged_in}}
-                <a href="/profile">profile</a> |
-                <button class="no-button" id="logout">Logout</button>
-            {{else}}
-                <a href="/signup">Sign Up</a>
-                <a href="/login">Login</a>
-            {{/if}}
+          {{#if logged_in}}
+            <a href="/profile">profile</a>
+            |
+            <button class="no-button" id="logout">Logout</button>
+          {{else}}
+            <a href="/signup">Sign Up</a>
+            <a href="/login">Login</a>
+          {{/if}}
         </nav>
 
-    </header>
-    <main>
-        {{{ body }}}
-    </main>
-    <footer>
+      </header>
+      <main>
+        {{{body}}}
+      </main>
+      <footer>
 
-    </footer>
-</div>
+      </footer>
+    </div>
 
-
-
-{{#if logged_in}}
-    <script src="/js/logout.js"></script>
-{{/if}}
-</body>
+    {{#if logged_in}}
+      <script src="/js/logout.js"></script>
+    {{/if}}
+  </body>
 
 </html>
