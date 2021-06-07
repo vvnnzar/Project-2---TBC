@@ -138,9 +138,8 @@ nav a {
     background-color: var(--pastel-green);
     background-image: url(../images/people-using-app.png);
     background-size: cover;
-    background-position: center center;
     background-repeat: no-repeat;
-    background-attachment: fixed;
+}
 
   
 @keyframes caret {
