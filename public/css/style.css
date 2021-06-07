@@ -180,6 +180,10 @@ form button {
     font-weight: 900;
     font-size: 15px;
 }
+
+.flex {
+    display: flex;
+}
   
   /* Homepage */
 
