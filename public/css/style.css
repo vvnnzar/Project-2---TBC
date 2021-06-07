@@ -2,8 +2,12 @@
     --oxford-blue: #1D263B;
     --white: #FFFFFF;
     --orange: #FF9D00;
-    --pastel-green: #86b877;
+    --pastel-green: #96b88b;
     --purple: #FF03FF;
+    --light-grey: #f8f8f8;
+    --light-purple: #e3c9e3;
+    --note-purple: #e76fe7;
+    --note-green: #71bc60;
 }
 
 *, *::before, *::after {
@@ -16,6 +20,7 @@ body {
     font-family: 'Space Grotesk', sans-serif;
     font-family: 'Space Mono', monospace;
     font-family: 'Trispace', sans-serif;
+    background-color: var(--light-grey);
 }
 
 /* Main */
@@ -171,8 +176,8 @@ form input {
 }
 
 form button {
-    padding: 10px 0 10px;
-    margin: 10px 0 0;
+    padding: 10px 0;
+    margin: 10px 0;
     background-color: var(--orange);
     color: var(--white);
     border-radius: 6px;
@@ -189,6 +194,7 @@ form button {
 
 #homepage-container {
     margin: 30px;
+    width: 75%;
 }
 
 #sort-by {
@@ -213,7 +219,97 @@ li {
 li:hover {
     border-bottom: 0.2rem solid var(--purple);
 }
+/* Questions */
 
+#homepage-card {
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    margin-bottom: 6px;
+}
+
+#homepage-card:hover {
+    background-color: var(--orange);
+    color: var(--white);
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    margin-bottom: 6px;
+}
+
+.question-card {
+    margin: 30px;
+    padding: 20px;
+    background-color: var(--white);
+}
+
+.question-card-header {
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid var(--purple);
+}
+
+.user-name-date {
+    text-align-last: end;
+    opacity: 70%;
+}
+
+.comment-card {
+    text-align: center;
+    margin: 30px;
+    padding: 20px;
+    background-color: var(--white);
+}
+
+#comment-form {
+    display: inline-block;
+}
+
+.comment-form-group {
+    display: grid;
+}
+
+#comment-text {
+    height: 100px;
+}
+
+
+/* Sidebar */
+
+aside {
+    width: 25%;
+    background-color: var(--oxford-blue);
+    color: var(--white);
+    padding: 10px
+}
+
+#note-card {
+    margin: 5px;
+    padding: 5px;
+    height: 300px
+}
+
+#note-card-header {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--note-purple);
+    padding: 5px;
+}
+
+#note-title {
+    width: 100%;
+    padding: 4px;
+    border: none;
+    background-color: var(--light-purple);
+}
+
+#note-text {
+    width: 100%;
+    height: 200px;
+    border: none;
+    background-color: var(--light-purple);
+}
 
 
 @media screen and (max-width: 1024px) {

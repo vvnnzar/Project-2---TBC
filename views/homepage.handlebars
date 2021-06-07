@@ -7,26 +7,26 @@
     </div>
 </section>
 
-<section id="homepage-container">
-    <ul id="sort-by">
-        <li class="sort-by-tab">Trending</li>
-        <li class="sort-by-tab">Recent</li>
-    </ul>
+<div class="flex">
+    <section id="homepage-container">
+        <ul id="sort-by">
+            <li class="sort-by-tab">Trending</li>
+            <li class="sort-by-tab">Recent</li>
+        </ul>
 
-    {{#each questions as |question| }}
-        <a href="/question/{{question.id}}">
-            <div class="card">
-                <h3 class="question_title">{{question.question_title}}</h3>
-                <p>{{format_date question.date_created}}</p>
-            </div>
-        </a>
-    {{/each}}
+        {{#each questions as |question| }}
+            <a href="/question/{{question.id}}">
+                <div id="homepage-card">
+                    <h3 class="question_title">{{question.question_title}}</h3>
+                    <p>{{format_date question.date_created}}</p>
+                </div>
+            </a>
+        {{/each}}
 
+    </section>
+    {{> sidebar}}
 
-
-</section>
-
-
+</div>
 
 
 

@@ -1,13 +1,15 @@
-<div class="card">
+<div class="comment-card">
     <h3 class="card-header"></h3>
-    <form id="comment-form" class="card-body" method="POST" action="/api/comment">
-        <div class="form-group">
-            <label for="comment-content">Comment:</label>
-            <input class="form-input" type="textarea" id="comment-content" name="comment"/>
+    <form id="comment-form" class="card-body">
+        <div class="comment-form-group">
+            <label for="comment-text">Comment:</label>
+            <input class="form-input" type="textarea" id="comment-text" name="comment"/>
         </div>
-        <div class="form-group">
+        <div class="comment-form-group">
             <button class="btn btn-primary">Submit</button>
         </div>
     </form>
 </div>
 
+<!-- method="POST" action="/api/comments" -->
+<script src="/js/comment.js"></script>
