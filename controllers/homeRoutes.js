@@ -4,17 +4,18 @@ const withAuth = require("../utils/auth");
 
 router.get("/", async (req, res) => {
     try {
-        const questionData = await Question.findAll({
-            include: [
-                {
-                    model: User,
-                    attributes: ["username"],
-                },
-            ],
-        });
-        const questions = questionData.map((question) =>
-            question.get({ plain: true })
-        );
+        // const questionData = await Question.findAll({
+        //     include: [
+        //         {
+        //             model: User,
+        //             attributes: ["username"],
+        //         },
+        //     ],
+        // });
+        // const questions = questionData.map((question) =>
+        //     question.get({ plain: true })
+        // );
+        console.log(req);
 
         res.render("homepage", {
             questions: questions,

@@ -18,16 +18,18 @@ require("dotenv").config();
 //     }
 // });
 
+// body.sessionID
+
 router.post("/signup", async (req, res) => {
     console.log(req.body);
     // hashing password
     // console.log(req.body.username);
     // console.log("password: " + req.body.password);
-    const salt = bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(
-        req.body.bodyContent.password,
-        salt
-    );
+    // const salt = bcrypt.genSalt(10);
+    // const hashedPassword = await bcrypt.hash(
+    //     req.body.bodyContent.password,
+    //     salt
+    // );
     // creating User Model after registration
     const userData = {
         username: req.body.bodyContent.username,
@@ -44,6 +46,7 @@ router.post("/signup", async (req, res) => {
         req.session.logged_in = true;
     });
     console.log("session created");
+
     res.status(201).json();
     // TODO: if (isTutor === true) {res.render('quiz')}
     // users.push(req.body);

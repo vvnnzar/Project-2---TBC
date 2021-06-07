@@ -61,6 +61,7 @@ const signupForm = async (event) => {
             .then((res) => {
                 console.log(res);
                 if (res.ok) {
+                    console.log(res.headers);
                     document.location.replace("/");
                 } else {
                     alert("Failed to sign up");
