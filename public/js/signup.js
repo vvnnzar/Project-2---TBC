@@ -10,15 +10,16 @@ const signupForm = async (event) => {
     const signupContainter = document.querySelector(".signup-container");
     // const termsConditions = document.querySelector('#termsConditions')
 
-    if (
-        !(
-            passwordValidation(
-                password.value.trim(),
-                passwordToConfirm.value.trim()
-            ) && emailValidation(email.value.trim())
-        )
-    )
+    const passwordsMatch = passwordValidation(
+        password.value.trim(),
+        passwordToConfirm.value.trim()
+    );
+    const emailCorrect = emailValidation(email.value.trim());
+
+    if (!(passwordsMatch && emailCorrect)) {
         return;
+    }
+
     if (
         username.value.trim() &&
         firstName.value.trim() &&
@@ -84,27 +85,29 @@ emailValidation = (email) => {
         const errorMessage = document.createElement("p");
         errorMessage.textContent = "Your Email is not a valid format!";
         errorMessage.classList.add("error-message-email");
+        errorMessage.classList.add("error-message");
         const formElements = document.querySelector(".submit-form");
         formElements.insertBefore(errorMessage, formElements.children[6]);
-        email.value = "";
+        document.querySelector("#email-signup").value = "";
         return false;
     } else return true;
 };
 
-passwordValidation = (password, confrimPassword) => {
+passwordValidation = (password, passwordToConfirm) => {
     if (
-        password !== confrimPassword &&
+        password !== passwordToConfirm &&
         document.querySelector(".error-message-password")
     ) {
         document.querySelector("#password-signup").value = "";
         document.querySelector("#confirm-password").value = "";
         return false;
-    } else if (password !== confrimPassword) {
+    } else if (password !== passwordToConfirm) {
         const errorMessage = document.createElement("p");
         errorMessage.textContent =
             "Your Passwords Dont Match, Please try again!";
         console.log("pass no match");
         errorMessage.classList.add("error-message-password");
+        errorMessage.classList.add("error-message");
         const formElements = document.querySelector(".submit-form");
         formElements.insertBefore(errorMessage, formElements.children[8]);
         document.querySelector("#password-signup").value = "";
