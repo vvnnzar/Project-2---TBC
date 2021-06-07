@@ -110,4 +110,17 @@ router.put("/user/:id", (req, res) => {
 //     res.render("tutors", { plainTutor });
 // });
 
+//profile page update user data
+router.put("/user/:id", (req, res) => {
+  try {
+    User.update(req.body, {
+      where: {
+        id: req.params.id,
+      },
+    });
+    res.status(200).json({ message: "Profile successfully updated!" });
+  } catch (err) {
+    res.status(500).send(`${err}`);
+  }
+});
 module.exports = router;
