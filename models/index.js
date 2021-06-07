@@ -4,6 +4,7 @@ const Comment = require('./Comment');
 const Question = require('./Question');
 const Reputation = require('./Reputation');
 const QuizResult = require('./QuizResult');
+const Note = require('./Note');
 
 User.hasMany(Question, {
     foreignKey: 'user_id',
@@ -52,6 +53,16 @@ Question.hasMany(Comment, {
 
 Comment.belongsTo(Question, {
     foreignKey: 'question_id',
+    onDelete: 'CASCADE'
+});
+
+User.hasMany(Note, {
+    foreignKey: 'user_id',
+    onDelete: 'CASCADE'
+});
+
+Note.belongsTo(User, {
+    foreignKey: 'user_id',
     onDelete: 'CASCADE'
 });
 
