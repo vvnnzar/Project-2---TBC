@@ -1,14 +1,15 @@
 
-GET http://localhost:3001/api/signup
+POST http://localhost:3001/api/
 
 ###
+# to test the signup
 POST http://localhost:3001/api/users/signup
 Content-Type: application/JSON
 
 {
     "username":"lewis12345",
-    "firstName":"lewis",
-    "lastName":"tedt",
+    "firstname":"lewis",
+    "lastname":"tedt",
     "email":"lewis.james.hill@outlook.com",
     "password":"testingPassword",
     "isTutor":"false"
