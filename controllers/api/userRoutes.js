@@ -20,38 +20,36 @@ require("dotenv").config();
 
 // body.sessionID
 
+router.post("/signup", async (req, res) => {
+  console.log(req.body);
+  // hashing password
+  // console.log(req.body.username);
+  // console.log("password: " + req.body.password);
+  const salt = bcrypt.genSaltSync(10);
+  const hashedPassword = bcrypt.hashSync(req.body.password, salt);
+  // creating User Model after registration
+  const userData = {
+    username: req.body.username,
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    email: req.body.email,
+    password: hashedPassword,
+    isTutor: req.body.isTutor,
+  };
+  const userRegistration = await User.create(userData);
+  console.log("user created");
+  req.session.save(() => {
+    req.session.user_id = userRegistration.id;
+    req.session.logged_in = true;
+  });
+  console.log("session created");
 
+  res.status(201).json();
+  // TODO: if (isTutor === true) {res.render('quiz')}
+  // users.push(req.body);
 
-router.post("/signup", async (req, res) => 
-    console.log(req.body);
-    // hashing password
-    // console.log(req.body.username);
-    // console.log("password: " + req.body.password);
-    const salt = bcrypt.genSaltSync(10);
-    const hashedPassword = bcrypt.hashSync(req.body.password, salt);
-    // creating User Model after registration
-    const userData = {
-        username: req.body.username,
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        email: req.body.email,
-        password: hashedPassword,
-        isTutor: req.body.isTutor,
-    };
-    const userRegistration = await User.create(userData);
-    console.log("user created");
-    req.session.save(() => {
-        req.session.user_id = userRegistration.id;
-        req.session.logged_in = true;
-    });
-    console.log("session created");
-
-    res.status(201).json();
-    // TODO: if (isTutor === true) {res.render('quiz')}
-    // users.push(req.body);
-
-    // handle unique username
-
+  // handle unique username
+});
 
 router.post("/login", async (req, res) => {
   const currentUser = await User.findOne({
@@ -73,27 +71,19 @@ router.post("/login", async (req, res) => {
 });
 
 //profile page update user data
+
+// update product data
 router.put("/user/:id", (req, res) => {
-  // update product data
   try {
     User.update(req.body, {
       where: {
         id: req.params.id,
       },
     });
-    if (!currentUser) {
-        res.status(404).send("Incorrect User name, would you like to sign up?");
-    }
-    try {
-        if (bcrypt.compareSync(req.body.password, currentUser.password)) {
-            res.status(302).redirect("/profile");
-        } else {
-            res.status(404).send("Incorrect Password");
-        }
-    } catch (err) {
-        res.status(500).send(`${err}`);
-    }
-
+    res.status(200).json({ message: "Profile successfully updated!" });
+  } catch (err) {
+    res.status(500).send(`${err}`);
+  }
 });
 
 // router.post("/tutor", async (req, res) => {
