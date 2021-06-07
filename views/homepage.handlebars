@@ -15,10 +15,10 @@
         </ul>
 
         {{#each questions as |question| }}
-            <a href="/question/{{question.id}}">
+            <a id="question-container" href="/question/{{question.id}}">
                 <div id="homepage-card">
                     <h3 class="question_title">{{question.question_title}}</h3>
-                    <p>{{format_date question.date_created}}</p>
+                    <p class="date-text">{{format_date question.date_created}}</p>
                 </div>
             </a>
         {{/each}}
