@@ -72,10 +72,10 @@ router.get("/login", (req, res) => {
 });
 
 router.get("/signup", (req, res) => {
-    // if (req.session.logged_in) {
-    //     res.redirect("/");
-    //     return;
-    // }
+    if (req.session) {
+        res.redirect("/");
+        return;
+    }
     res.render("signup");
 });
 
@@ -105,6 +105,8 @@ router.get("/signup", (req, res) => {
 
 router.get("/profile", async (req, res) => {
     console.log(req.headers);
+    console.log(req.cookie);
+
     res.render("profile");
 });
 

@@ -3,7 +3,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
-module.exports.isLoginNeeded = () => {
+module.exports.isLoginNeeded = (req, res, next) => {
     // TODO
 };
 
@@ -18,7 +18,7 @@ module.exports.createJwtSession = (req, res, user, next) => {
         expiresIn: "2d",
         notBefore: Math.floor(Date.now() / 1000) - 30,
     };
-    const tokenPayload = { userid: user.id, name: user.name };
+    const tokenPayload = { userid: user.id, name: user.username };
 
     /**create two tokens:
      *  Access Token - short expiration time
@@ -37,12 +37,21 @@ module.exports.createJwtSession = (req, res, user, next) => {
     );
     console.log(refreshToken);
     // maxAge is 2days in mili seconds
-    res.cookie("token", refreshToken, {
-        maxAge: 2 * 24 * 60 * 60 * 1000,
-        httpOnly: true,
-        sameSite: "strict",
-    });
+    // res.cookie("token", refreshToken, {
+    //     maxAge: 2 * 24 * 60 * 60 * 1000,
+    //     httpOnly: true,
+    //     sameSite: "strict",
+    // });
     // res.csrfToken = req.csrfToken();
     // res.body.accessToken = accessToken;
+    req.session.userToken;
+    res.locals.logged_in = true;
     res.status(201);
+};
+
+module.exports.loadUserDataFromJwtSession = (req, res, next) => {
+    if (!req.session && req.session.userToken) {
+        return next();
+    }
+    const verifyToken = jwt.verify(req.session.userToken);
 };
