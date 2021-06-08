@@ -9,14 +9,18 @@
 
 <div class="flex">
     <section id="homepage-container">
-        <ul id="sort-by">
-            <li class="sort-by-tab">Trending</li>
-            <li class="sort-by-tab">Recent</li>
+        <div id="tab-btn">
+            <ul id="sort-by">
+                <li class="sort-by-tab">Trending</li>
+                <li class="sort-by-tab">Recent</li>
+                {{#if logged_in}}
+                    <li class="sort-by-tab">My Questions</li>
+                {{/if}}
+            </ul>
             {{#if logged_in}}
-                <li class="sort-by-tab">My Questions</li>
+                <a href="/ask-question" id="ask-question-btn" >Ask A Question</a>
             {{/if}}
-
-        </ul>
+        </div>
 
         {{#each questions as |question| }}
             <a id="question-container" href="/question/{{question.id}}">

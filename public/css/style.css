@@ -13,6 +13,9 @@
     --note-green: #71bc60;
     --turquoise: #11a8ab;
     --pink: #e64c65;
+    --Space-Grotesk: "Space Grotesk", sans-serif;
+    --Space-Mono: "Space Mono", monospace;
+    --Trispace: "Trispace", sans-serif;
 }
 
 *,
@@ -24,9 +27,7 @@
 
 body {
   margin: 0;
-  font-family: "Space Grotesk", sans-serif;
-  font-family: "Space Mono", monospace;
-  font-family: "Trispace", sans-serif;
+  font-family: var(--Trispace);
   background-color: var(--light-grey);
 }
 
@@ -251,6 +252,22 @@ form button {
   width: 70%;
 }
 
+#tab-btn {
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+}
+
+#ask-question-btn {
+  background-color: var(--orange);
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+  text-transform: uppercase;
+  font-weight: 800;
+  border-radius: 10px;
+}
+
 #sort-by {
   display: flex;
   flex-direction: row;
@@ -301,15 +318,22 @@ li:hover {
 }
 
 .question-card {
-  margin: 30px;
-  padding: 20px;
-  background-color: var(--white);
-}
+  border: 2px solid var(--note-green);
+  border-radius: 10px;}
 
 .question-card-header {
-  padding-bottom: 5px;
+  padding: 10px;
   margin-bottom: 10px;
-  border-bottom: 2px solid var(--purple);
+  background-color: var(--note-green);
+  color: var(--white)
+}
+
+#question-body {
+  padding: 10px;
+}
+
+#question-margin {
+  margin: 30px;
 }
 
 .user-name-date {
@@ -319,7 +343,6 @@ li:hover {
 
 .comment-card {
   text-align: center;
-  margin: 30px;
   padding: 20px;
   background-color: var(--white);
 }
@@ -335,6 +358,25 @@ li:hover {
 #comment-text {
   height: 100px;
 }
+
+#comment-container {
+  background-color: var(--white);
+  padding: 10px;
+  margin: 20px 0;
+  border-radius: 10px;
+}
+.card-body p {
+  padding: 10px 0;
+}
+
+.btn-primary {
+  background-color: var(--note-green);
+  font-size: 24px;
+}
+#comment-font {
+  font-size: 24px;
+}
+
 
 /* Sidebar */
 
@@ -777,6 +819,9 @@ footer {
   #left-container,
   .profile-card {
     width: 90%;
+  }
+  #comment-container {
+    width: 70%;
   }
 
 }
