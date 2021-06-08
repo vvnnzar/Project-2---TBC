@@ -2,6 +2,7 @@ const router = require("express").Router();
 const bcrypt = require("bcryptjs");
 const { User } = require("../../models");
 require("dotenv").config();
+const auth = require("../auth");
 
 // router.post("/", async (req, res) => {
 //     try {
@@ -21,69 +22,64 @@ require("dotenv").config();
 // body.sessionID
 
 router.post("/signup", async (req, res) => {
-  console.log(req.body);
-  // hashing password
-  // console.log(req.body.username);
-  // console.log("password: " + req.body.password);
-  const salt = bcrypt.genSaltSync(10);
-  const hashedPassword = bcrypt.hashSync(req.body.password, salt);
-  // creating User Model after registration
-  const userData = {
-    username: req.body.username,
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    email: req.body.email,
-    password: hashedPassword,
-    isTutor: req.body.isTutor,
-  };
-  const userRegistration = await User.create(userData);
-  console.log("user created");
-  req.session.save(() => {
-    req.session.user_id = userRegistration.id;
-    req.session.logged_in = true;
-  });
-  console.log("session created");
+    // hashing password
+    // console.log(req.body.username);
+    // console.log("password: " + req.body.password);
+    const salt = bcrypt.genSaltSync(10);
+    const hashedPassword = bcrypt.hashSync(req.body.password, salt);
+    // creating User Model after registration
+    const userData = {
+        username: req.body.username,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email,
+        password: hashedPassword,
+        isTutor: req.body.isTutor,
+    };
+    const userRegistration = await User.create(userData);
+    console.log("user created");
+    auth.createJwtSession(req, res, userRegistration);
+    console.log("session created");
+    res.status(201).json();
+    // TODO: if (isTutor === true) {res.render('quiz')}
+    // users.push(req.body);
 
-  res.status(201).json();
-  // TODO: if (isTutor === true) {res.render('quiz')}
-  // users.push(req.body);
-
-  // handle unique username
+    // handle unique username
 });
 
 router.post("/login", async (req, res) => {
-  const currentUser = await User.findOne({
-    where: { username: req.body.username },
-  });
-  if (!currentUser) {
-    res.status(404).send("Incorrect User name, would you like to sign up?");
-  }
-  console.log("this is current" + currentUser);
-  try {
-    // if (await bcrypt.compare(req.body.password, currentUser.password)) {
-    res.status(302).redirect("/");
-    // } else {
-    //     res.status(404).send("Incorrect Password");
-    // }
-  } catch (err) {
-    res.status(500).send(`${err}`);
-  }
+    const currentUser = await User.findOne({
+        where: { username: req.body.username },
+    });
+    if (!currentUser) {
+        res.status(404).send("Incorrect User name, would you like to sign up?");
+    }
+    console.log("this is current" + currentUser);
+    try {
+        // if (await bcrypt.compare(req.body.password, currentUser.password)) {
+        res.status(302).redirect("/");
+        // } else {
+        //     res.status(404).send("Incorrect Password");
+        // }
+    } catch (err) {
+        res.status(500).send(`${err}`);
+    }
 });
 
 //profile page update user data
 
 // update product data
 router.put("/user/:id", (req, res) => {
-  try {
-    User.update(req.body, {
-      where: {
-        id: req.params.id,
-      },
-    });
-    res.status(200).json({ message: "Profile successfully updated!" });
-  } catch (err) {
-    res.status(500).send(`${err}`);
-  }
+    try {
+        User.update(req.body, {
+            where: {
+                id: req.params.id,
+            },
+        });
+        res.status(200).json({ message: "Profile successfully updated!" });
+    } catch (err) {
+        res.status(500).send(`${err}`);
+    }
 });
 
 // router.post("/tutor", async (req, res) => {
