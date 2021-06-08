@@ -56,11 +56,13 @@ router.post("/login", async (req, res) => {
     }
     console.log("this is current" + currentUser);
     try {
-        // if (await bcrypt.compare(req.body.password, currentUser.password)) {
-        res.status(302).redirect("/");
-        // } else {
-        //     res.status(404).send("Incorrect Password");
-        // }
+        if (await bcrypt.compare(req.body.password, currentUser.password)) {
+            currentUser.password = undefined;
+            auth.createJwtSession(req, res, currentUser);
+            res.status(302).redirect("/profile");
+        } else {
+            res.status(404).send("Incorrect Password");
+        }
     } catch (err) {
         res.status(500).send(`${err}`);
     }

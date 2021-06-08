@@ -3,8 +3,14 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
+const { User } = require("../models");
+
 module.exports.isLoginNeeded = (req, res, next) => {
-    // TODO
+    // no user id stored in locals, no one is logged in
+    if (!req.session) {
+        res.redirect("/login");
+    }
+    next();
 };
 
 module.exports.createJwtSession = (req, res, user, next) => {
@@ -44,14 +50,21 @@ module.exports.createJwtSession = (req, res, user, next) => {
     // });
     // res.csrfToken = req.csrfToken();
     // res.body.accessToken = accessToken;
-    req.session.userToken;
-    res.locals.logged_in = true;
+    req.session.userToken = refreshToken;
     res.status(201);
 };
 
-module.exports.loadUserDataFromJwtSession = (req, res, next) => {
+module.exports.loadUserDataFromJwtSession = async (req, res, next) => {
     if (!req.session && req.session.userToken) {
         return next();
     }
-    const verifyToken = jwt.verify(req.session.userToken);
+    const verifyToken = jwt.verify(
+        req.session.userToken,
+        process.env.REFRESH_SECRET_KEY
+    );
+
+    const user = await User.findByPk(verifyToken.userid);
+    user.password = undefined;
+    req.session.userid = user.id;
+    req.session.logged_in = true;
 };

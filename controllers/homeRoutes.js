@@ -8,28 +8,33 @@ const {
     QuizResult,
 } = require("../models");
 const withAuth = require("../utils/auth");
+const auth = require("./auth");
 
-router.get("/", async (req, res) => {
-    try {
-        const questionData = await Question.findAll({
-            include: [
-                {
-                    model: User,
-                    attributes: ["username"],
-                },
-            ],
-        });
-        const questions = questionData.map((question) =>
-            question.get({ plain: true })
-        );
+router.get(
+    "/",
+    [auth.isLoginNeeded, auth.loadUserDataFromJwtSession],
+    async (req, res) => {
+        try {
+            const questionData = await Question.findAll({
+                include: [
+                    {
+                        model: User,
+                        attributes: ["username"],
+                    },
+                ],
+            });
+            const questions = questionData.map((question) =>
+                question.get({ plain: true })
+            );
 
-        res.render("homepage", {
-            questions: questions,
-        });
-    } catch (err) {
-        res.status(500).json(err);
+            res.render("homepage", {
+                questions: questions,
+            });
+        } catch (err) {
+            res.status(500).json(err);
+        }
     }
-});
+);
 
 router.get("/question/:id", async (req, res) => {
     try {
@@ -72,10 +77,10 @@ router.get("/login", (req, res) => {
 });
 
 router.get("/signup", (req, res) => {
-    if (req.session) {
-        res.redirect("/");
-        return;
-    }
+    // if (req.session) {
+    //     res.redirect("/");
+    //     return;
+    // }
     res.render("signup");
 });
 
