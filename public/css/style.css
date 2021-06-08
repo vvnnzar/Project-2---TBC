@@ -779,16 +779,28 @@ footer {
     width: 90%;
   }
 
-
 }
 
-/* Small devices (phones, 425px and down) */
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 700px){
   header {
     display: grid;
     justify-content: center;
     justify-items: center;
   }
+  .flex {
+    display: grid;
+  }
+  #homepage-container {
+    width: 90%;
+  }
+  aside {
+    width: 100%;
+  }
+}
+
+/* Small devices (phones, 425px and down) */
+@media screen and (max-width: 425px) {
+
 
   .background {
     align-items: flex-start;
@@ -807,4 +819,5 @@ footer {
   .menu-box-menu {
     padding: 0;
   }
+
 }
