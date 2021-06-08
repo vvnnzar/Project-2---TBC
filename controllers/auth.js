@@ -56,7 +56,7 @@ module.exports.createJwtSession = (req, res, user) => {
 };
 
 module.exports.loadUserDataFromJwtSession = async (req, res, next) => {
-    if (!req.session && req.session.userToken) {
+    if (!req.session.logged_in && req.session.userToken) {
         return next();
     }
     const verifyToken = jwt.verify(
