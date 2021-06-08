@@ -88,7 +88,7 @@ router.get("/profile", async (req, res) => {
       include: [
         { model: Reputation },
         { model: QuizResult },
-        { model: IsTutor },
+        // { model: IsTutor },
       ],
     });
 
@@ -110,6 +110,16 @@ router.get('/ask-question', (req, res) => {
     });
 
 });
+
+router.get('/quiz', (req, res) => {
+
+    res.render('quiz', {
+        logged_in: true
+    });
+
+});
+
+
 router.get('/edit-question/:id', async (req, res) => {
     try {
         const questionData = await Question.findByPk(req.params.id, {
