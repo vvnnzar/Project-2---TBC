@@ -2,7 +2,9 @@ const { Model, DataTypes } = require("sequelize");
 
 const sequelize = require("../config/connection");
 
-class User extends Model {}
+class User extends Model {
+    async comparePassword() {}
+}
 
 User.init(
     {

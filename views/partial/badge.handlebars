@@ -1,0 +1,9 @@
+<div>   
+    {{#if score =50 }}
+    <div class="badge-bronze"><i class="fa fa-trophy bronze"></i></div>
+    {{else}} {{#if score <= 75}}
+    <div class="badge-silver"><i class="fa fa-trophy silver"></i></div>
+    {{else}} {{#if score <= 100}}
+     <div class="badge-gold"><i class="fa fa-trophy gold"></i></div>
+    {{/if}}
+</div>

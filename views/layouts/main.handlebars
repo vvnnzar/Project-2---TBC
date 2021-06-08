@@ -4,29 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tech Ready</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Trispace:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-<div>
     <header>
-        <div id="logo">
-            <a class="flex" href="/">
+        <div>
+            <a  id="logo" href="/">
                 <h1 class="logo-purple">&lt</h1>
                 <h1 id="logo-white">Tech</h1>
-                <h1 id="logo-orange">READY</h1>
+                <h1 class="logo-orange">Ready</h1>
                 <h1 class="logo-purple">&gt</h1>
             </a>
         </div>
         <nav>
-
             {{#if logged_in}}
-                <a href="/profile">profile</a> |
-                <button class="no-button" id="logout">Logout</button>
+                <a class="nav-link" href="/profile">Profile</a>
+                <a class="nav-link" href="/logout" id="logout">Logout</a>
             {{else}}
-                <a href="/signup">Sign Up</a>
-                <a href="/login">Login</a>
+                <a class="nav-link" href="/signup">Sign Up</a>
+                <a class="nav-link" href="/login">Login</a>
             {{/if}}
         </nav>
 
@@ -35,10 +34,30 @@
         {{{ body }}}
     </main>
     <footer>
+        <div>
+            <h2>Created</h2>
+            <h2 class="logo-orange">by</h2>
+        </div>
 
+        <div class="image-hover">
+            <img src="../images/viv-character.png" alt="viv character" class="character">
+            <div class="image-name">
+                <a href="https://github.com/vvnnzar" target="_blank">Viv</a>
+            </div>
+        </div>
+        <div class="image-hover">
+            <img src="../images/lewis-character.png" alt="lewis character" class="character">
+            <div class="image-name">
+                <a href="https://github.com/lewy192" target="_blank">Lewis</a>
+            </div>
+        </div>
+        <div class="image-hover">
+            <img src="../images/kate-character.png" alt="kate character" class="character">
+            <div class="image-name">
+                <a href="https://github.com/katemccoll" target="_blank">Kate</a>
+            </div>
+        </div>
     </footer>
-</div>
-
 
 
 {{#if logged_in}}
