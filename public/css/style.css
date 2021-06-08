@@ -1,6 +1,7 @@
 :root {
     --oxford-blue: #1d263b;
     --grey-blue: #50597b;
+    --warm-grey: #726868;
     --white: #FFFFFF;
     --orange: #FF9D00;
     --pastel-green: #96b88b;
@@ -10,6 +11,7 @@
     --note-purple: #e76fe7;
     --note-green: #71bc60;
     --turquoise: #11a8ab;
+    --pink: #e64c65;
 }
 
 *,
@@ -335,17 +337,19 @@ aside {
 
 /* Profile CSS */
 
+#background-color {
+  background-color: var(--oxford-blue);
+  padding: 10px;
+  display: flex;
+}
+
 .profile-card {
-  position: absolute;
-  margin-top: 10px;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 60rem;
-  width: 1000px;
-  height: 1065px;
-  border-radius: 15px;
+
+  margin: 20px;
+  width: 60%;
+  /*border-radius: 15px;*/
   box-shadow: 0 10px 25px 5px rgba(0, 0, 0, 0.2);
+  text-align: -webkit-center;
 }
 
 .profile-card a {
@@ -359,23 +363,15 @@ aside {
 }
 
 .profile-top-banner {
-  position: absolute;
-  margin: auto;
-  top: 0;
-  right: 0;
-  left: 0;
-  width: 1000px;
   height: 100px;
-  border-radius: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   background: var(--orange);
 }
 
 .profile-picture {
-  position: absolute;
   margin: auto;
-  top: 40px;
-  right: 0px;
-  left: 0px;
+  margin-top: 30px;
   width: 300px;
   height: 300px;
   border-radius: 50%;
@@ -391,27 +387,13 @@ aside {
 }
 
 .profile-name a {
-  position: absolute;
-  top: 450px;
-  margin-left: 18rem;
-  color: white;
-  text-decoration: none;
-  font-weight: 500;
   font-size: 50px;
 }
 
 .profile-edit {
-  position: absolute;
-  top: 400px;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  width: inherit;
+  margin: 20px;
   height: 40px;
-  text-align: center;
-  color: white;
-  text-decoration: none;
-  font-weight: 300;
+  color: var(--white);
   font-size: 20px;
 }
 
@@ -420,55 +402,38 @@ aside {
 }
 
 .profile-info {
-  position: absolute;
-  top: 550px;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  width: inherit;
-  height: 40px;
-  text-align: center;
-  color: white;
-  text-decoration: none;
-  font-weight: 300;
+  margin: 20px;
+  color: var(--white);
   font-size: 20px;
 }
 
 #isTutor {
-  position: absolute;
-  margin-top: 720px;
-  right: 0;
-  left: 0;
-  text-align: center;
-  color: white;
-  text-decoration: none;
-  font-weight: 700;
+  margin: 40px 20px;
+  color: var(--white);
   font-size: 90px;
 }
 
 .profile-summary {
-  display: grid;
-  position: in-line;
-  grid-template-columns: repeat(3, 1fr);
-  margin-top: 900px;
-  width: 1000px;
+  display: flex;
+  justify-content: space-evenly;
+  margin: 30px;
 }
 
 .students,
 .projects,
 .posts {
   color: var(--white);
-  text-align: center;
-  padding: 1.5rem 2rem;
+  padding: 15px 20px;
   font-size: 30px;
 }
 
 .specialty-box {
-  height: 300px;
+  padding-bottom: 30px;
 }
 
 .specialty-box .titular {
   background: var(--orange);
+  color: var(--white);
 }
 
 .skill > h6 {
@@ -479,6 +444,10 @@ aside {
   margin-top: 16px;
   color: white;
   padding: 0.5rem;
+}
+.percentage {
+  padding-top: 10px;
+  color: var(--white);
 }
 
 .fab {
@@ -575,16 +544,23 @@ aside {
 } */
 
 /** CONTAINERS **/
-#profile-container {
+#left-container {
   width: 40%;
   margin: 20px;
+  padding: 0;
+}
+
+#right-container {
+  width: 60%;
+  margin: 20px;
+  padding: 0;
 }
 
 .block {
   margin-bottom: 25px;
   background: #394264;
   border-radius: 5px;
-  margin-top: 10px;
+
 }
 
 /******************************************** Menu *****************************************/
@@ -623,10 +599,10 @@ aside {
   background-color: var(--grey-blue);
 }
 .menu-box-tab:hover .icon {
-  color: rgb(114, 104, 104);
+  color: var(--warm-grey);
 }
 .menu-box-tab:hover .menu-box-number {
-  background: #e64c65;
+  background-color: var(--pink);
 }
 
 /* Calendar */
@@ -638,7 +614,7 @@ aside {
   margin-right: 10px;
 }
 .calendar-month {
-  height: 360px;
+  padding-bottom: 10px;
 }
 .calendar-month .titular {
   background: #3468af;
@@ -663,7 +639,7 @@ aside {
   display: block;
   width: 34px;
   line-height: 34px;
-  background: #e64c65;
+  background-color: var(--pink);
   border-radius: 100%;
 }
 
