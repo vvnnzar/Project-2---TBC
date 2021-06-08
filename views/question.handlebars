@@ -1,6 +1,11 @@
-<section id="question-margin">
+<section class="question-margin">
     <div class="question-card">
-        <h2 class="question_title question-card-header">{{question_title}}</h2>
+        <div class="question-card-header">
+            <h2>{{question_title}}</h2>
+            {{#if is_owner}}
+                <a href="/edit-question/{{id}}"><p>Edit Question</p></a>
+            {{/if}}
+        </div>
         <div id="question-body">
             <p class="card-body">{{question_text}}</p>
             <p class="user-name-date">Posted by {{user.username}} on {{format_date date_created}}</p>
