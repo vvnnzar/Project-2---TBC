@@ -16,10 +16,10 @@ module.exports.isLoginNeeded = (req, res, next) => {
 module.exports.createJwtSession = (req, res, user, next) => {
     // establishing jwt settings
 
-    const accessClaims = {
-        expiresIn: "15m",
-        notBefore: Math.floor(Date.now() / 1000) - 30,
-    };
+    // const accessClaims = {
+    //     expiresIn: "15m",
+    //     notBefore: Math.floor(Date.now() / 1000) - 30,
+    // };
     const refreshClaims = {
         expiresIn: "2d",
         notBefore: Math.floor(Date.now() / 1000) - 30,
@@ -30,12 +30,12 @@ module.exports.createJwtSession = (req, res, user, next) => {
      *  Access Token - short expiration time
      *  Refresh token - used to regen access tokens -- longer exp time
      */
-    const accessToken = jwt.sign(
-        tokenPayload,
-        process.env.ACCESS_SECRET_KEY,
-        accessClaims
-    );
-    console.log(accessToken);
+    // const accessToken = jwt.sign(
+    //     tokenPayload,
+    //     process.env.ACCESS_SECRET_KEY,
+    //     accessClaims
+    // );
+    // console.log(accessToken);
     const refreshToken = jwt.sign(
         tokenPayload,
         process.env.REFRESH_SECRET_KEY,
