@@ -12,19 +12,30 @@
         <ul id="sort-by">
             <li class="sort-by-tab">Trending</li>
             <li class="sort-by-tab">Recent</li>
+            {{#if logged_in}}
+                <li class="sort-by-tab">My Questions</li>
+            {{/if}}
+
         </ul>
 
         {{#each questions as |question| }}
             <a id="question-container" href="/question/{{question.id}}">
                 <div id="homepage-card">
-                    <h3 class="question_title">{{question.question_title}}</h3>
-                    <p class="date-text">{{format_date question.date_created}}</p>
+                    <div id="question-header">
+                        <h3 class="question_title">{{question.question_title}}</h3>
+                        <p class="date-text">{{format_date question.date_created}}</p>
+                    </div>
+                    <p class="question_text">{{question.question_text}}</p>
                 </div>
+
             </a>
         {{/each}}
 
     </section>
-    {{> sidebar}}
+    {{#if logged_in}}
+        {{> sidebar}}
+    {{/if}}
+
 
 </div>
 

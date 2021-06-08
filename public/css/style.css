@@ -1,5 +1,6 @@
 :root {
     --oxford-blue: #1d263b;
+    --dark-blue: #394264;
     --grey-blue: #50597b;
     --warm-grey: #726868;
     --white: #FFFFFF;
@@ -205,7 +206,7 @@ form button {
 
 #homepage-container {
   margin: 30px;
-  width: 75%;
+  width: 70%;
 }
 
 #sort-by {
@@ -234,7 +235,6 @@ li:hover {
 #homepage-card {
   background-color: white;
   color: var(--oxford-blue);
-  display: flex;
   justify-content: space-between;
   padding: 10px;
   margin-bottom: 6px;
@@ -243,15 +243,25 @@ li:hover {
 #homepage-card:hover {
   background-color: var(--orange);
   color: var(--white);
-  display: flex;
-  justify-content: space-between;
   padding: 10px;
-  margin-bottom: 6px;
+  margin-bottom: 10px;
   text-decoration: none;
 }
 
-#question-container {
+#question-header {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 8px;
+}
+#question-header:hover {
+  display: flex;
+  justify-content: space-between;
+  color: var(--white);
+  padding-bottom: 8px;
+}
 
+#question-container {
+  text-decoration: none;
 }
 
 .question-card {
@@ -269,15 +279,6 @@ li:hover {
 .user-name-date {
   text-align-last: end;
   opacity: 70%;
-}
-
-.date-text {
-  color: var(--oxford-blue);
-}
-
-.date-text:hover {
-  color: var(--white);
-  text-decoration: none;
 }
 
 .comment-card {
@@ -302,40 +303,102 @@ li:hover {
 /* Sidebar */
 
 aside {
-  width: 25%;
+  width: 30%;
   background-color: var(--oxford-blue);
   color: var(--white);
   padding: 10px;
+  box-shadow: inset 0 -24px 30px -12px rgba(10, 13, 20, 0.54);
 }
 
-#note-card {
+.note-card {
   margin: 5px;
   padding: 5px;
   height: 300px;
 }
 
-#note-card-header {
+.note-card .titular {
+  background-color: var(--pink);
   display: flex;
   justify-content: space-between;
-  background-color: var(--note-purple);
-  padding: 5px;
+  padding: 0 15px;
+}
+
+#save-note,
+#new-note {
+  padding-left: 10px;
 }
 
 #note-title {
   width: 100%;
-  padding: 4px;
+  padding: 8px;
+  background-color: var(--dark-blue);
+  color: var(--white);
   border: none;
-  background-color: var(--light-purple);
+  border-bottom: 2px solid var(--oxford-blue);
 }
 
 #note-text {
   width: 100%;
+  padding: 8px;
   height: 200px;
   border: none;
-  background-color: var(--light-purple);
+  background-color: var(--dark-blue);
+  color: var(--white);
+}
+#note-title::placeholder,
+#note-text::placeholder {
+  color: var(--white);
+  opacity: 1; /* Firefox */
+}
+#note-title:-ms-input-placeholder,
+#note-text:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: var(--white);
+}
+#note-title::-ms-input-placeholder,
+#note-text::-ms-input-placeholder { /* Microsoft Edge */
+  color: var(--white);
 }
 
-/* Profile CSS */
+.notes-saved-card {
+  margin: 5px;
+  padding: 5px;
+}
+
+.notes-saved-card .titular {
+  background-color: var(--turquoise);
+  display: flex;
+  justify-content: space-between;
+  padding: 0 15px;
+}
+
+.list-group {
+  padding: 0;
+  width: 100%;
+  background-color: var(--dark-blue);
+  color: var(--white);
+  border: none;
+  border-bottom: 2px solid var(--oxford-blue);
+
+}
+
+.list-group-item {
+  padding: 8px;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+.list-group-item:hover {
+  padding: 8px;
+  list-style: none;
+  border: none;
+  background-color: var(--grey-blue);
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid var(--oxford-blue);
+
+}
+
+  /* Profile CSS */
 
 #background-color {
   background-color: var(--oxford-blue);
