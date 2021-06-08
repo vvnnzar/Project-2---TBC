@@ -1,11 +1,14 @@
+
 const router = require("express").Router();
 const { Note } = require("../../models");
+
 
 router.post("/", async (req, res) => {
     const {} = req.body;
     try {
         const newNote = await Note.create({
-            ...req.body,
+            note_title: req.body.title,
+            note_text: req.body.text,
             user_id: req.session.user_id,
         });
         res.status(200).json(newNote);

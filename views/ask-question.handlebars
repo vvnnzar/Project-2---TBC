@@ -1,18 +1,21 @@
-<div class="card">
-    <h3 class="card-header">Ask a Question</h3>
-    <form class="ask-question-form card-body">
-        <div class="form-group">
-            <label  class="form-label" for="question-title">Title</label>
-            <input class="form-input" type="text" id="question-title" />
-        </div>
-        <div class="form-group">
-            <label for="question-text">Content</label>
-            <input class="form-input" type="textarea" id="question-text" />
-        </div>
-        <div class="form-group">
-            <button id="ask-question-form" class="btn btn-primary" type="submit">ASK!</button>
-        </div>
-    </form>
-</div>
+<section class="question-margin">
+    <div class="ask-question-card">
+        <h3 class="titular">Ask a Question</h3>
+        <form class="ask-question-form card-body">
+            <div class="form-group">
+                <label  class="form-label" for="question-title" placeholder="Title"></label>
+                <input class="form-input" placeholder="Title" type="text" id="question-title"/>
+            </div>
+            <div class="form-group">
+                <label for="question-text"></label>
+                <textarea class="form-input" placeholder="Content" id="question-text"></textarea>
+            </div>
+            <div class="form-group">
+                <button id="ask-question-form" class="ask-btn" type="submit">ASK!</button>
+            </div>
+        </form>
+    </div>
+</section>
+
 
 <script src="js/askQuestion.js"></script>

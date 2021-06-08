@@ -24,6 +24,7 @@ router.post("/signup", async (req, res) => {
     // handle unique username
 });
 
+
 router.post("/login", async (req, res) => {
     const currentUser = await User.findOne({
         where: { username: req.body.username },
@@ -46,7 +47,6 @@ router.post("/login", async (req, res) => {
 });
 
 //profile page update user data
-
 // update product data
 
 // TODO:

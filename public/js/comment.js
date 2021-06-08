@@ -2,7 +2,7 @@ const newComment = async (event) => {
     event.preventDefault();
 
     const questionId = window.location.pathname.split('/').pop();
-    const commentText = document.querySelector('#comment-text').value.trim();
+    const commentText = document.querySelector('#comment-text').value;
 
     if (commentText) {
         const response = await fetch('/api/comments', {
@@ -16,7 +16,7 @@ const newComment = async (event) => {
         if (response.ok) {
             document.location.reload();
         } else {
-            alert('Failed to new comment');
+            alert('Failed to load new comment');
         }
     }
 };
