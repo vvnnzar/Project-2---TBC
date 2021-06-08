@@ -98,4 +98,10 @@ router.put("/user/:id", (req, res) => {
 //     res.render("tutors", { plainTutor });
 // });
 
+router.get("/logout", (req, res) => {
+    if (req.session) {
+        req.session.reset();
+    }
+    res.redirect("/");
+});
 module.exports = router;
