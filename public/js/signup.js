@@ -38,7 +38,7 @@ const signupForm = async (event) => {
         fetch("/api/signup", {
             method: "POST",
             body: JSON.stringify(bodyContent),
-            headers: { "Content-Type": "application/json" },
+            headers: {"Content-Type": "application/json"},
         })
             .then((res) => {
                 console.log(res);

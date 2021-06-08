@@ -1,10 +1,30 @@
 const router = require('express').Router();
-const { Note } = require('../../models');
+const { Note, User } = require('../../models');
+
+router.get('/', async (req, res) => {
+    try {
+        const noteData = await Note.findAll({
+            include: [
+                {
+                    model: User,
+                    attributes: ['username'],
+                },
+            ],
+        });
+        const notes = noteData.map((note) => note.get({ plain: true }));
+
+        res.status(200).json(notes);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+
+});
 
 router.post('/', async (req, res) => {
     try{
         const newNote = await Note.create({
-            ...req.body,
+            note_title: req.body.title,
+            note_text: req.body.text,
             user_id: req.session.user_id,
         });
         res.status(200).json(newNote);

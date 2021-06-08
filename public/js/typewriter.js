@@ -4,16 +4,28 @@ $(document).ready(function () {
     const skillDurationMs = 4000;
     const renderDurationMs = skillDurationMs / 2;
 
+    let skillTimerId = null;
+
     let showNextSkill = function() {
         renderSkill(mySkills[skillIndex], renderDurationMs);
         skillIndex++;
         if (skillIndex >= mySkills.length) {
             skillIndex = 0;
         }
-        setTimeout(showNextSkill, skillDurationMs);
+        skillTimerId = setTimeout(showNextSkill, skillDurationMs);
     };
 
     showNextSkill();
+    $(window).blur(function () {
+        if (skillTimerId !== null) {
+            clearTimeout(skillTimerId);
+            skillTimerId = null;
+        }
+
+    });
+    $(window).focus(function () {
+        showNextSkill();
+    });
 });
 
 function renderSkill(skillName, maxDurationMs) {

@@ -103,11 +103,16 @@ router.get("/profile", async (req, res) => {
   }
 });
 
+router.get('/ask-question', (req, res) => {
 
-router.get('/interview-question', withAuth, async (req, res) => {
+    res.render('ask-question', {
+        logged_in: true
+    });
 
+});
+router.get('/edit-question/:id', async (req, res) => {
     try {
-        const questionData = await Question.findAll({
+        const questionData = await Question.findByPk(req.params.id, {
             include: [
                 {
                     model: User,
@@ -115,21 +120,18 @@ router.get('/interview-question', withAuth, async (req, res) => {
                 },
             ],
         });
-        const questions = questionData.map((question) => question.get({ plain: true }));
 
-        res.render('interview-question', {
-            questions: questions,
+        const question = questionData.get({ plain: true });
+        const isOwner = question.user_id === req.session.user_id;
+
+        res.render('edit-question', {
+            ...question,
+            logged_in: req.session.logged_in,
+            is_owner: isOwner
         });
     } catch (err) {
         res.status(500).json(err);
     }
-});
-
-router.get('/ask-question', (req, res) => {
-
-    res.render('ask-question', {
-        logged_in: true
-    });
 
 });
 

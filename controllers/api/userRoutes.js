@@ -51,15 +51,17 @@ router.post("/signup", async (req, res) => {
   // handle unique username
 });
 
+
 router.post("/login", async (req, res) => {
-  const currentUser = await User.findOne({
-    where: { username: req.body.username },
-  });
-  if (!currentUser) {
-    res.status(404).send("Incorrect User name, would you like to sign up?");
-  }
-  console.log("this is current" + currentUser);
+
   try {
+      const currentUser = await User.findOne({
+          where: { username: req.body.username },
+      });
+      if (!currentUser) {
+          res.status(404).send("Incorrect User name, would you like to sign up?");
+      }
+      console.log("this is current" + currentUser);
     // if (await bcrypt.compare(req.body.password, currentUser.password)) {
     res.status(302).redirect("/");
     // } else {
@@ -71,7 +73,6 @@ router.post("/login", async (req, res) => {
 });
 
 //profile page update user data
-
 // update product data
 router.put("/user/:id", (req, res) => {
   try {
