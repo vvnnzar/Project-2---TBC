@@ -13,7 +13,8 @@ module.exports.isLoginNeeded = (req, res, next) => {
     next();
 };
 
-module.exports.createJwtSession = (req, res, user, next) => {
+module.exports.createJwtSession = (req, res, user) => {
+    const { id: userid, username: name } = user;
     // establishing jwt settings
 
     // const accessClaims = {
@@ -24,7 +25,7 @@ module.exports.createJwtSession = (req, res, user, next) => {
         expiresIn: "2d",
         notBefore: Math.floor(Date.now() / 1000) - 30,
     };
-    const tokenPayload = { userid: user.id, name: user.username };
+    const tokenPayload = { userid, name };
 
     /**create two tokens:
      *  Access Token - short expiration time

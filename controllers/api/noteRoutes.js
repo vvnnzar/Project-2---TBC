@@ -1,8 +1,9 @@
-const router = require('express').Router();
-const { Note } = require('../../models');
+const router = require("express").Router();
+const { Note } = require("../../models");
 
-router.post('/', async (req, res) => {
-    try{
+router.post("/", async (req, res) => {
+    const {} = req.body;
+    try {
         const newNote = await Note.create({
             ...req.body,
             user_id: req.session.user_id,
@@ -13,7 +14,7 @@ router.post('/', async (req, res) => {
     }
 });
 
-router.put('/:id', async (req, res) => {
+router.put("/:id", async (req, res) => {
     try {
         const noteData = await Note.update(req.body, {
             where: {
@@ -22,7 +23,7 @@ router.put('/:id', async (req, res) => {
             },
         });
         if (noteData.length === 0) {
-            res.status(404).json({ message: 'No note with this id!' });
+            res.status(404).json({ message: "No note with this id!" });
             return;
         }
         res.status(200).json(noteData);
@@ -31,7 +32,7 @@ router.put('/:id', async (req, res) => {
     }
 });
 
-router.delete('/:id', async (req, res) => {
+router.delete("/:id", async (req, res) => {
     try {
         const noteData = await Note.destroy({
             where: {
@@ -41,7 +42,7 @@ router.delete('/:id', async (req, res) => {
         });
 
         if (!noteData) {
-            res.status(404).json({message: 'No note found with this id'});
+            res.status(404).json({ message: "No note found with this id" });
             return;
         }
         res.status(200).json(noteData);
@@ -49,6 +50,5 @@ router.delete('/:id', async (req, res) => {
         res.status(500).json(err);
     }
 });
-
 
 module.exports = router;

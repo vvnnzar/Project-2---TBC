@@ -28,7 +28,7 @@ router.get(
             );
 
             res.render("homepage", {
-                questions: questions,
+                questions,
             });
         } catch (err) {
             res.status(500).json(err);
@@ -40,8 +40,9 @@ router.get(
     "/question/:id",
     [auth.isLoginNeeded, auth.loadUserDataFromJwtSession],
     async (req, res) => {
+        const { id } = req.params;
         try {
-            const questionData = await Question.findByPk(req.params.id, {
+            const questionData = await Question.findByPk(id, {
                 include: [
                     {
                         model: User,
