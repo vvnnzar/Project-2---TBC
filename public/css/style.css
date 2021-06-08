@@ -370,7 +370,6 @@ aside {
 }
 
 .profile-picture {
-  margin: auto;
   margin-top: 30px;
   width: 300px;
   height: 300px;
@@ -417,6 +416,7 @@ aside {
   display: flex;
   justify-content: space-evenly;
   margin: 30px;
+  align-items: flex-end;
 }
 
 .students,
@@ -584,8 +584,6 @@ aside {
 }
 .menu-box-menu li {
   height: 60px;
-  position: relative;
-  margin-left: 15px;
   list-style-type: none;
 }
 
@@ -651,8 +649,8 @@ aside {
   }
 }
 
-/* Medium devices (portrait tablets and large phones, 769px and down) */
-@media screen and (max-width: 769px) {
+/* Medium devices (portrait tablets and large phones, 768px and down) */
+@media screen and (max-width: 768px) {
   .signup-container,
   .login-container {
     width: 80%;
@@ -665,10 +663,22 @@ aside {
   form {
     width: 100%;
   }
+
+  #background-color {
+    display: block;
+    text-align: -webkit-center;
+  }
+
+  #left-container,
+  .profile-card {
+    width: 90%;
+  }
+
+
 }
 
-/* Small devices (phones, 426px and down) */
-@media screen and (max-width: 426px) {
+/* Small devices (phones, 425px and down) */
+@media screen and (max-width: 425px) {
   header {
     display: grid;
     justify-content: center;
@@ -687,5 +697,9 @@ aside {
 
   form {
     width: 100%;
+  }
+
+  .menu-box-menu {
+    padding: 0;
   }
 }
