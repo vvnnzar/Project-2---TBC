@@ -20,7 +20,6 @@ router.post("/signup", async (req, res) => {
     auth.createJwtSession(req, res, userRegistration);
     res.status(201).json();
     // TODO: if (isTutor === true) {res.render('quiz')}
-    // users.push(req.body);
 
     // handle unique username
 });
