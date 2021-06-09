@@ -107,7 +107,7 @@ router.get("/profile", async (req, res) => {
             include: [
                 { model: Reputation },
                 { model: QuizResult },
-//                 { model: IsTutor },
+                //                 { model: IsTutor },
             ],
         });
         console.log(currentUser);
@@ -121,6 +121,12 @@ router.get("/profile", async (req, res) => {
     } catch (err) {
         res.status(500).json("err: " + err);
     }
+});
+
+router.get("/tutors", async (req, res) => {
+    const tutors = await User.findAll({ where: { isTutor: true } });
+
+    res.render("tutors", { tutors });
 });
 
 // router.get('/edit-question/:id', async (req, res) => {
