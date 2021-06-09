@@ -1,7 +1,29 @@
+const router = require("express").Router();
+const { Note, User } = require("../../models");
 
+<<<<<<< Updated upstream:controllers/api/noteRoutes.js
 const router = require("express").Router();
 const { Note } = require("../../models");
 
+=======
+router.get("/", async (req, res) => {
+    try {
+        const noteData = await Note.findAll({
+            include: [
+                {
+                    model: User,
+                    attributes: ["username"],
+                },
+            ],
+        });
+        const notes = noteData.map((note) => note.get({ plain: true }));
+
+        res.status(200).json(notes);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+>>>>>>> Stashed changes:routes/api/noteRoutes.js
 
 router.post("/", async (req, res) => {
     const {} = req.body;
