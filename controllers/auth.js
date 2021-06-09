@@ -46,7 +46,7 @@ module.exports.loadUserDataFromJwtSession = async (req, res, next) => {
     if (!req.session.logged_in && req.session.userToken) {
         return next();
     }
-    console.log(req.headers["authorization"]);
+    console.log("headers:   ----    " + req.headers["authorization"]);
 
     const verifyToken = jwt.verify(
         req.session.userToken,
@@ -61,7 +61,7 @@ module.exports.loadUserDataFromJwtSession = async (req, res, next) => {
 };
 
 module.exports.extractPayload = (req, res) => {
-    console.log(req.headers["authorization"]);
+    console.log("headers:   ----    " + req.headers["authorization"]);
     if (!req.session.userToken) return;
     const verifyToken = jwt.verify(
         req.session.userToken,

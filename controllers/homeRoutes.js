@@ -90,8 +90,14 @@ router.get("/signup", (req, res) => {
 //profile
 router.get("/profile", async (req, res) => {
     try {
+        const payload = auth.extractPayload(req, res);
+        const {
+            logged_in: logged_in,
+            userId: user_id,
+            name: username,
+        } = payload;
         // Find the logged in user based on the session ID
-        const currentUser = await User.findByPk(req.session.userid, {
+        const currentUser = await User.findByPk(user_id, {
             attributes: { exclude: ["password"] },
             include: [
                 { model: Reputation },
@@ -104,10 +110,10 @@ router.get("/profile", async (req, res) => {
 
         res.render("profile", {
             ...user,
-            logged_in: true,
+            logged_in: logged_in,
         });
     } catch (err) {
-        res.status(500).json(err);
+        res.status(500).json("err: " + err);
     }
 });
 
@@ -154,5 +160,9 @@ router.get(
         });
     }
 );
+
+router.get("/logout", (req, res) => {
+    req.session = undefined;
+});
 
 module.exports = router;
