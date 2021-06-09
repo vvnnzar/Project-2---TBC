@@ -19,3 +19,4 @@ TutorRole.init(
         underscored: true,
     }
 );
+module.exports = TutorRole;
