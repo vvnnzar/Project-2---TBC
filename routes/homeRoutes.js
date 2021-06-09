@@ -152,6 +152,12 @@ router.get("/profile", async (req, res) => {
 //     }
 // });
 
+router.get('/quiz', (req, res) => {
+
+    res.render('quiz');
+
+});
+
 router.get(
     "/ask-question",
     [auth.isLoginNeeded, auth.loadUserDataFromJwtSession],
