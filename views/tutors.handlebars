@@ -1,0 +1,36 @@
+<div class="tutors-page">
+    <form action="api/users/tutor" method="post" class="tutor-search-bar">
+        <label for="search-bar">Search:</label>
+        <input type="text" class="search-bar" name="tutorUsername" />
+        <button type="submit"><img src="" alt="magnifying glass" /></button>
+    </form>
+    <div class="tutors-card-container">
+        {{#each tutors as |tutor|}}
+
+            <div class="card">
+                <header class="card-header">
+                    <h1
+                        style="border-radius:50%; width:50px; height:50px;"
+                    >&#128578</h1>
+                    <h1 class="tutor-name">{{tutor.name}}</h1>
+                </header>
+                <div class="content">
+                    <p class="emplyee-email"><a
+                            href="mailto:{{tutor.email}}"
+                            class="email"
+                        >{{tutor.email}}</a></p>
+
+                    {{! TODO: link to their profile }}
+
+                    {{! TODO: Add github attribute,TODO: Add Linked in <p class="employee-info">Github:<a
+                            href="https://github.com/josh"
+                            class="github"
+                            target="_blank"
+                        >josh</a></p> }}
+
+                </div>
+            </div>
+        {{/each}}
+
+    </div>
+</div>
