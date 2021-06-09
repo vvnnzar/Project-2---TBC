@@ -1,21 +1,72 @@
 // authentication will go in heres
-
 const bcrypt = require("bcryptjs");
-const express = require("express");
-const csurf = require("csurf");
-const njwt = require("njwt");
+const jwt = require("jsonwebtoken");
+require("dotenv").config();
 
-let router = express.Router();
+const { User } = require("../models");
 
-let User = require("../models/User");
-
-router.get("/signup", (req, res) => {
-    res.render("signup", { csrfToken: req.csrfToken() });
-});
-
-// initialise user session
-
-initialiseUserSession = (req, res, user, userScope) => {
-    let claims = { scope: userScope };
+module.exports.isLoginNeeded = (req, res, next) => {
+    // no user id stored in locals, no one is logged in
+    if (!req.session.logged_in) {
+        res.redirect("/login");
+    }
+    next();
 };
-// TODO: make sure the auth doesnt consider unsigned JWTS as valid - prevents signature stripping
+
+module.exports.createJwtSession = (req, res, user) => {
+    const { id: userid, username: name } = user;
+    // establishing jwt settings
+
+    // const accessClaims = {
+    //     expiresIn: "15m",
+    //     notBefore: Math.floor(Date.now() / 1000) - 30,
+    // };
+    const refreshClaims = {
+        expiresIn: "2d",
+        notBefore: Math.floor(Date.now() / 1000) - 30,
+    };
+    const tokenPayload = { userid, name };
+
+    /**create two tokens:
+     *  Access Token - short expiration time
+     *  Refresh token - used to regen access tokens -- longer exp time
+     */
+    // const accessToken = jwt.sign(
+    //     tokenPayload,
+    //     process.env.ACCESS_SECRET_KEY,
+    //     accessClaims
+    // );
+    // console.log(accessToken);
+    const refreshToken = jwt.sign(
+        tokenPayload,
+        process.env.REFRESH_SECRET_KEY,
+        refreshClaims
+    );
+    console.log(refreshToken);
+    // maxAge is 2days in mili seconds
+    // res.cookie("token", refreshToken, {
+    //     maxAge: 2 * 24 * 60 * 60 * 1000,
+    //     httpOnly: true,
+    //     sameSite: "strict",
+    // });
+    // res.csrfToken = req.csrfToken();
+    // res.body.accessToken = accessToken;
+    req.session.userToken = refreshToken;
+    res.status(201);
+};
+
+module.exports.loadUserDataFromJwtSession = async (req, res, next) => {
+    if (!req.session && req.session.userToken) {
+        return next();
+    }
+    const verifyToken = jwt.verify(
+        req.session.userToken,
+        process.env.REFRESH_SECRET_KEY
+    );
+
+    const user = await User.findByPk(verifyToken.userid);
+    user.password = undefined;
+    req.session.userid = user.id;
+    req.session.logged_in = true;
+};
+
