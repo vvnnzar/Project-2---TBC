@@ -1,10 +1,33 @@
 [
-  {
-    "username": "katemccoll",
-    "password": "kate123",
-    "firstName": "kate",
-    "lastName": "mccoll",
-    "email": "mccoll@mail.com",
-    "isTutor": "true"
-  }
+    {
+        "username": "katemccoll",
+        "password": "kate123",
+        "firstName": "kate",
+        "lastName": "mccoll",
+        "email": "mccoll@mail.com",
+        "tutorRole": 1
+    },
+    {
+        "username": "lewy192",
+        "password": "test",
+        "firstName": "lewis",
+        "lastName": "hill",
+        "email": "lewis@outlook.com",
+        "tutorRole": 2
+    },
+    {
+        "username": "lewy1999",
+        "password": "testing",
+        "firstName": "lewis",
+        "lastName": "moutain",
+        "email": "lewis.moutain@outlook.com",
+        "tutorRole": 3
+    },
+    {
+        "username": "jeff1234",
+        "password": "testing",
+        "firstName": "jeff",
+        "lastName": "sozeb",
+        "email": "jeff.sozeb@amazon.com"
+    }
 ]
