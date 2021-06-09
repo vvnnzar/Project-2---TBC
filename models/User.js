@@ -29,7 +29,13 @@ User.init(
             allowNull: false,
             validate: { isEmail: true, notEmpty: true },
         },
-        isTutor: { type: DataTypes.BOOLEAN, allowNull: false },
+        tutorRole: {
+            type: DataTypes.INTEGER.UNSIGNED,
+            references: {
+                model: "tutorRole",
+                key: "id",
+            },
+        },
     },
     {
         sequelize,
