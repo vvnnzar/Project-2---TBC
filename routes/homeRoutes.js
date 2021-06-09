@@ -89,10 +89,12 @@ router.get("/signup", (req, res) => {
         return;
     }
     res.render("signup");
+
 });
 
 //profile
 router.get("/profile", async (req, res) => {
+<<<<<<< HEAD:controllers/homeRoutes.js
     try {
         const payload = auth.extractPayload(req, res);
         console.log(payload);
@@ -122,6 +124,67 @@ router.get("/profile", async (req, res) => {
         res.status(500).json("err: " + err);
     }
 });
+=======
+  try {
+    // Find the logged in user based on the session ID
+    const currentUser = await User.findByPk(req.session.user_id, {
+      attributes: { exclude: ["password"] },
+      include: [
+        { model: Reputation },
+        { model: QuizResult },
+        { model: IsTutor },
+      ],
+    });
+
+    const user = currentUser.get({ plain: true });
+
+    res.render("profile", {
+      ...user,
+      logged_in: true,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/ask-question', (req, res) => {
+
+    res.render('ask-question', {
+        logged_in: true
+    });
+
+});
+
+// router.get('/edit-question/:id', async (req, res) => {
+//     try {
+//         const questionData = await Question.findByPk(req.params.id, {
+//             include: [
+//                 { model: Reputation },
+//                 { model: QuizResult },
+//                 { model: IsTutor },
+//             ],
+//         });
+//
+//
+//         const user = currentUser.get({ plain: true });
+//
+//         res.render("profile", {
+//             ...user,
+//             logged_in: true,
+//
+//         const question = questionData.get({ plain: true });
+//         const isOwner = question.user_id === req.session.user_id;
+//
+//         res.render('edit-question', {
+//             ...question,
+//             logged_in: req.session.logged_in,
+//             is_owner: isOwner
+//         });
+//     } catch (err) {
+//         res.status(500).json(err);
+//     }
+// });
+>>>>>>> 5ab5bdd9d0cf567b3738a5e7ca03370e05edbddd:routes/homeRoutes.js
 
 router.get("/ask-question", (req, res) => {
     res.render("ask-question", {

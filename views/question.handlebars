@@ -1,31 +1,36 @@
-<section class="question-margin">
-    <div class="question-card">
-        <div class="question-card-header">
-            <h2>{{question_title}}</h2>
-            {{#if is_owner}}
-                <a href="/edit-question/{{id}}"><p>Edit Question</p></a>
-            {{/if}}
-        </div>
-        <div id="question-body">
-            <p class="card-body">{{question_text}}</p>
-            <p class="user-name-date">Posted by {{user.username}} on {{format_date date_created}}</p>
-        </div>
-    </div>
-    {{#each comments as |comment| }}
-        <div id="comment-container">
-            <div class="card">
-                <h3 class="card-header"> </h3>
-                <div class="card-body">
-                    <p>{{comment_text}}</p>
-                    <p>- {{user.username}}, {{format_date date_created}}</p>
-                </div>
+<section class="flex">
+    <main class="question-margin">
+        <div class="question-card">
+            <div class="question-card-header">
+                <h2>{{question_title}}</h2>
+                {{#if is_owner}}
+                    <a href="/edit-question/{{id}}"><p>Edit Question</p></a>
+                {{/if}}
+            </div>
+            <div id="question-body">
+                <p class="card-body">{{question_text}}</p>
+                <p class="user-name-date">Posted by {{user.username}} on {{format_date date_created}}</p>
             </div>
         </div>
+        {{#each comments as |comment| }}
+            <div id="comment-container">
+                <div class="card">
+                    <h3 class="card-header"> </h3>
+                    <div class="card-body">
+                        <p>{{comment_text}}</p>
+                        <p>- {{user.username}}, {{format_date date_created}}</p>
+                    </div>
+                </div>
+            </div>
 
-    {{/each}}
-    {{> add-comment }}
-
+        {{/each}}
+        {{> add-comment }}
+    </main>
+    {{#if logged_in}}
+        {{> sidebar }}
+    {{/if}}
 </section>
+
 
 
 

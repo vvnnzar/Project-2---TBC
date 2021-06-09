@@ -49,7 +49,6 @@ router.post("/login", async (req, res) => {
 
 //profile page update user data
 // update product data
-
 // TODO:
 router.put("/user/:id", (req, res) => {
     try {
