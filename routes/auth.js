@@ -69,3 +69,4 @@ module.exports.extractPayload = (req, res) => {
     );
     return verifyToken;
 };
+

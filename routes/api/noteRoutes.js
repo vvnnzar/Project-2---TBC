@@ -1,18 +1,15 @@
-const router = require("express").Router();
-const { Note, User } = require("../../models");
 
-<<<<<<< Updated upstream:controllers/api/noteRoutes.js
-const router = require("express").Router();
-const { Note } = require("../../models");
+const router = require('express').Router();
+const { Note, User } = require('../../models');
 
-=======
-router.get("/", async (req, res) => {
+router.get('/', async (req, res) => {
     try {
         const noteData = await Note.findAll({
             include: [
                 {
                     model: User,
                     attributes: ["username"],
+
                 },
             ],
         });
@@ -22,8 +19,15 @@ router.get("/", async (req, res) => {
     } catch (err) {
         res.status(500).json(err);
     }
+
 });
->>>>>>> Stashed changes:routes/api/noteRoutes.js
+
+
+router.post('/', async (req, res) => {
+    try{
+const router = require("express").Router();
+const { Note } = require("../../models");
+
 
 router.post("/", async (req, res) => {
     const {} = req.body;
@@ -39,7 +43,9 @@ router.post("/", async (req, res) => {
     }
 });
 
+
 router.put("/:id", async (req, res) => {
+
     try {
         const noteData = await Note.update(req.body, {
             where: {
@@ -48,7 +54,9 @@ router.put("/:id", async (req, res) => {
             },
         });
         if (noteData.length === 0) {
+
             res.status(404).json({ message: "No note with this id!" });
+
             return;
         }
         res.status(200).json(noteData);
@@ -68,6 +76,7 @@ router.delete("/:id", async (req, res) => {
 
         if (!noteData) {
             res.status(404).json({ message: "No note found with this id" });
+
             return;
         }
         res.status(200).json(noteData);
