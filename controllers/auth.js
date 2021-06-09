@@ -7,14 +7,19 @@ const { User } = require("../models");
 
 module.exports.isLoginNeeded = (req, res, next) => {
     // no user id stored in locals, no one is logged in
+    console.log(req.session.userToken);
     if (!req.session.userToken) {
         res.redirect("/login");
+        res.end();
     }
-    const { token } = req.session.userToken;
+    const { userToken: token } = req.session;
+
     const verfiedToken = jwt.verify(token, process.env.REFRESH_SECRET_KEY);
-    const { isLoggedIn } = verfiedToken.logged_in;
+    const { logged_in: isLoggedIn } = verfiedToken;
+
     if (!isLoggedIn) {
         res.redirect("/login");
+        res.end();
     }
     next();
 };
@@ -26,7 +31,7 @@ module.exports.createJwtSession = (req, res, user) => {
 
     const refreshClaims = {
         expiresIn: "2d",
-        notBefore: Math.floor(Date.now() / 1000) - 30,
+        notBefore: 0,
     };
     const tokenPayload = { userid, name, logged_in };
     const refreshToken = jwt.sign(
@@ -43,6 +48,8 @@ module.exports.loadUserDataFromJwtSession = async (req, res, next) => {
     if (!req.session.logged_in && req.session.userToken) {
         return next();
     }
+    console.log(req.headers["authorization"]);
+
     const verifyToken = jwt.verify(
         req.session.userToken,
         process.env.REFRESH_SECRET_KEY
