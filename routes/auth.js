@@ -69,3 +69,4 @@ module.exports.loadUserDataFromJwtSession = async (req, res, next) => {
     req.session.userid = user.id;
     req.session.logged_in = true;
 };
+

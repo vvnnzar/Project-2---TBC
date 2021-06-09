@@ -87,11 +87,11 @@ router.get("/signup", (req, res) => {
         return;
     }
     res.render("signup");
+
 });
 
 //profile
 router.get("/profile", async (req, res) => {
-
   try {
     // Find the logged in user based on the session ID
     const currentUser = await User.findByPk(req.session.user_id, {
@@ -121,6 +121,7 @@ router.get('/ask-question', (req, res) => {
     });
 
 });
+
 // router.get('/edit-question/:id', async (req, res) => {
 //     try {
 //         const questionData = await Question.findByPk(req.params.id, {
