@@ -582,11 +582,7 @@ aside {
   font-size: 30px;
 }
 
-.specialty-box {
-  padding-bottom: 30px;
-}
-
-.specialty-box .titular {
+.resources-box .titular {
   background: var(--orange);
   color: var(--white);
 }
