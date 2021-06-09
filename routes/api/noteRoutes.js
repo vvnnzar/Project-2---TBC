@@ -8,7 +8,8 @@ router.get('/', async (req, res) => {
             include: [
                 {
                     model: User,
-                    attributes: ['username'],
+                    attributes: ["username"],
+
                 },
             ],
         });
@@ -20,6 +21,7 @@ router.get('/', async (req, res) => {
     }
 
 });
+
 
 router.post('/', async (req, res) => {
     try{
@@ -41,7 +43,8 @@ router.post("/", async (req, res) => {
     }
 });
 
-router.put('/:id', async (req, res) => {
+
+router.put("/:id", async (req, res) => {
 
     try {
         const noteData = await Note.update(req.body, {
@@ -63,7 +66,6 @@ router.put('/:id', async (req, res) => {
 });
 
 router.delete("/:id", async (req, res) => {
-
     try {
         const noteData = await Note.destroy({
             where: {
@@ -73,7 +75,6 @@ router.delete("/:id", async (req, res) => {
         });
 
         if (!noteData) {
-
             res.status(404).json({ message: "No note found with this id" });
 
             return;

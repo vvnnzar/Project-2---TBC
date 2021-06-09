@@ -89,12 +89,10 @@ router.get("/signup", (req, res) => {
         return;
     }
     res.render("signup");
-
 });
 
 //profile
 router.get("/profile", async (req, res) => {
-<<<<<<< HEAD:controllers/homeRoutes.js
     try {
         const payload = auth.extractPayload(req, res);
         console.log(payload);
@@ -109,7 +107,7 @@ router.get("/profile", async (req, res) => {
             include: [
                 { model: Reputation },
                 { model: QuizResult },
-                { model: IsTutor },
+//                 { model: IsTutor },
             ],
         });
         console.log(currentUser);
@@ -124,7 +122,7 @@ router.get("/profile", async (req, res) => {
         res.status(500).json("err: " + err);
     }
 });
-=======
+
   try {
     // Find the logged in user based on the session ID
     const currentUser = await User.findByPk(req.session.user_id, {
@@ -132,7 +130,7 @@ router.get("/profile", async (req, res) => {
       include: [
         { model: Reputation },
         { model: QuizResult },
-        { model: IsTutor },
+//         { model: IsTutor },
       ],
     });
 
@@ -184,7 +182,6 @@ router.get('/ask-question', (req, res) => {
 //         res.status(500).json(err);
 //     }
 // });
->>>>>>> 5ab5bdd9d0cf567b3738a5e7ca03370e05edbddd:routes/homeRoutes.js
 
 router.get("/ask-question", (req, res) => {
     res.render("ask-question", {
