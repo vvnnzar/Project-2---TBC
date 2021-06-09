@@ -756,7 +756,7 @@ aside {
 #quiz-container {
   background-color: var(--white);
   padding: 10px;
-  margin: 0;
+  margin: 30px;
   display: flex;
   flex-direction: column;
   line-height: 1.5;
