@@ -38,7 +38,7 @@ const signupForm = async (event) => {
         fetch("/api/signup", {
             method: "POST",
             body: JSON.stringify(bodyContent),
-            headers: {"Content-Type": "application/json"},
+            headers: { "Content-Type": "application/json" },
         })
             .then((res) => {
                 console.log(res);
@@ -87,7 +87,7 @@ emailValidation = (email) => {
         errorMessage.classList.add("error-message-email");
         errorMessage.classList.add("error-message");
         const formElements = document.querySelector(".submit-form");
-        formElements.insertBefore(errorMessage, formElements.children[6]);
+        formElements.insertBefore(errorMessage, formElements.children[8]);
         document.querySelector("#email-signup").value = "";
         return false;
     } else return true;
