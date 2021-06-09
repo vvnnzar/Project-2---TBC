@@ -7,7 +7,13 @@ const { User } = require("../models");
 
 module.exports.isLoginNeeded = (req, res, next) => {
     // no user id stored in locals, no one is logged in
-    if (!req.session.logged_in) {
+    if (!req.session.userToken) {
+        res.redirect("/login");
+    }
+    const { token } = req.session.userToken;
+    const verfiedToken = jwt.verify(token, process.env.REFRESH_SECRET_KEY);
+    const { isLoggedIn } = verfiedToken.logged_in;
+    if (!isLoggedIn) {
         res.redirect("/login");
     }
     next();
@@ -16,41 +22,19 @@ module.exports.isLoginNeeded = (req, res, next) => {
 module.exports.createJwtSession = (req, res, user) => {
     const { id: userid, username: name } = user;
     // establishing jwt settings
+    const logged_in = true;
 
-    // const accessClaims = {
-    //     expiresIn: "15m",
-    //     notBefore: Math.floor(Date.now() / 1000) - 30,
-    // };
     const refreshClaims = {
         expiresIn: "2d",
         notBefore: Math.floor(Date.now() / 1000) - 30,
     };
-    const tokenPayload = { userid, name };
-
-    /**create two tokens:
-     *  Access Token - short expiration time
-     *  Refresh token - used to regen access tokens -- longer exp time
-     */
-    // const accessToken = jwt.sign(
-    //     tokenPayload,
-    //     process.env.ACCESS_SECRET_KEY,
-    //     accessClaims
-    // );
-    // console.log(accessToken);
+    const tokenPayload = { userid, name, logged_in };
     const refreshToken = jwt.sign(
         tokenPayload,
         process.env.REFRESH_SECRET_KEY,
         refreshClaims
     );
     console.log(refreshToken);
-    // maxAge is 2days in mili seconds
-    // res.cookie("token", refreshToken, {
-    //     maxAge: 2 * 24 * 60 * 60 * 1000,
-    //     httpOnly: true,
-    //     sameSite: "strict",
-    // });
-    // res.csrfToken = req.csrfToken();
-    // res.body.accessToken = accessToken;
     req.session.userToken = refreshToken;
     res.status(201);
 };
@@ -66,6 +50,7 @@ module.exports.loadUserDataFromJwtSession = async (req, res, next) => {
 
     const user = await User.findByPk(verifyToken.userid);
     user.password = undefined;
-    req.session.userid = user.id;
+    const { userId } = user.id;
+    req.session.userid = userId;
     req.session.logged_in = true;
 };
