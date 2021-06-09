@@ -76,4 +76,4 @@ Note.belongsTo(User, {
 //     as: 'tutor_users'
 // });
 
-module.exports = { User, IsTutor, Comment, Question, Reputation, QuizResult };
+module.exports = { User, IsTutor, Comment, Question, Reputation, QuizResult, Note };
