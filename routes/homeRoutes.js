@@ -19,14 +19,40 @@ router.get("/", async (req, res) => {
             name: username,
         } = payload || { logged_in: false };
 
-        const questionData = await Question.findAll({
-            include: [
-                {
-                    model: User,
-                    attributes: ["username"],
-                },
-            ],
-        });
+        let sort = req.query.sort || 'trending';
+
+        let questionData = null;
+        if (sort === 'recent') {
+            questionData = await Question.findAll({
+                include: [
+                    {
+                        model: User,
+                        attributes: ["username"],
+                    },
+                ],
+                order: [['date_created', 'DESC']]
+            });
+        } else if (sort === 'my-questions') {
+            questionData = await Question.findAll({
+                where: {user_id: user_id},
+                include: [
+                    {
+                        model: User,
+                        attributes: ["username"],
+                    },
+                ],
+            });
+        } else {
+            questionData = await Question.findAll({
+                include: [
+                    {
+                        model: User,
+                        attributes: ["username"],
+                    },
+                ],
+            });
+        }
+
         const questions = questionData.map((question) =>
             question.get({ plain: true })
         );
