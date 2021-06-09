@@ -74,11 +74,14 @@ router.get(
             }
 
             const question = questionData.get({ plain: true });
+            question.comments.forEach((comment) => {
+                comment.is_owner = user_id === comment.user_id;
+            });
             const isOwner = question.user_id === user_id;
             res.render("question", {
                 ...question,
                 is_owner: isOwner,
-                logged_in: logged_in,
+                logged_in: logged_in
             });
         } catch (err) {
             res.status(500).json(err);
