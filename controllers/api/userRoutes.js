@@ -24,7 +24,6 @@ router.post("/signup", async (req, res) => {
     // handle unique username
 });
 
-
 router.post("/login", async (req, res) => {
     const currentUser = await User.findOne({
         where: { username: req.body.username },
@@ -82,9 +81,14 @@ router.post(
 );
 
 router.get("/logout", (req, res) => {
-    if (req.session) {
+    if (req.session.logged_in) {
         req.session.reset();
     }
     res.redirect("/");
 });
+
+router.get("/test", (req, res) => {
+    console.log(req.session);
+});
+
 module.exports = router;
