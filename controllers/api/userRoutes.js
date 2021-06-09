@@ -82,15 +82,15 @@ router.post(
     }
 );
 
-router.get("/logout", (req, res) => {
-    if (req.session.logged_in) {
-        req.session.reset();
-    }
-    res.redirect("/");
-});
+// router.get("/logout", (req, res) => {
+//     if (req.session.logged_in) {
+//         req.session.reset();
+//     }
+//     res.redirect("/");
+// });
 
-router.get("/test", (req, res) => {
-    console.log(req.session);
-});
+// router.get("/test", (req, res) => {
+//     console.log(req.session);
+// });
 
 module.exports = router;
