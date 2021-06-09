@@ -1,4 +1,3 @@
-
 const router = require('express').Router();
 const { Note, User } = require('../../models');
 
@@ -21,13 +20,6 @@ router.get('/', async (req, res) => {
     }
 
 });
-
-
-router.post('/', async (req, res) => {
-    try{
-const router = require("express").Router();
-const { Note } = require("../../models");
-
 
 router.post("/", async (req, res) => {
     const {} = req.body;
