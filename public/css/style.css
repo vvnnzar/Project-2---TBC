@@ -6,7 +6,7 @@
     --white: #FFFFFF;
     --orange: #FF9D00;
     --pastel-green: #96b88b;
-    --purple: #FF03FF;
+    --purple: #d209d2;
     --light-grey: #f8f8f8;
     --light-purple: #e3c9e3;
     --note-purple: #e76fe7;
@@ -749,9 +749,8 @@ aside {
 
 /* Quiz */
 
-#quiz-container {
-  background-color: var(--white);
-  padding: 10px;
+.quiz-container {
+  color: var(--white);
   margin: 30px;
   display: flex;
   flex-direction: column;
@@ -759,12 +758,23 @@ aside {
   font-size: 1rem;
   justify-content: center;
   align-items: center;
+  border-radius: 10px;
+  width: 100%;
+  padding-bottom: 50px;
+  background-color: var(--dark-blue);
+  box-shadow: 0 10px 25px 5px rgba(0, 0, 0, 0.2);
+
+}
+
+.quiz-container .titular {
+  background-color: var(--purple);
+  color: var(--white);
 }
 
 #quiz-nav {
   display: inline-flex;
   justify-content: space-between;
-  padding: 10px;
+  padding: 16px;
   width: 100%;
 }
 
@@ -785,13 +795,23 @@ aside {
   width: fit-content;
 }
 
+#start-btn {
+  margin: 10px;
+  color: var(--white);
+  background-color: var(--purple);
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+
+}
+
 .btn:hover {
   opacity: 0.5;
   border: none;
 }
 
 .highscores {
-  color: var(--purple);
   text-align: left;
   float: left;
   cursor: context-menu;
@@ -803,8 +823,9 @@ aside {
 }
 
 .info {
-  width: 30%;
+  width: 70%;
   text-align: center;
+  padding: 10px;
 }
 
 .info .title {
