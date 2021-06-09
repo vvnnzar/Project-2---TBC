@@ -154,6 +154,10 @@ nav {
   box-shadow: 0 2px 30px 1px rgba(10, 13, 20, 0.54);
 }
 
+#login-title {
+  align-self: center;
+}
+
 .viv-image {
   width: 50vw;
   background-color: var(--pastel-green);
@@ -183,10 +187,6 @@ form {
 .error-message {
     color: red;
     padding-top: 10px;
-}
-
-form h2 {
-  padding-bottom: 20px;
 }
 
 form label,

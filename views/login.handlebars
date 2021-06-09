@@ -1,15 +1,15 @@
-<div class="login-card-container">
-    <div class="login-card">
-        <h3 class="card-login-header">Login</h3>
-        <div class="login-content">
-            {{#if logInFailed}}
-                <p class="error-message error-message-login">Incorrect
-                    Username/password.</p>
-            {{/if}}
+<div class="background">
+    <div class="login-container">
+        <div class="viv-image"></div>
             <form action="/api/login" method="POST" class="login-form">
+                <h2 id="login-title">Login</h2>
+                {{#if logInFailed}}
+                    <p class="error-message error-message-login">Incorrect
+                        Username/password.</p>
+                {{/if}}
                 <input type="text" name="username" placeholder="Username" />
                 <input type="password" name="password" placeholder="Password" />
-                <input type="submit" value="Login" class="submit-button" />
+                <button type="submit" value="Login" value="true">Login</button>
             </form>
         </div>
     </div>
