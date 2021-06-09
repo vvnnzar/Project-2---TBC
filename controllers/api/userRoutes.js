@@ -25,20 +25,22 @@ router.post("/signup", async (req, res) => {
 });
 
 router.post("/login", async (req, res) => {
-    const currentUser = await User.findOne({
-        where: { username: req.body.username },
-    });
-    if (!currentUser) {
-        res.status(404).send("Incorrect User name, would you like to sign up?");
-    }
-    console.log("this is current" + currentUser);
+    let { username: name, password: password } = req.body;
     try {
-        if (await bcrypt.compare(req.body.password, currentUser.password)) {
-            currentUser.password = undefined;
+        const currentUser = await User.findOne({
+            where: { username: name },
+        });
+        const { password: passwordToConfirm } = currentUser || {};
+        if (
+            currentUser &&
+            (await currentUser.comparePassword(password, passwordToConfirm))
+        ) {
+            password = undefined;
             auth.createJwtSession(req, res, currentUser);
             res.status(302).redirect("/profile");
         } else {
-            res.status(404).send("Incorrect Password");
+            const logInFailed = true;
+            res.render("login", { logInFailed });
         }
     } catch (err) {
         res.status(500).send(`${err}`);

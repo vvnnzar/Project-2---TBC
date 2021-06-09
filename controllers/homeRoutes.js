@@ -12,7 +12,11 @@ const auth = require("./auth");
 
 router.get("/", async (req, res) => {
     const payload = auth.extractPayload(req, res);
-    const { logged_in: logged_in, userId: user_id, name: username } = payload;
+    let {
+        logged_in: logged_in,
+        userid: user_id,
+        name: username,
+    } = payload || { logged_in: false };
     try {
         const questionData = await Question.findAll({
             include: [
@@ -91,11 +95,12 @@ router.get("/signup", (req, res) => {
 router.get("/profile", async (req, res) => {
     try {
         const payload = auth.extractPayload(req, res);
+        console.log(payload);
         const {
             logged_in: logged_in,
-            userId: user_id,
+            userid: user_id,
             name: username,
-        } = payload;
+        } = payload || { logged_in: false };
         // Find the logged in user based on the session ID
         const currentUser = await User.findByPk(user_id, {
             attributes: { exclude: ["password"] },
@@ -105,7 +110,8 @@ router.get("/profile", async (req, res) => {
                 { model: IsTutor },
             ],
         });
-
+        console.log(currentUser);
+        console.log(user_id);
         const user = currentUser.get({ plain: true });
 
         res.render("profile", {
@@ -162,7 +168,7 @@ router.get(
 );
 
 router.get("/logout", (req, res) => {
-    req.session = undefined;
+    req.session = {};
 });
 
 module.exports = router;
