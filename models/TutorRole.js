@@ -1,4 +1,8 @@
 const { Model, DataTypes } = require("sequelize");
+<<<<<<< Updated upstream
+=======
+const sequelize = require("../config/connection.js");
+>>>>>>> Stashed changes
 
 class TutorRole extends Model {}
 

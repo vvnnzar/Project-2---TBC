@@ -7,6 +7,7 @@ const {
     Reputation,
     QuizResult,
 } = require("../models");
+const { sequelize } = require("../models/User");
 const withAuth = require("../utils/auth");
 const auth = require("./auth");
 
@@ -123,8 +124,16 @@ router.get("/profile", async (req, res) => {
     }
 });
 
+<<<<<<< Updated upstream
 router.get("/tutors", async (req, res) => {
     const tutors = await User.findAll({ where: { isTutor: true } });
+=======
+const Op = Sequelize.op;
+router.get("/tutors", async (req, res) => {
+    const tutors = await User.findAll({
+        where: { tutorRole: { [Op.ne]: null } },
+    });
+>>>>>>> Stashed changes
 
     res.render("tutors", { tutors });
 });
