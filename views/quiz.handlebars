@@ -1,46 +1,50 @@
-<main id="quiz-container">
-    <nav id="quiz-nav">
-        <a onclick="showHighScores()">
-            <h2 class="highscores">View Highscores</h2>
-        </a>
-        <h2 class="timer-count">Time: 0</h2>
-    </nav>
-    <section id="info" class="info w4">
-        <h1 class="title">Coding Quiz Challenge</h1>
-        <p class="content"> Try to answer the following code-related questions within the time limit.
-            Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
+<div id="background-color">
+    <main class="quiz-container">
+        <nav id="quiz-nav" class="titular">
+            <a onclick="showHighScores()">
+                <h2 class="highscores">View Highscores</h2>
+            </a>
+            <h2 class="timer-count">Time: 0</h2>
+        </nav>
+        <section id="info" class="info">
+            <h1 class="title">Coding Quiz Challenge</h1>
+            <p class="content"> Try to answer the following code-related questions within the time limit.
+                Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
 
-    </section>
-    <button id="start-btn">Start Quiz</button>
+        </section>
 
-    <section id="container" class="container hide w4">
-        <h2 id="question">Question</h2>
-        <ul class="answer-section btn-grid">
-            <button>Answer 1</button>
-            <button>Answer 2</button>
-            <button>Answer 3</button>
-            <button>Answer 4</button>
-        </ul>
-        <h3 id="correct" class="hide">Correct!</h3>
-        <h3 id="wrong" class="hide">Wrong!</h3>
-    </section>
+        <button id="start-btn">Start Quiz</button>
 
-    <section id="submit-initials" class="submit-initials hide w4">
-        <h2>All Done!</h2>
-        <p id="new-score"></p>
-        <form id="user-score-form">
-            <label for="Enter initials">Enter initials:</label>
-            <input name="initials" placeholder="initials" id="initials" type="text" pattern="[A-Za-z]+" maxlength="2">
-            <button id="submit-btn">Submit</button>
-        </form>
-    </section>
+        <section id="container" class="container hide">
+            <h2 id="question">Question</h2>
+            <ul id="answer-section" class="btn-grid">
+                <button>Answer 1</button>
+                <button>Answer 2</button>
+                <button>Answer 3</button>
+                <button>Answer 4</button>
+            </ul>
+            <h3 id="correct" class="hide">Correct!</h3>
+            <h3 id="wrong" class="hide">Wrong!</h3>
+        </section>
 
-    <section id="highscores" class="hide w4">
-        <h1 class="title">Highscores</h1>
-        <ol id="highscores-list"></ol>
-        <button type="button" onclick="location.href='/quiz';" value="Go back to start">Go Back</button>
-        <button id="clear-btn">Clear Highscores</button>
-    </section>
-</main>
+        <section id="submit-initials" class="submit-initials hide w4">
+            <h2>All Done!</h2>
+            <p id="new-score"></p>
+            <form id="user-score-form">
+                <label for="Enter initials">Enter initials:</label>
+                <input name="initials" placeholder="initials" id="initials" type="text" pattern="[A-Za-z]+" maxlength="2">
+                <button id="submit-btn">Submit</button>
+            </form>
+        </section>
+
+        <section id="highscores" class="hide w4">
+            <h1 class="title">Highscores</h1>
+            <ol id="highscores-list"></ol>
+            <button type="button" onclick="location.href='/quiz';" value="Go back to start">Go Back</button>
+            <button id="clear-btn">Clear Highscores</button>
+        </section>
+    </main>
+
+</div>
 
 <script src="js/quiz.js"></script>
