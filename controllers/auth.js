@@ -7,7 +7,7 @@ const { User } = require("../models");
 
 module.exports.isLoginNeeded = (req, res, next) => {
     // no user id stored in locals, no one is logged in
-    if (!req.session) {
+    if (!req.session.logged_in) {
         res.redirect("/login");
     }
     next();
