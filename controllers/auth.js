@@ -10,7 +10,6 @@ module.exports.isLoginNeeded = (req, res, next) => {
     console.log(req.session.userToken);
     if (!req.session.userToken) {
         res.redirect("/login");
-        res.end();
     }
     const { userToken: token } = req.session;
 
@@ -19,7 +18,6 @@ module.exports.isLoginNeeded = (req, res, next) => {
 
     if (!isLoggedIn) {
         res.redirect("/login");
-        res.end();
     }
     next();
 };
@@ -60,4 +58,14 @@ module.exports.loadUserDataFromJwtSession = async (req, res, next) => {
     const { userId } = user.id;
     req.session.userid = userId;
     req.session.logged_in = true;
+};
+
+module.exports.extractPayload = (req, res) => {
+    console.log(req.headers["authorization"]);
+    if (!req.session.userToken) return;
+    const verifyToken = jwt.verify(
+        req.session.userToken,
+        process.env.REFRESH_SECRET_KEY
+    );
+    return verifyToken;
 };

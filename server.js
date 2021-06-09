@@ -17,11 +17,11 @@ app.use(
     session({
         cookieName: "session",
         secret: process.env.SESSION_SECRET_KEY,
-        duration: 60 * 1000,
+        duration: 24 * 60 * 60 * 1000,
         activeDuration: 15 * 60 * 1000,
         cookie: {
             httpOnly: true,
-            maxAge: 60 * 1000,
+            maxAge: 24 * 60 * 60 * 1000,
             sameSite: "strict",
             //TODO: ADD secure when put into procution,
             // secure:true,

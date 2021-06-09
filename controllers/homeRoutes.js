@@ -11,6 +11,8 @@ const withAuth = require("../utils/auth");
 const auth = require("./auth");
 
 router.get("/", async (req, res) => {
+    const payload = auth.extractPayload(req, res);
+    const { logged_in: logged_in, userId: user_id, name: username } = payload;
     try {
         const questionData = await Question.findAll({
             include: [
@@ -23,12 +25,12 @@ router.get("/", async (req, res) => {
         const questions = questionData.map((question) =>
             question.get({ plain: true })
         );
-
         res.render("homepage", {
             questions,
+            logged_in,
         });
     } catch (err) {
-        res.status(500).json(err);
+        res.status(500).json("hello err" + err);
     }
 });
 
