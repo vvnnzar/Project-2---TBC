@@ -87,7 +87,7 @@ emailValidation = (email) => {
         errorMessage.classList.add("error-message-email");
         errorMessage.classList.add("error-message");
         const formElements = document.querySelector(".submit-form");
-        formElements.insertBefore(errorMessage, formElements.children[6]);
+        formElements.insertBefore(errorMessage, formElements.children[8]);
         document.querySelector("#email-signup").value = "";
         return false;
     } else return true;
