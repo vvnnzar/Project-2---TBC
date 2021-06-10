@@ -38,45 +38,62 @@ router.get("/", async (req, res) => {
     }
 });
 
-router.get(
-    "/question/:id",
-    [auth.isLoginNeeded, auth.loadUserDataFromJwtSession],
-    async (req, res) => {
-        const { id } = req.params;
-        try {
-            const questionData = await Question.findByPk(id, {
-                include: [
-                    {
-                        model: User,
-                        attributes: ["username"],
-                    },
-                    {
-                        model: Comment,
-                        include: [
-                            {
-                                model: User,
-                                attributes: ["username"],
-                            },
-                        ],
-                    },
-                ],
-            });
-
-            const question = questionData.get({ plain: true });
-            const isOwner = question.user_id === req.session.userid;
-            res.render("question", {
-                ...question,
-                is_owner: isOwner,
-                logged_in: req.session.logged_in,
-            });
-        } catch (err) {
-            res.status(500).json(err);
+router.get("/question/:id", async (req, res) => {
+    const payload = auth.extractPayload(req, res);
+    let {
+        logged_in: logged_in,
+        userid: user_id,
+        name: username,
+    } = payload || { logged_in: false };
+    const { id } = req.params;
+    try {
+        const questionData = await Question.findByPk(id, {
+            include: [
+                {
+                    model: User,
+                    attributes: ["username"],
+                },
+                {
+                    model: Comment,
+                    include: [
+                        {
+                            model: User,
+                            attributes: ["username"],
+                        },
+                    ],
+                },
+            ],
+        });
+        if (!questionData) {
+            res.sendStatus(404);
+            return;
         }
+
+        const question = questionData.get({ plain: true });
+
+        question.comments.forEach((comment) => {
+            comment.is_owner = user_id === comment.user_id;
+        });
+
+        const isOwner = question.user_id === user_id;
+        res.render("question", {
+            ...question,
+            is_owner: isOwner,
+            logged_in: logged_in
+        });
+    } catch (err) {
+        res.status(500).json(err);
     }
-);
+});
 
 router.get("/login", (req, res) => {
-    if (req.session.logged_in) {
+    const payload = auth.extractPayload(req, res);
+    let {
+        logged_in: logged_in,
+        userid: user_id,
+        name: username,
+    } = payload || { logged_in: false };
+    if (logged_in) {
         res.redirect("/");
         return;
     }
@@ -84,7 +101,13 @@ router.get("/login", (req, res) => {
 });
 
 router.get("/signup", (req, res) => {
-    if (req.session.logged_in) {
+    const payload = auth.extractPayload(req, res);
+    let {
+        logged_in: logged_in,
+        userid: user_id,
+        name: username,
+    } = payload || { logged_in: false };
+    if (logged_in) {
         res.redirect("/");
         return;
     }
@@ -92,7 +115,7 @@ router.get("/signup", (req, res) => {
 });
 
 //profile
-router.get("/profile", async (req, res) => {
+router.get("/profile", [auth.isLoginNeeded], async (req, res) => {
     try {
         const payload = auth.extractPayload(req, res);
         console.log(payload);
@@ -107,7 +130,7 @@ router.get("/profile", async (req, res) => {
             include: [
                 { model: Reputation },
                 { model: QuizResult },
-//                 { model: IsTutor },
+                //                 { model: IsTutor },
             ],
         });
         console.log(currentUser);
@@ -122,40 +145,42 @@ router.get("/profile", async (req, res) => {
         res.status(500).json("err: " + err);
     }
 });
+router.get("/edit-question/:id", async (req, res) => {
+    try {
+        const payload = auth.extractPayload(req, res);
+        console.log(payload);
+        const {
+            logged_in: logged_in,
+            userid: user_id,
+            name: username,
+        } = payload || { logged_in: false };
 
-// router.get('/edit-question/:id', async (req, res) => {
-//     try {
-//         const questionData = await Question.findByPk(req.params.id, {
-//             include: [
-//                 { model: Reputation },
-//                 { model: QuizResult },
-//                 { model: IsTutor },
-//             ],
-//         });
+        const questionData = await Question.findByPk(req.params.id);
 
-//         const user = currentUser.get({ plain: true });
+        const question = questionData.get({ plain: true });
+        const isOwner = question.user_id === user_id;
 
-//         res.render("profile", {
-//             ...user,
-//             logged_in: true,}
+        res.render("edit-question", {
+            ...question,
+            logged_in: logged_in,
+            is_owner: isOwner,
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
 
-//         const question = questionData.get({ plain: true });
-//         const isOwner = question.user_id === req.session.user_id;
-
-//         res.render('edit-question', {
-//             ...question,
-//             logged_in: req.session.logged_in,
-//             is_owner: isOwner
-//         });
-//     } catch (err) {
-//         res.status(500).json(err);
-//     }
-// });
-
-router.get('/quiz', (req, res) => {
-
-    res.render('quiz');
-
+router.get("/quiz", (req, res) => {
+    const payload = auth.extractPayload(req, res);
+    console.log(payload);
+    const {
+        logged_in: logged_in,
+        userid: user_id,
+        name: username,
+    } = payload || { logged_in: false };
+    res.render("quiz", {
+        logged_in: logged_in,
+    });
 });
 
 router.get(

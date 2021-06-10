@@ -20,10 +20,7 @@ Question.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    question_tag: {
-      type: DataTypes.STRING(12),
-      allowNull: false,
-    },
+
       date_created: {
           type: DataTypes.DATE,
           allowNull: false,

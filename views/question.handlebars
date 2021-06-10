@@ -1,4 +1,4 @@
-<section class="flex">
+<section class="flex center">
     <main class="question-margin">
         <div class="question-card">
             <div class="question-card-header">
@@ -19,6 +19,9 @@
                     <div class="card-body">
                         <p>{{comment_text}}</p>
                         <p>- {{user.username}}, {{format_date date_created}}</p>
+                        {{#if is_owner }}
+                        <p class="delete-comment" data-id="{{id}}">DELETE</p>
+                        {{/if}}
                     </div>
                 </div>
             </div>
@@ -26,10 +29,9 @@
         {{/each}}
         {{> add-comment }}
     </main>
-    {{#if logged_in}}
-        {{> sidebar }}
-    {{/if}}
 </section>
+<script src="/js/comment.js"></script>
+
 
 
 

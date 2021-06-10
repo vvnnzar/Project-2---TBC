@@ -21,6 +21,28 @@ const newComment = async (event) => {
     }
 };
 
+
+const deleteComment = async (sender) => {
+
+    const commentId = sender.toElement.dataset.id;
+
+    const questionId = window.location.pathname.split('/').pop();
+
+    const response = await fetch('/api/comments/' + commentId, {
+        method: 'DELETE',
+    });
+
+    if (response.ok) {
+        document.location.replace('/question/' + questionId);
+    } else {
+        alert('Failed to delete comment');
+    }
+};
+
 document
     .querySelector('#comment-form')
     .addEventListener('submit', newComment);
+
+document
+    .querySelector('.delete-comment')
+    .addEventListener('click', deleteComment);

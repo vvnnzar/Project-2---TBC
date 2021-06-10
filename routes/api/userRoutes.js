@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const bcrypt = require("bcryptjs");
+const { ValidationError } = require("sequelize");
 const { User } = require("../../models");
 require("dotenv").config();
 const auth = require("../auth");
@@ -8,17 +9,46 @@ router.post("/signup", async (req, res) => {
     const salt = bcrypt.genSaltSync(10);
     const hashedPassword = bcrypt.hashSync(req.body.password, salt);
     // creating User Model after registration
+    const { username, firstName, lastName, email, password, isTutor } =
+        req.body;
+    console.log();
     const userData = {
-        username: req.body.username,
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        email: req.body.email,
+        username: username,
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
         password: hashedPassword,
-        isTutor: req.body.isTutor,
+        isTutor: isTutor,
     };
-    const userRegistration = await User.create(userData);
-    auth.createJwtSession(req, res, userRegistration);
-    res.status(201).json();
+    try {
+        const userRegistration = await User.create(userData);
+        console.log("user created");
+        auth.createJwtSession(req, res, userRegistration);
+        console.log("sessioin created");
+        res.status(201).json({
+            usernameTaken: false,
+            emailTaken: false,
+            isTutor,
+        });
+        res.end();
+    } catch (err) {
+        console.log(err instanceof ValidationError);
+        if (err instanceof ValidationError) {
+            const errorValidatonField = err.errors[0].path.split(".")[1];
+            if (errorValidatonField === "username") {
+                console.log("usernameTaken");
+                res.status(200).json({ usernameTaken: true, isTutor });
+            } else if (errorValidatonField === "email") {
+                res.status(200).json({ emailTaken: true, isTutor });
+            } else {
+                res.status(500);
+            }
+            console.log(err);
+        } else {
+            console.log(err);
+            res.status(500);
+        }
+    }
     // TODO: if (isTutor === true) {res.render('quiz')}
 
     // handle unique username
@@ -39,8 +69,7 @@ router.post("/login", async (req, res) => {
             auth.createJwtSession(req, res, currentUser);
             res.status(302).redirect("/profile");
         } else {
-            const logInFailed = true;
-            res.render("login", { logInFailed });
+            res.render("login", { logInFailed: true });
         }
     } catch (err) {
         res.status(500).send(`${err}`);

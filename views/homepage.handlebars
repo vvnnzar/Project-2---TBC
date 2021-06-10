@@ -11,10 +11,11 @@
     <section id="homepage-container">
         <div id="tab-btn">
             <ul id="sort-by">
-                <li class="sort-by-tab">Trending</li>
-                <li class="sort-by-tab">Recent</li>
+                <a href="?sort=trending"><li class="sort-by-tab">Trending</li></a>
+                <a href="?sort=recent"><li class="sort-by-tab">Recent</li></a>
                 {{#if logged_in}}
-                    <li class="sort-by-tab">My Questions</li>
+                    <a href="?sort=my-questions"><li class="sort-by-tab">My Questions</li></a>
+
                 {{/if}}
             </ul>
             {{#if logged_in}}
