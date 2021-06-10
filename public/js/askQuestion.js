@@ -14,7 +14,7 @@ const askQuestionForm = async (event) => {
         });
 
         if (response.ok) {
-            document.location.replace('/interview-questions');
+            document.location.replace('/');
         } else {
             alert('Failed to new question');
         }

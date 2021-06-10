@@ -27,6 +27,7 @@ User.init(
         email: {
             type: DataTypes.STRING(320),
             allowNull: false,
+            unique: true,
             validate: { isEmail: true, notEmpty: true },
         },
         tutorRole: {
