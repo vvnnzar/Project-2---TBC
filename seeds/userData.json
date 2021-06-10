@@ -1,11 +1,33 @@
 [
-  {
-    "username": "strahinja",
-    "password": "thing1",
-    "firstName": "strahinja",
-    "lastName": "ajvas",
-    "email": "thing1@mail.com",
-    "isTutor": "true"
-  }
+    {
+        "username": "strahinja-1",
+        "password": "thing1",
+        "firstName": "strahinja",
+        "lastName": "ajvas",
+        "email": "thing1@mail.com",
+        "tutorsRole": "Front End"
+    },
+    {
+        "username": "strahinja_2",
+        "password": "thing1",
+        "firstName": "strahinja_2",
+        "lastName": "ajvas",
+        "email": "thing2@mail.com",
+        "tutorsRole": "Back End"
+    },
+    {
+        "username": "kate",
+        "password": "thing1",
+        "firstName": "kate",
+        "lastName": "McColl",
+        "email": "kate@mail.com",
+        "tutorsRole": "Full Stack"
+    },
+    {
+        "username": "Viv",
+        "password": "thing1",
+        "firstName": "Viv",
+        "lastName": "",
+        "email": "viv@mail.com"
+    }
 ]
-
