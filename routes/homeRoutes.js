@@ -172,7 +172,33 @@ router.get("/edit-question/:id", async (req, res) => {
     }
 });
 
-router.get("/quiz", (req, res) => {
+router.get('/edit-question/:id', async (req, res) => {
+    try {
+        const payload = auth.extractPayload(req, res);
+        console.log(payload);
+        const {
+            logged_in: logged_in,
+            userid: user_id,
+            name: username,
+        } = payload || { logged_in: false };
+
+        const questionData = await Question.findByPk(req.params.id);
+
+        const question = questionData.get({ plain: true });
+        const isOwner = question.user_id === user_id;
+
+        res.render('edit-question', {
+            ...question,
+            logged_in: logged_in,
+            is_owner: isOwner
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+router.get('/quiz', (req, res) => {
+
     const payload = auth.extractPayload(req, res);
     console.log(payload);
     const {
@@ -180,9 +206,11 @@ router.get("/quiz", (req, res) => {
         userid: user_id,
         name: username,
     } = payload || { logged_in: false };
+
     res.render("quiz", {
         logged_in: logged_in,
     });
+
 });
 
 router.get("/tutor", auth.isLoginNeeded, async (req, res) => {

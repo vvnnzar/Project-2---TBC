@@ -1,33 +1,11 @@
 [
-    {
-        "username": "katemccoll",
-        "password": "kate123",
-        "firstName": "kate",
-        "lastName": "mccoll",
-        "email": "mccoll@mail.com",
-        "tutorsRole": "Front-End"
-    },
-    {
-        "username": "lewy192",
-        "password": "test",
-        "firstName": "lewis",
-        "lastName": "hill",
-        "email": "lewis@outlook.com",
-        "tutorsRole": "Back-End"
-    },
-    {
-        "username": "lewy1999",
-        "password": "testing",
-        "firstName": "lewis",
-        "lastName": "moutain",
-        "email": "lewis.moutain@outlook.com",
-        "tutorsRole": "Full-Stack"
-    },
-    {
-        "username": "jeff1234",
-        "password": "testing",
-        "firstName": "jeff",
-        "lastName": "sozeb",
-        "email": "jeff.sozeb@amazon.com"
-    }
+  {
+    "username": "strahinja",
+    "password": "thing1",
+    "firstName": "strahinja",
+    "lastName": "ajvas",
+    "email": "thing1@mail.com",
+    "isTutor": "true"
+  }
 ]
+
