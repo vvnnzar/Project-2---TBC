@@ -149,8 +149,18 @@ router.get('/edit-question/:id', async (req, res) => {
     }
 });
 
-router.get("/quiz", [auth.isLoginNeeded], (req, res) => {
-    res.render("quiz");
+router.get('/quiz', (req, res) => {
+    const payload = auth.extractPayload(req, res);
+    console.log(payload);
+    const {
+        logged_in: logged_in,
+        userid: user_id,
+        name: username,
+    } = payload || { logged_in: false };
+    res.render('quiz', {
+        logged_in: logged_in
+    });
+
 });
 
 router.get(
