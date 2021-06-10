@@ -22,7 +22,8 @@ router.post("/signup", async (req, res) => {
         console.log("user created");
         auth.createJwtSession(req, res, userRegistration);
         console.log("sessioin created");
-        res.status(200);
+        res.status(201).json({ usernameTaken: false, emailTaken: false });
+        res.end();
     } catch (err) {
         console.log(err instanceof ValidationError);
         if (err instanceof ValidationError) {

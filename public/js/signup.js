@@ -47,12 +47,7 @@ const signupForm = async (event) => {
                     emailTaken();
                 }
                 if (!data.usernameTaken && !data.emailTaken) {
-                    if (response.ok) {
-                        console.log(res.headers);
-                        document.location.replace("/profile");
-                    } else {
-                        alert("Failed to sign up");
-                    }
+                    document.location.replace("/profile");
                 }
             })
             .catch((err) => {
