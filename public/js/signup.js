@@ -43,6 +43,7 @@ const signupForm = async (event) => {
             .then((response) => response.json())
             .then((data) => {
                 const { usernameTaken, emailTaken, isTutor } = data;
+
                 if (usernameTaken) {
                     usernameTaken();
                 }

@@ -64,5 +64,6 @@ module.exports.extractPayload = (req, res) => {
         req.session.userToken,
         process.env.REFRESH_SECRET_KEY
     );
+
     return verifyToken;
 };

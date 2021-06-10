@@ -9,6 +9,8 @@ const {
 } = require("../models");
 const withAuth = require("../utils/auth");
 const auth = require("./auth");
+const Sequelize = require("sequelize");
+const Op = Sequelize.Op;
 
 router.get("/", async (req, res) => {
     const payload = auth.extractPayload(req, res);
@@ -209,6 +211,14 @@ router.get('/quiz', (req, res) => {
         logged_in: logged_in,
     });
 
+});
+
+router.get("/tutor", auth.isLoginNeeded, async (req, res) => {
+    const tutors = await User.findAll({
+        where: { tutorsRole: { [Op.ne]: null } },
+    });
+    console.log(tutors);
+    res.render("tutors", { tutors });
 });
 
 router.get(

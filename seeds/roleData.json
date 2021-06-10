@@ -1,0 +1,5 @@
+[
+    { "id": 1, "role": "frontend" },
+    { "id": 2, "role": "backend" },
+    { "id": 3, "role": "fullstack" }
+]

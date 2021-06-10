@@ -30,7 +30,9 @@ User.init(
             unique: true,
             validate: { isEmail: true, notEmpty: true },
         },
-        isTutor: { type: DataTypes.BOOLEAN, allowNull: false },
+        tutorsRole: {
+            type: DataTypes.STRING,
+        },
     },
     {
         sequelize,
