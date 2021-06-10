@@ -9,20 +9,26 @@ router.post("/signup", async (req, res) => {
     const salt = bcrypt.genSaltSync(10);
     const hashedPassword = bcrypt.hashSync(req.body.password, salt);
     // creating User Model after registration
+    const { username, firstName, lastName, email, password, isTutor } =
+        req.body;
     const userData = {
-        username: req.body.username,
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        email: req.body.email,
+        username: username,
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
         password: hashedPassword,
-        isTutor: req.body.isTutor,
+        isTutor: isTutor,
     };
     try {
         const userRegistration = await User.create(userData);
         console.log("user created");
         auth.createJwtSession(req, res, userRegistration);
         console.log("sessioin created");
-        res.status(201).json({ usernameTaken: false, emailTaken: false });
+        res.status(201).json({
+            usernameTaken: false,
+            emailTaken: false,
+            isTutor,
+        });
         res.end();
     } catch (err) {
         console.log(err instanceof ValidationError);

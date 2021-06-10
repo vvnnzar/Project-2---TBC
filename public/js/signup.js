@@ -46,8 +46,11 @@ const signupForm = async (event) => {
                 if (data.emailTaken) {
                     emailTaken();
                 }
-                if (!data.usernameTaken && !data.emailTaken) {
+                if (!data.usernameTaken && !data.emailTaken && !isTutor) {
                     document.location.replace("/profile");
+                }
+                if (!data.usernameTaken && !data.emailTaken && isTutor) {
+                    document.location.replace("/quiz");
                 }
             })
             .catch((err) => {
