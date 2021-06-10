@@ -423,23 +423,24 @@ li:hover {
 }
 
 .edit-card-body {
-  background-color: var(--dark-blue);
   width: 100%;
   text-align: center;
 }
 
 #question-title {
-  width: 90%;
-  padding: 6px;
-  height: 20px;
-  margin: 0;
+    width: 90%;
+    padding: 10px;
+    font-size: 16px;
+    height: 20px;
+    margin: 0;
 }
 
 #question-text {
-  width: 90%;
-  padding: 6px;
-  height: 150px;
-  color: var(--oxford-blue)
+    width: 90%;
+    padding: 10px;
+    font-size: 16px;
+    height: 150px;
+    color: var(--oxford-blue)
 }
 
 .space-around {
