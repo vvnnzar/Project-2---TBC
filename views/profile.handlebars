@@ -1,95 +1,119 @@
 <section id="background-color">
-    <main class="profile-card">
-        <div>
-            <div class="profile-top-banner"></div>
-            <div class="profile-picture">
-                <img src="../images/avatar-1577909_1280.png" alt="Profile Picture" />
-            </div>
-<!--            <div class="profile-edit">-->
-<!--                <a href="/user/:id">Edit Profile</a>-->
-<!--                <i class="fas fa-edit"></i>-->
-<!--                </h6>-->
-<!--            </div>-->
-            <div class="profile-name">
-                <a href="https://au.linkedin.com/" target="_blank">{{firstName}} {{lastName}}</a>
-            </div>
-            <div class="profile-info">
-                <p>{{username}}</p>
-                <br>
-                <p>{{email}}</p>
-                <p></p>
-            </div>
-            <div id="isTutor">
-                <h6 title="tutor">
-                    <i class="fa fa-trophy"></i> <span class="score">81</span>
-                </h6>
-            </div>
+  <main class="profile-card">
+    <div>
+      <div class="profile-top-banner"></div>
+      <div class="profile-picture">
+        <img src="../images/avatar-1577909_1280.png" alt="Profile Picture" />
+      </div>
+      <!--            <div class="profile-edit">-->
+      <!--                <a href="/user/:id">Edit Profile</a>-->
+      <!--                <i class="fas fa-edit"></i>-->
+      <!--                </h6>-->
+      <!--            </div>-->
+      <div class="profile-name">
+        <a href="https://au.linkedin.com/" target="_blank">{{firstName}}
+          {{lastName}}</a>
+      </div>
+      <div class="profile-info">
+        <p>{{username}}</p>
+        <br />
+        <p>{{email}}</p>
+        <p></p>
+      </div>
+      <div id="isTutor">
+        <h6 title="tutor">
+          <i class="fa fa-trophy"></i>
+          <span class="score">81</span>
+        </h6>
+      </div>
 
-            <div class="profile-summary">
-                <div class="students">
-                    <h6 title="Number of students tutored">
-                        Students <i class="fas fa-users"></i>
-                    </h6>
-                    <p>6</p>
-                </div>
-                <div class="projects">
-                    <h6 title="Number of projects created by the user">
-                        Git Projects <i class="fab fa-github"></i>
-                    </h6>
-                    <p>39</p>
-                </div>
-                <div class="posts">
-                    <h6 title="Number of posts">
-                        Posts <i class="fas fa-comments"></i>
-                    </h6>
-                    <p>10</p>
-                </div>
-            </div>
+      <div class="profile-summary">
+        <div class="students">
+          <h6 title="Number of students tutored">
+            Students
+            <i class="fas fa-users"></i>
+          </h6>
+          <p>6</p>
         </div>
-    </main>
-    <aside id="left-container">
-        <!-- MENU BOX (LEFT-CONTAINER) -->
-        <div class="menu-box block">
-            <h2 class="titular">MENU</h2>
-            <ul class="menu-box-menu">
-                <li>
-                    <a class="menu-box-tab" href="/quiz"><span class="icon scnd-font-color"></span>Take Quiz</a>
-                </li>
-                <li>
-                    <a class="menu-box-tab" href="#14"><span class="icon scnd-font-color"></span>My Tutors</a>
-                </li>
-                <li>
-                    <a class="menu-box-tab" href="/notes"><span class="icon scnd-font-color"></span>Saved Notes</a>
-                </li>
+        <div class="projects">
+          <h6 title="Number of projects created by the user">
+            Git Projects
+            <i class="fab fa-github"></i>
+          </h6>
+          <p>39</p>
+        </div>
+        <div class="posts">
+          <h6 title="Number of posts">
+            Posts
+            <i class="fas fa-comments"></i>
+          </h6>
+          <p>10</p>
+        </div>
+      </div>
+    </div>
+  </main>
+  <aside id="left-container">
+    <div class="menu-box block">
+      <h2 class="titular">MENU</h2>
+      <ul class="menu-box-menu">
+        <li>
+          <a class="menu-box-tab" href="/quiz"><span
+              class="icon fas fa-question"
+            ></span>Take Quiz</a>
+        </li>
+        <li>
+          <a class="menu-box-tab" href="#14"><span
+              class="icon far fa-user-circle"
+            ></span>My Tutors</a>
+        </li>
+        <li>
+          <a class="menu-box-tab" href="/notes"><span
+              class="icon far fa-sticky-note"
+            ></span>Saved Notes</a>
+        </li>
 
-                <li>
-                    <a class="menu-box-tab" href="#12"><span class="icon entypo-cog scnd-font-color"></span>Account Settings</a>
-                </li>
-
-            </ul>
-        </div>
-        <!-- Resources block -->
-        <div class="resources-box block">
-            <h2 class="titular resources">RESOURCES</h2>
-            <ul class="menu-box-menu">
-                <li>
-                    <!-- <i class="fa fa-trophy"></i> -->
-                    <a class="menu-box-tab" href="https://mycareerspot.org/onlinepresence" target="_blank"><span
-                            class="fab fa-internet-explorer"></span> Build your online presence</a>
-                </li>
-                <li>
-                    <a class="menu-box-tab" href="https://mycareerspot.org/resume" target="_blank"><span
-                            class="fas fa-id-card"></span> Develop your Resume</a>
-                </li>
-                <li>
-                    <a class="menu-box-tab" href="https://mycareerspot.org/dmlibrary" target="_blank"><span
-                            class="fas fa-eye"></span> Digital Marketing</a>
-                </li>
-                <li>
-                    <a class="menu-box-tab" href="https://careerservicesjobboard.splashthat.com/" target="_blank"><span
-                            class="fas fa-search"></span> Job Search</a>
-                </li>
-            </ul>
-        </div>
-    </aside>
+        <li>
+          <a class="menu-box-tab" href="#12"><span
+              class="icon fas fa-cog"
+            ></span>Account Settings</a>
+        </li>
+      </ul>
+    </div>
+    <!-- Resources block -->
+    <div class="resources-box block">
+      <h2 class="titular resources">RESOURCES</h2>
+      <ul class="menu-box-menu">
+        <li>
+          <!-- <i class="fa fa-trophy"></i> -->
+          <a
+            class="menu-box-tab"
+            href="https://mycareerspot.org/onlinepresence"
+            target="_blank"
+          ><span class="fab fa-internet-explorer"></span>
+            Build your online presence</a>
+        </li>
+        <li>
+          <a
+            class="menu-box-tab"
+            href="https://mycareerspot.org/resume"
+            target="_blank"
+          ><span class="fas fa-id-card"></span> Develop your Resume</a>
+        </li>
+        <li>
+          <a
+            class="menu-box-tab"
+            href="https://mycareerspot.org/dmlibrary"
+            target="_blank"
+          ><span class="fas fa-eye"></span> Digital Marketing</a>
+        </li>
+        <li>
+          <a
+            class="menu-box-tab"
+            href="https://careerservicesjobboard.splashthat.com/"
+            target="_blank"
+          ><span class="fas fa-search"></span> Job Search</a>
+        </li>
+      </ul>
+    </div>
+  </aside>
 </section>
