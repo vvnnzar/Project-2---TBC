@@ -322,6 +322,8 @@ li:hover {
 
 .ask-question-form {
   width: 100%;
+  background-color: var(--dark-blue);
+  text-align: -webkit-center;
 }
 
 .ask-btn {
@@ -377,12 +379,14 @@ li:hover {
   width: 90%;
   padding: 6px;
   height: 20px;
+  margin: 0;
 }
 
 #question-text {
   width: 90%;
   padding: 6px;
   height: 150px;
+  color: var(--oxford-blue)
 }
 
 .space-around {
