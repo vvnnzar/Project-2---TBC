@@ -1,10 +1,10 @@
 [
   {
-    "username": "katemccoll",
-    "password": "kate123",
-    "firstName": "kate",
-    "lastName": "mccoll",
-    "email": "mccoll@mail.com",
+    "username": "strahinja",
+    "password": "thing1",
+    "firstName": "strahinja",
+    "lastName": "ajvas",
+    "email": "thing1@mail.com",
     "isTutor": "true"
   }
 ]

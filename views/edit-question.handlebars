@@ -1,19 +1,25 @@
-<div class="card">
-    <h3 class="card-header">Edit Question</h3>
-    <form class="card-body">
-        <div class="form-group">
-            <label  class="form-label" for="question-title">Title</label>
-            <input id="question-title" value="{{question_title}}"/>
+<section id="background-color" class="center">
+    <div id="edit-question-container">
+        <div class="edit-question-card">
+            <h3 class="titular">Edit Question</h3>
+            <form class="edit-card-body">
+                <div class="form-group">
+                    <label  class="form-label" for="question-title"></label>
+                    <input id="question-title" value="{{question_title}}"/>
+                </div>
+                <div class="form-group">
+                    <label for="question_text"></label>
+                    <textarea class="form-input" id="question-text">{{question_text}}</textarea>
+                </div>
+                <div class="form-group space-around">
+                    <button id="update-question" class="btn btn-primary">Update Post</button>
+                    <button id="delete-question" class="btn btn-primary">Delete</button>
+                </div>
+            </form>
         </div>
-        <div class="form-group">
-            <label for="question_text">Content</label>
-            <textarea class="form-input" id="question-text">{{question_text}}</textarea>
-        </div>
-        <div class="form-group">
-            <button id="update-question" class="btn btn-primary">Update Post</button>
-            <button id="delete-question" class="btn btn-primary">Delete</button>
-        </div>
-    </form>
-</div>
+    </div>
+
+</section>
+
 
 <script src="/js/editQuestion.js"></script>
