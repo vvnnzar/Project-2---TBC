@@ -1,15 +1,18 @@
-<div class="comment-card">
-    <h3 class="card-header"></h3>
-    <form id="comment-form" class="card-body">
-        <div class="comment-form-group">
-            <label id="comment-font" for="comment-text">Comment:</label>
-            <textarea class="form-input" id="comment-text" name="comment"></textarea>
-        </div>
-        <div class="comment-form-group">
-            <button class="btn btn-primary">Submit</button>
-        </div>
-    </form>
-</div>
+{{#if logged_in }}
+    <div class="comment-card">
+        <h3 class="card-header"></h3>
+        <form id="comment-form" class="card-body">
+            <div class="comment-form-group">
+                <label id="comment-font" for="comment-text">Comment:</label>
+                <textarea class="form-input" id="comment-text" name="comment"></textarea>
+            </div>
+            <div class="comment-form-group">
+                <button class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
 
-<!-- method="POST" action="/api/comments" -->
-<script src="/js/comment.js"></script>
+    <script src="/js/comment.js"></script>
+{{else}}
+    <a href="/login" class="btn">Want to Comment? Click here to login!</a>
+{{/if}}
