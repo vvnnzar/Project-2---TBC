@@ -42,14 +42,17 @@ const signupForm = async (event) => {
         })
             .then((response) => response.json())
             .then((data) => {
-                if (data.usernameTaken) usernameTaken();
-                if (data.emailTaken) {
+                const { usernameTaken, emailTaken, isTutor } = data;
+                if (usernameTaken) {
+                    usernameTaken();
+                }
+                if (emailTaken) {
                     emailTaken();
                 }
-                if (!data.usernameTaken && !data.emailTaken && !isTutor) {
+                if (!usernameTaken && !emailTaken && !isTutor) {
                     document.location.replace("/profile");
                 }
-                if (!data.usernameTaken && !data.emailTaken && isTutor) {
+                if (!usernameTaken && !emailTaken && isTutor) {
                     document.location.replace("/quiz");
                 }
             })

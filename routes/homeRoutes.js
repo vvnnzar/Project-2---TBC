@@ -78,7 +78,13 @@ router.get("/question/:id", auth.isLoginNeeded, async (req, res) => {
 });
 
 router.get("/login", (req, res) => {
-    if (req.session.logged_in) {
+    const payload = auth.extractPayload(req, res);
+    let {
+        logged_in: logged_in,
+        userid: user_id,
+        name: username,
+    } = payload || { logged_in: false };
+    if (logged_in) {
         res.redirect("/");
         return;
     }
@@ -86,7 +92,13 @@ router.get("/login", (req, res) => {
 });
 
 router.get("/signup", (req, res) => {
-    if (req.session.logged_in) {
+    const payload = auth.extractPayload(req, res);
+    let {
+        logged_in: logged_in,
+        userid: user_id,
+        name: username,
+    } = payload || { logged_in: false };
+    if (logged_in) {
         res.redirect("/");
         return;
     }
