@@ -6,28 +6,35 @@
     </form>
     <div class="tutors-card-container">
         {{#each tutors as |tutor|}}
-
-            <div class="card">
-                <header class="card-header">
-                    <h1
-                        style="border-radius:50%; width:50px; height:50px;"
-                    >&#128578</h1>
-                    <h1 class="tutor-name">{{tutor.name}}</h1>
+            <div class="tutor-card">
+                <header class="tutor-card-header">
+                    <h1 class="tutor-profile-photo">&#128578</h1>
+                    <h1 class="tutor-name">{{tutor.dataValues.firstName}}
+                        {{tutor.dataValues.lastName}}</h1>
                 </header>
-                <div class="content">
-                    <p class="emplyee-email"><a
-                            href="mailto:{{tutor.email}}"
+                <div class="tutor-content">
+                    <p class="tutor-email">Email:
+                        <a
+                            href="mailto:{{tutor.dataValues.email}}"
                             class="email"
-                        >{{tutor.email}}</a></p>
-
-                    {{! TODO: link to their profile }}
-
-                    {{! TODO: Add github attribute,TODO: Add Linked in <p class="employee-info">Github:<a
-                            href="https://github.com/josh"
-                            class="github"
-                            target="_blank"
-                        >josh</a></p> }}
-
+                        >{{tutor.dataValues.email}}</a></p>
+                    <p class="tutor-github">Github:
+                        <a href="" class="">GitHub Username</a></p>
+                    <div class="tutor-further-info">
+                        <h3>Reputation
+                            <i class="fa fa-trophy"></i></h3>
+                        <span class="score">81</span>
+                        <h3 title="Number of students tutored">
+                            Students
+                            <i class="fas fa-users"></i>
+                        </h3>
+                        <p>6</p>
+                        <h3 title="Number of posts">
+                            Posts
+                            <i class="fas fa-comments"></i>
+                        </h3>
+                        <p>10</p>
+                    </div>
                 </div>
             </div>
         {{/each}}

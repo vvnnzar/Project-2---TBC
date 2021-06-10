@@ -7,9 +7,10 @@ const {
     Reputation,
     QuizResult,
 } = require("../models");
-const { sequelize } = require("../models/User");
 const withAuth = require("../utils/auth");
 const auth = require("./auth");
+const Sequelize = require("sequelize");
+const Op = Sequelize.Op;
 
 router.get("/", async (req, res) => {
     const payload = auth.extractPayload(req, res);
@@ -39,7 +40,7 @@ router.get("/", async (req, res) => {
     }
 });
 
-router.get("/question/:id", auth.isLoginNeeded, async (req, res) => {
+router.get("/question/:id", async (req, res) => {
     const payload = auth.extractPayload(req, res);
     let {
         logged_in: logged_in,
@@ -126,20 +127,6 @@ router.get("/profile", [auth.isLoginNeeded], async (req, res) => {
     }
 });
 
-<<<<<<< Updated upstream
-router.get("/tutors", async (req, res) => {
-    const tutors = await User.findAll({ where: { isTutor: true } });
-=======
-const Op = Sequelize.op;
-router.get("/tutors", async (req, res) => {
-    const tutors = await User.findAll({
-        where: { tutorRole: { [Op.ne]: null } },
-    });
->>>>>>> Stashed changes
-
-    res.render("tutors", { tutors });
-});
-
 // router.get('/edit-question/:id', async (req, res) => {
 //     try {
 //         const questionData = await Question.findByPk(req.params.id, {
@@ -171,6 +158,14 @@ router.get("/tutors", async (req, res) => {
 
 router.get("/quiz", [auth.isLoginNeeded], (req, res) => {
     res.render("quiz");
+});
+
+router.get("/tutor", auth.isLoginNeeded, async (req, res) => {
+    const tutors = await User.findAll({
+        where: { tutorsRole: { [Op.ne]: null } },
+    });
+    console.log(tutors);
+    res.render("tutors", { tutors });
 });
 
 router.get(

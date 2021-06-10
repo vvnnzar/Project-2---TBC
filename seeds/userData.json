@@ -5,7 +5,7 @@
         "firstName": "kate",
         "lastName": "mccoll",
         "email": "mccoll@mail.com",
-        "tutorRole": 1
+        "tutorsRole": "Front-End"
     },
     {
         "username": "lewy192",
@@ -13,7 +13,7 @@
         "firstName": "lewis",
         "lastName": "hill",
         "email": "lewis@outlook.com",
-        "tutorRole": 2
+        "tutorsRole": "Back-End"
     },
     {
         "username": "lewy1999",
@@ -21,7 +21,7 @@
         "firstName": "lewis",
         "lastName": "moutain",
         "email": "lewis.moutain@outlook.com",
-        "tutorRole": 3
+        "tutorsRole": "Full-Stack"
     },
     {
         "username": "jeff1234",

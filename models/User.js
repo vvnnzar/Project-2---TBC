@@ -30,12 +30,8 @@ User.init(
             unique: true,
             validate: { isEmail: true, notEmpty: true },
         },
-        tutorRole: {
-            type: DataTypes.INTEGER.UNSIGNED,
-            references: {
-                model: "tutorRole",
-                key: "id",
-            },
+        tutorsRole: {
+            type: DataTypes.STRING,
         },
     },
     {

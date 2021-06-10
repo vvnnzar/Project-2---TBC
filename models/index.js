@@ -5,7 +5,6 @@ const Question = require("./Question");
 const Reputation = require("./Reputation");
 const QuizResult = require("./QuizResult");
 const Note = require("./Note");
-const TutorRole = require("./TutorRole");
 
 User.hasMany(Question, {
     foreignKey: "user_id",
@@ -67,22 +66,6 @@ Note.belongsTo(User, {
     onDelete: "CASCADE",
 });
 
-User.hasOne(TutorRole, {
-    foreignKey: "id",
-    onDelete: "CASCADE",
-});
-TutorRole.belongsTo(User, { foreignKey: "id", onDelete: "CASCADE" });
-
-// User.belongsToMany(Tutor, {
-//     through: 'Lesson',
-//     as: 'user_tutors'
-// });
-//
-// Tutor.belongsToMany(User, {
-//     through: 'Lesson',
-//     as: 'tutor_users'
-// });
-
 module.exports = {
     User,
     IsTutor,
@@ -91,5 +74,4 @@ module.exports = {
     Reputation,
     QuizResult,
     Note,
-    TutorRole,
 };

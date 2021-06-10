@@ -13,10 +13,6 @@ const seedDatabase = async () => {
         individualHooks: true,
         returning: true,
     });
-    const roles = await TutorRole.bulkCreate(roleData, {
-        individualHooks: true,
-        returning: true,
-    });
 
     for (const question of questionData) {
         await Question.create({
