@@ -11,6 +11,7 @@ router.post("/signup", async (req, res) => {
     // creating User Model after registration
     const { username, firstName, lastName, email, password, isTutor } =
         req.body;
+    console.log();
     const userData = {
         username: username,
         firstName: firstName,
@@ -35,9 +36,9 @@ router.post("/signup", async (req, res) => {
             const errorValidatonField = err.errors[0].path.split(".")[1];
             if (errorValidatonField === "username") {
                 console.log("usernameTaken");
-                res.status(200).json({ usernameTaken: true });
+                res.status(200).json({ usernameTaken: true, isTutor });
             } else if (errorValidatonField === "email") {
-                res.status(200).json({ emailTaken: true });
+                res.status(200).json({ emailTaken: true, isTutor });
             } else {
                 res.status(500);
             }
