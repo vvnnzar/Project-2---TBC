@@ -125,34 +125,30 @@ router.get("/profile", [auth.isLoginNeeded], async (req, res) => {
     }
 });
 
-// router.get('/edit-question/:id', async (req, res) => {
-//     try {
-//         const questionData = await Question.findByPk(req.params.id, {
-//             include: [
-//                 { model: Reputation },
-//                 { model: QuizResult },
-//                 { model: IsTutor },
-//             ],
-//         });
+router.get('/edit-question/:id', async (req, res) => {
+    try {
+        const payload = auth.extractPayload(req, res);
+        console.log(payload);
+        const {
+            logged_in: logged_in,
+            userid: user_id,
+            name: username,
+        } = payload || { logged_in: false };
 
-//         const user = currentUser.get({ plain: true });
+        const questionData = await Question.findByPk(req.params.id);
 
-//         res.render("profile", {
-//             ...user,
-//             logged_in: true,}
+        const question = questionData.get({ plain: true });
+        const isOwner = question.user_id === user_id;
 
-//         const question = questionData.get({ plain: true });
-//         const isOwner = question.user_id === req.session.user_id;
-
-//         res.render('edit-question', {
-//             ...question,
-//             logged_in: req.session.logged_in,
-//             is_owner: isOwner
-//         });
-//     } catch (err) {
-//         res.status(500).json(err);
-//     }
-// });
+        res.render('edit-question', {
+            ...question,
+            logged_in: logged_in,
+            is_owner: isOwner
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
 
 router.get("/quiz", [auth.isLoginNeeded], (req, res) => {
     res.render("quiz");
