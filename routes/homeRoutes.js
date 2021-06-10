@@ -68,6 +68,12 @@ router.get("/", async (req, res) => {
 router.get(
     "/question/:id",
     async (req, res) => {
+        const payload = auth.extractPayload(req, res);
+        let {
+            logged_in: logged_in,
+            userid: user_id,
+            name: username,
+        } = payload || { logged_in: false };
         const { id } = req.params;
         const payload = auth.extractPayload(req, res);
         let {
@@ -100,9 +106,11 @@ router.get(
             }
 
             const question = questionData.get({ plain: true });
+
             question.comments.forEach((comment) => {
                 comment.is_owner = user_id === comment.user_id;
             });
+
             const isOwner = question.user_id === user_id;
             res.render("question", {
                 ...question,
@@ -132,7 +140,7 @@ router.get("/signup", (req, res) => {
 });
 
 //profile
-router.get("/profile", async (req, res) => {
+router.get("/profile", [auth.isLoginNeeded], async (req, res) => {
     try {
         const payload = auth.extractPayload(req, res);
         console.log(payload);
@@ -147,7 +155,7 @@ router.get("/profile", async (req, res) => {
             include: [
                 { model: Reputation },
                 { model: QuizResult },
-//                 { model: IsTutor },
+                //                 { model: IsTutor },
             ],
         });
         console.log(currentUser);
@@ -199,6 +207,7 @@ router.get('/quiz', (req, res) => {
     res.render('quiz', {
         logged_in: logged_in
     });
+
 
 });
 
