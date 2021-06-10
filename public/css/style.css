@@ -372,7 +372,6 @@ li:hover {
 
 .ask-question-form {
   width: 100%;
-  background-color: var(--dark-blue);
   text-align: -webkit-center;
 
 }
@@ -380,27 +379,30 @@ li:hover {
 .ask-btn {
     background-color: var(--turquoise);
     color: var(--white);
+    font-size: 20px;
+    padding: 15px;
+    width: 40%;
 }
 
 .ask-question-card .titular {
     background-color: var(--turquoise);
     color: var(--white);
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     padding: 0 15px;
 }
-#question-title::placeholder,
-#question-text::placeholder {
+.question-title::placeholder,
+.question-text::placeholder {
     color: var(--warm-grey);
     opacity: 1; /* Firefox */
 }
-#question-title:-ms-input-placeholder,
-#question-text:-ms-input-placeholder {
+.question-title:-ms-input-placeholder,
+.question-text:-ms-input-placeholder {
     /* Internet Explorer 10-11 */
     color: var(--warm-grey);
 }
-#question-title::-ms-input-placeholder,
-#question-text::-ms-input-placeholder {
+.question-title::-ms-input-placeholder,
+.question-text::-ms-input-placeholder {
     /* Microsoft Edge */
     color: var(--warm-grey);
 }
@@ -427,15 +429,15 @@ li:hover {
   text-align: center;
 }
 
-#question-title {
+.question-title {
     width: 90%;
-    padding: 10px;
+    padding: 12px;
     font-size: 16px;
     height: 20px;
     margin: 0;
 }
 
-#question-text {
+.question-text {
     width: 90%;
     padding: 10px;
     font-size: 16px;
@@ -494,6 +496,7 @@ li:hover {
 .btn-primary {
     background-color: var(--note-green);
     font-size: 24px;
+    padding: 10px;
 }
 #comment-font {
     font-size: 24px;
@@ -1098,8 +1101,13 @@ footer {
     justify-content: center;
   }
 
-  #question-title,
-  #question-text {
-    width: 80%;
+  .question-title,
+  .question-text {
+    width: 90%;
   }
+    .ask-btn {
+        padding: 8px;
+        font-size: 18px;
+        width: 90%
+    }
 }
