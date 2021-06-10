@@ -1,21 +1,21 @@
 :root {
-    --oxford-blue: #1d263b;
-    --dark-blue: #394264;
-    --grey-blue: #50597b;
-    --warm-grey: #726868;
-    --white: #FFFFFF;
-    --orange: #FF9D00;
-    --pastel-green: #96b88b;
-    --purple: #d209d2;
-    --light-grey: #f8f8f8;
-    --light-purple: #e3c9e3;
-    --note-purple: #e76fe7;
-    --note-green: #71bc60;
-    --turquoise: #11a8ab;
-    --pink: #e64c65;
-    --Space-Grotesk: "Space Grotesk", sans-serif;
-    --Space-Mono: "Space Mono", monospace;
-    --Trispace: "Trispace", sans-serif;
+  --oxford-blue: #1d263b;
+  --dark-blue: #394264;
+  --grey-blue: #50597b;
+  --warm-grey: #726868;
+  --white: #ffffff;
+  --orange: #ff9d00;
+  --pastel-green: #96b88b;
+  --purple: #d209d2;
+  --light-grey: #f8f8f8;
+  --light-purple: #e3c9e3;
+  --note-purple: #e76fe7;
+  --note-green: #71bc60;
+  --turquoise: #11a8ab;
+  --pink: #e64c65;
+  --Space-Grotesk: "Space Grotesk", sans-serif;
+  --Space-Mono: "Space Mono", monospace;
+  --Trispace: "Trispace", sans-serif;
 }
 
 *,
@@ -53,8 +53,6 @@ footer {
   display: flex;
   align-items: center;
 }
-
-
 
 #logo-white {
   color: var(--white);
@@ -185,8 +183,8 @@ form {
 }
 
 .error-message {
-    color: red;
-    padding-top: 10px;
+  color: red;
+  padding-top: 10px;
 }
 
 form label,
@@ -287,7 +285,8 @@ li:hover {
 
 .question-card {
   border: 2px solid var(--note-green);
-  border-radius: 10px;}
+  border-radius: 10px;
+}
 
 .question-card-header {
   padding: 10px;
@@ -310,22 +309,57 @@ li:hover {
 
 .question-margin {
   width: 70%;
-  margin: 30px;
+  margin: auto;
 }
 
 .ask-question-card {
   margin: 5px;
-  padding: 5px;
+  padding: 20px;
   height: 300px;
 }
 
 .ask-question-form {
   width: 100%;
+  color: var(--white);
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.5;
+  font-size: 1rem;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 50px;
+  background-color: var(--dark-blue);
+  box-shadow: 0 10px 25px 5px rgba(0, 0, 0, 0.2);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.form-input {
+  background-color: var(--light-grey);
+  color: var;
+  width: 100%;
+  color: var(--white);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.5;
+  font-size: 1rem;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  box-shadow: 0 10px 25px 5px rgba(0, 0, 0, 0.2);
+  width: 500px;
+}
+
+.ask-question-text {
+  height: 150px;
 }
 
 .ask-btn {
   background-color: var(--turquoise);
   color: var(--white);
+  padding: 10px;
 }
 
 .ask-question-card .titular {
@@ -334,18 +368,21 @@ li:hover {
   display: flex;
   justify-content: space-between;
   padding: 0 15px;
+  border-radius: 10 0;
 }
-#question-title::placeholder,
+
 #question-text::placeholder {
   color: var(--warm-grey);
   opacity: 1; /* Firefox */
 }
 #question-title:-ms-input-placeholder,
-#question-text:-ms-input-placeholder { /* Internet Explorer 10-11 */
+#question-text:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
   color: var(--warm-grey);
 }
 #question-title::-ms-input-placeholder,
-#question-text::-ms-input-placeholder { /* Microsoft Edge */
+#question-text::-ms-input-placeholder {
+  /* Microsoft Edge */
   color: var(--warm-grey);
 }
 
@@ -389,7 +426,6 @@ li:hover {
 #comment-font {
   font-size: 24px;
 }
-
 
 /* Sidebar */
 
@@ -442,11 +478,13 @@ aside {
   opacity: 1; /* Firefox */
 }
 #note-title:-ms-input-placeholder,
-#note-text:-ms-input-placeholder { /* Internet Explorer 10-11 */
+#note-text:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
   color: var(--white);
 }
 #note-title::-ms-input-placeholder,
-#note-text::-ms-input-placeholder { /* Microsoft Edge */
+#note-text::-ms-input-placeholder {
+  /* Microsoft Edge */
   color: var(--white);
 }
 
@@ -469,7 +507,6 @@ aside {
   color: var(--white);
   border: none;
   border-bottom: 2px solid var(--oxford-blue);
-
 }
 
 .list-group-item {
@@ -486,19 +523,17 @@ aside {
   display: flex;
   justify-content: space-between;
   border-bottom: 2px solid var(--oxford-blue);
-
 }
 
-  /* Profile CSS */
+/* Profile CSS */
 
 #background-color {
   background-color: var(--oxford-blue);
-  padding: 10px 10px 30px;
+  padding: 10px 10px 350px;
   display: flex;
 }
 
 .profile-card {
-
   margin: 20px;
   width: 60%;
   /*border-radius: 15px;*/
@@ -626,9 +661,6 @@ aside {
   width: 75%;
 }
 
-/** Inspired by: http://graphicburger.com/flat-design-ui-components/ **/
-
-
 .titular {
   display: block;
   line-height: 60px;
@@ -637,77 +669,6 @@ aside {
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 }
-
-/* .button {
-  display: block;
-  width: 175px;
-  line-height: 50px;
-  font-size: 16px;
-  font-weight: 700;
-  text-align: center;
-  margin: 0 auto;
-  border-radius: 5px;
-}
-.button:hover {
-  text-decoration: none;
-} */
-
-/* .arrow-btn-container {
-  position: relative;
-}
-.arrow-btn {
-  position: absolute;
-  display: block;
-  width: 60px;
-  height: 60px;
-}
-.arrow-btn:hover {
-  text-decoration: none;
-}
-.arrow-btn.left {
-  border-top-left-radius: 5px;
-}
-.arrow-btn.right {
-  border-top-right-radius: 5px;
-  right: 0;
-  top: 0;
-}
-.arrow-btn .icon {
-  display: block;
-  font-size: 18px;
-  border: 2px solid #fff;
-  border-radius: 100%;
-  line-height: 17px;
-  width: 21px;
-  margin: 20px auto;
-  text-align: center;
-}
-.arrow-btn.left .icon {
-  padding-right: 2px;
-} */
-
-/** CONTAINERS **/
-#left-container {
-  width: 40%;
-  margin: 20px;
-  padding: 0;
-  box-shadow: none;
-}
-
-#right-container {
-  width: 60%;
-  margin: 20px;
-  padding: 0;
-}
-
-.block {
-  margin-bottom: 25px;
-  background: #394264;
-  border-radius: 5px;
-
-}
-
-/******************************************** Menu *****************************************/
 
 .menu-box .titular {
   background-color: var(--turquoise);
@@ -763,7 +724,6 @@ aside {
   padding-bottom: 50px;
   background-color: var(--dark-blue);
   box-shadow: 0 10px 25px 5px rgba(0, 0, 0, 0.2);
-
 }
 
 .quiz-container .titular {
@@ -803,7 +763,6 @@ aside {
   border: none;
   border-radius: 5px;
   font-size: 16px;
-
 }
 
 .btn:hover {
@@ -925,10 +884,9 @@ footer {
   #comment-container {
     width: 70%;
   }
-
 }
 
-@media screen and (max-width: 700px){
+@media screen and (max-width: 700px) {
   header {
     display: grid;
     justify-content: center;
@@ -947,8 +905,6 @@ footer {
 
 /* Small devices (phones, 425px and down) */
 @media screen and (max-width: 425px) {
-
-
   .background {
     align-items: flex-start;
   }
@@ -966,5 +922,4 @@ footer {
   .menu-box-menu {
     padding: 0;
   }
-
 }
