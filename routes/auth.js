@@ -37,7 +37,6 @@ module.exports.createJwtSession = (req, res, user) => {
         process.env.REFRESH_SECRET_KEY,
         refreshClaims
     );
-    console.log(refreshToken);
     req.session.userToken = refreshToken;
     res.status(201);
 };
@@ -46,7 +45,6 @@ module.exports.loadUserDataFromJwtSession = async (req, res, next) => {
     if (!req.session.logged_in && req.session.userToken) {
         return next();
     }
-    console.log("headers:   ----    " + req.headers["authorization"]);
 
     const verifyToken = jwt.verify(
         req.session.userToken,
@@ -61,7 +59,6 @@ module.exports.loadUserDataFromJwtSession = async (req, res, next) => {
 };
 
 module.exports.extractPayload = (req, res) => {
-    console.log("headers:   ----    " + req.headers["authorization"]);
     if (!req.session.userToken) return;
     const verifyToken = jwt.verify(
         req.session.userToken,
@@ -69,4 +66,3 @@ module.exports.extractPayload = (req, res) => {
     );
     return verifyToken;
 };
-
