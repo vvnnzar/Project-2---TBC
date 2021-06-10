@@ -54,7 +54,9 @@ footer {
   align-items: center;
 }
 
-
+a {
+  text-decoration: none;
+}
 
 #logo-white {
   color: var(--white);
