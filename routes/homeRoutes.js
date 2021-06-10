@@ -42,6 +42,12 @@ router.get(
     "/question/:id",
     [auth.isLoginNeeded, auth.loadUserDataFromJwtSession],
     async (req, res) => {
+        const payload = auth.extractPayload(req, res);
+        let {
+            logged_in: logged_in,
+            userid: user_id,
+            name: username,
+        } = payload || { logged_in: false };
         const { id } = req.params;
         try {
             const questionData = await Question.findByPk(id, {
@@ -63,7 +69,7 @@ router.get(
             });
 
             const question = questionData.get({ plain: true });
-            const isOwner = question.user_id === req.session.userid;
+            const isOwner = question.user_id === user_id;
             res.render("question", {
                 ...question,
                 is_owner: isOwner,
@@ -92,7 +98,7 @@ router.get("/signup", (req, res) => {
 });
 
 //profile
-router.get("/profile", async (req, res) => {
+router.get("/profile", [auth.isLoginNeeded], async (req, res) => {
     try {
         const payload = auth.extractPayload(req, res);
         console.log(payload);
@@ -107,7 +113,7 @@ router.get("/profile", async (req, res) => {
             include: [
                 { model: Reputation },
                 { model: QuizResult },
-//                 { model: IsTutor },
+                //                 { model: IsTutor },
             ],
         });
         console.log(currentUser);
