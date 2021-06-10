@@ -107,7 +107,7 @@ router.get("/profile", async (req, res) => {
             include: [
                 { model: Reputation },
                 { model: QuizResult },
-//                 { model: IsTutor },
+                //                 { model: IsTutor },
             ],
         });
         console.log(currentUser);

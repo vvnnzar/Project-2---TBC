@@ -40,13 +40,19 @@ const signupForm = async (event) => {
             body: JSON.stringify(bodyContent),
             headers: { "Content-Type": "application/json" },
         })
-            .then((res) => {
-                console.log(res);
-                if (res.ok) {
-                    console.log(res.headers);
-                    document.location.replace("/profile");
-                } else {
-                    alert("Failed to sign up");
+            .then((response) => response.json())
+            .then((data) => {
+                if (data.usernameTaken) usernameTaken();
+                if (data.emailTaken) {
+                    emailTaken();
+                }
+                if (!data.usernameTaken && !data.emailTaken) {
+                    if (response.ok) {
+                        console.log(res.headers);
+                        document.location.replace("/profile");
+                    } else {
+                        alert("Failed to sign up");
+                    }
                 }
             })
             .catch((err) => {
@@ -81,7 +87,6 @@ emailValidation = (email) => {
             String(email).toLowerCase()
         )
     ) {
-        console.log("email wrong");
         const errorMessage = document.createElement("p");
         errorMessage.textContent = "Your Email is not a valid format!";
         errorMessage.classList.add("error-message-email");
@@ -94,24 +99,62 @@ emailValidation = (email) => {
 };
 
 passwordValidation = (password, passwordToConfirm) => {
-    if (
-        password !== passwordToConfirm &&
-        document.querySelector(".error-message-password")
-    ) {
-        document.querySelector("#password-signup").value = "";
-        document.querySelector("#confirm-password").value = "";
-        return false;
-    } else if (password !== passwordToConfirm) {
+    if (!(password && passwordToConfirm)) {
         const errorMessage = document.createElement("p");
         errorMessage.textContent =
-            "Your Passwords Dont Match, Please try again!";
+            "One or both of the password fields are empty!";
         console.log("pass no match");
         errorMessage.classList.add("error-message-password");
         errorMessage.classList.add("error-message");
         const formElements = document.querySelector(".submit-form");
-        formElements.insertBefore(errorMessage, formElements.children[8]);
+        formElements.insertBefore(errorMessage, formElements.children[10]);
         document.querySelector("#password-signup").value = "";
         document.querySelector("#confirm-password").value = "";
-        return false;
-    } else return true;
+    } else {
+        if (
+            password !== passwordToConfirm &&
+            document.querySelector(".error-message-password")
+        ) {
+            document.querySelector("#password-signup").value = "";
+            document.querySelector("#confirm-password").value = "";
+            return false;
+        } else if (password !== passwordToConfirm) {
+            const errorMessage = document.createElement("p");
+            errorMessage.textContent =
+                "Your Passwords Dont Match, Please try again!";
+            console.log("pass no match");
+            errorMessage.classList.add("error-message-password");
+            errorMessage.classList.add("error-message");
+            const formElements = document.querySelector(".submit-form");
+            formElements.insertBefore(errorMessage, formElements.children[10]);
+            document.querySelector("#password-signup").value = "";
+            document.querySelector("#confirm-password").value = "";
+            return false;
+        } else return true;
+    }
+};
+
+emailTaken = () => {
+    if (!document.querySelector(".error-message-email")) {
+        const errorMessage = document.createElement("p");
+        errorMessage.textContent = "This is email is already registered.";
+        errorMessage.classList.add("error-message-email");
+        errorMessage.classList.add("error-message");
+        const formElements = document.querySelector(".submit-form");
+        formElements.insertBefore(errorMessage, formElements.children[8]);
+        document.querySelector("#email-signup").value = "";
+    }
+    document.querySelector("#email-signup").value = "";
+};
+usernameTaken = () => {
+    if (!document.querySelector(".error-message-username")) {
+        const errorMessage = document.createElement("p");
+        errorMessage.textContent = "This username is already taken.";
+        errorMessage.classList.add("error-message-username");
+        errorMessage.classList.add("error-message");
+        const formElements = document.querySelector(".submit-form");
+        formElements.insertBefore(errorMessage, formElements.children[2]);
+        document.querySelector("#username-signup").value = "";
+    }
+    document.querySelector("#username-signup").value = "";
 };
