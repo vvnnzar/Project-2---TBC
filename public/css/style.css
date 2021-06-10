@@ -360,6 +360,7 @@ li:hover {
   width: 80%;
   margin: 30px;
   color: var(--white);
+  box-shadow: 0 10px 25px 5px rgba(0, 0, 0, 0.2);
 }
 
 .edit-question-card .titular {
@@ -381,7 +382,7 @@ li:hover {
 #question-text {
   width: 90%;
   padding: 6px;
-  height: 100px;
+  height: 150px;
 }
 
 .space-around {
@@ -824,9 +825,13 @@ button {
 
 }
 
-.btn:hover {
-  opacity: 0.5;
-  border: none;
+#comment-login-option {
+  text-align: center;
+  margin: 60px;
+}
+
+#comment-login-option a {
+  color: var(--oxford-blue);
 }
 
 .highscores {
