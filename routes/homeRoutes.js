@@ -70,7 +70,7 @@ router.get("/question/:id", async (req, res) => {
         res.render("question", {
             ...question,
             is_owner: isOwner,
-            logged_in: req.session.logged_in,
+            logged_in: logged_in,
         });
     } catch (err) {
         res.status(500).json(err);
@@ -136,7 +136,7 @@ router.get("/profile", [auth.isLoginNeeded], async (req, res) => {
         res.status(500).json("err: " + err);
     }
 });
-router.get('/edit-question/:id', async (req, res) => {
+router.get("/edit-question/:id", async (req, res) => {
     try {
         const payload = auth.extractPayload(req, res);
         console.log(payload);
@@ -151,17 +151,17 @@ router.get('/edit-question/:id', async (req, res) => {
         const question = questionData.get({ plain: true });
         const isOwner = question.user_id === user_id;
 
-        res.render('edit-question', {
+        res.render("edit-question", {
             ...question,
             logged_in: logged_in,
-            is_owner: isOwner
+            is_owner: isOwner,
         });
     } catch (err) {
         res.status(500).json(err);
     }
 });
 
-router.get('/quiz', (req, res) => {
+router.get("/quiz", (req, res) => {
     const payload = auth.extractPayload(req, res);
     console.log(payload);
     const {
@@ -169,10 +169,9 @@ router.get('/quiz', (req, res) => {
         userid: user_id,
         name: username,
     } = payload || { logged_in: false };
-    res.render('quiz', {
-        logged_in: logged_in
+    res.render("quiz", {
+        logged_in: logged_in,
     });
-
 });
 
 router.get(
