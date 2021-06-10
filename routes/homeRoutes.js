@@ -158,10 +158,8 @@ router.get("/profile", [auth.isLoginNeeded], async (req, res) => {
 //     }
 // });
 
-router.get('/quiz', (req, res) => {
-
-    res.render('quiz');
-
+router.get("/quiz", [auth.isLoginNeeded], (req, res) => {
+    res.render("quiz");
 });
 
 router.get(
