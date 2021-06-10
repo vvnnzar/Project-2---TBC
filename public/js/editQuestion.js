@@ -18,11 +18,30 @@ const updateButton = async (event) => {
         if (response.ok) {
             document.location.replace('/question/' + questionId);
         } else {
-            alert('Failed to update blog');
+            alert('Failed to update question');
         }
     }
 };
 
+const deleteButton = async () => {
+
+    const questionId = window.location.pathname.split('/').pop();
+    const response = await fetch('/api/questions/' + questionId, {
+        method: 'DELETE',
+    });
+
+    if (response.ok) {
+        document.location.replace('/');
+    } else {
+        alert('Failed to delete blog');
+    }
+};
+
+
 document
     .querySelector('#update-question')
     .addEventListener('click', updateButton);
+
+document
+    .querySelector('#delete-question')
+    .addEventListener('click', deleteButton);

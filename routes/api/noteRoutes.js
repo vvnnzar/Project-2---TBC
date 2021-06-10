@@ -4,7 +4,16 @@ const auth = require("../auth");
 
 router.get("/", async (req, res) => {
     try {
+        const payload = auth.extractPayload(req, res);
+        let {
+            logged_in: logged_in,
+            userid: user_id,
+            username: name,
+        } = payload || { logged_in: false };
         const noteData = await Note.findAll({
+            where: {
+                user_id: user_id
+            },
             include: [
                 {
                     model: User,
