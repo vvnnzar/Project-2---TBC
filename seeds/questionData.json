@@ -1,12 +1,10 @@
 [
   {
     "question_title": "JavaScript Hoisting",
-    "question_text": "Describe JavaScript Hoisting?",
-    "question_tag": "Javascript"
+    "question_text": "Describe JavaScript Hoisting?"
   },
   {
     "question_title": "Function.prototype Bind",
-    "question_text": "Explain Function.prototype.bind",
-    "question_tag": "Javascript"
+    "question_text": "Explain Function.prototype.bind"
   }
 ]
