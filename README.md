@@ -76,6 +76,7 @@ Mobile
 ## Acknowledgements
 
 Questions detailed throughout the application have been obtained from the following online sources:
+
     * W3Schools
     * Code Academy
     * MDN
