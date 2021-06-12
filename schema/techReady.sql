@@ -37,7 +37,7 @@ create table comments(
 create table quiz_results(
     id int unsigned primary key auto_increment,
     times_taken int unsigned,
-    last_score tinyint unsigned, -- only needs to go up to 100 -- tiny int is more than enough mem allocation
+    last_score int unsigned, -- only needs to go up to 100 -- tiny int is more than enough mem allocation
     user_id int unsigned not null,
     foreign key (user_id) references users(id)
 );

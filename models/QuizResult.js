@@ -16,7 +16,7 @@ QuizResult.init(
             type: DataTypes.INTEGER.UNSIGNED,
         },
         last_score: {
-            type: DataTypes.TINYINT.UNSIGNED,
+            type: DataTypes.INTEGER.UNSIGNED,
         },
         user_id: {
             type: DataTypes.INTEGER.UNSIGNED,
