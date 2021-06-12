@@ -1,5 +1,0 @@
-User Story
-
-AS A developer who is starting out,
-I WANT to be apart of a Coding Network that focuses on nailing interviews
-SO THAT I am better prepared for interview, reinforce  personal knowledge and helping others with theirs.
