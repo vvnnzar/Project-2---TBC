@@ -1,9 +1,8 @@
 # TechReady
 Monash Bootcamp Project 2
 
-## Project Links
--- Add GITHUB LINK
--- Add HEROKU LINK
+## Project Link
+-- Add HEROKU LINK https://gentle-headland-96957.herokuapp.com/
 
 ## Application Developers
 * Kate McColl https://github.com/katemccoll
