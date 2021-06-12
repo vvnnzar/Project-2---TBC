@@ -194,8 +194,27 @@ form input {
     margin: 5px 0;
 }
 
+/* Tutor */
+
+#background-tutor {
+    background-color: var(--oxford-blue);
+    padding: 10px 10px 350px;
+    text-align: -webkit-center;
+}
+
 #isTutor-checkbox {
     padding: 15px 0 18px;
+}
+
+.tutor-question-card .titular {
+    background-color: var(--pink);
+}
+
+.search-bar {
+    justify-self: center;
+    width: 90%;
+    padding: 8px;
+    font-size: 16px;
 }
 
 form button {
@@ -257,8 +276,20 @@ form button {
     background: var(--oxford-blue);
     border-top: 2px solid var(--orange);
 }
+
+.tutor-search-bar {
+    width: 100%;
+    padding: 15px 30px 40px;
+}
 .flex {
     display: flex;
+}
+
+#tutor-search-btn {
+    justify-self: center;
+    width: 40%;
+    font-size: 24px;
+    background-color: var(--pink);
 }
 
 /* Homepage */
@@ -417,7 +448,8 @@ li:hover {
     padding-bottom: 200px;
 }
 
-#edit-question-container {
+#edit-question-container,
+#tutor-question-container {
   width: 80%;
   margin: 30px;
   color: var(--white);
@@ -1109,9 +1141,19 @@ footer {
   .question-text {
     width: 90%;
   }
+
+  #tutor-search-btn {
+      padding: 8px;
+      width: 80%;
+  }
+
+   .tutor-search-bar {
+       justify-content: center;
+
     .ask-btn {
         padding: 8px;
         font-size: 18px;
         width: 90%
+
     }
 }
