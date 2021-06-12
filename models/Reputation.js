@@ -1,5 +1,6 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
+const User = require("./User");
 
 class Reputation extends Model {}
 
@@ -15,7 +16,7 @@ Reputation.init(
             type: DataTypes.INTEGER.UNSIGNED,
             allowNull: false,
             references: {
-                model: 'user',
+                model: User,
                 key: 'id',
             },
         },
@@ -49,7 +50,6 @@ Reputation.init(
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'reputation',
     }
 );
 

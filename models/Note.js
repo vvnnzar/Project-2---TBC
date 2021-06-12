@@ -1,4 +1,5 @@
 const { Model, DataTypes } = require("sequelize");
+const User = require("./User");
 
 const sequelize = require("../config/connection.js");
 
@@ -30,7 +31,7 @@ Note.init(
             type: DataTypes.INTEGER.UNSIGNED,
             allowNull: false,
             references: {
-                model: "User",
+                model: User,
                 key: "id",
             },
         },
@@ -40,7 +41,6 @@ Note.init(
             timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: "note",
     }
 );
 

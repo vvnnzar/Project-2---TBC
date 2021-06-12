@@ -1149,11 +1149,12 @@ footer {
 
    .tutor-search-bar {
        justify-content: center;
+   }
 
     .ask-btn {
         padding: 8px;
         font-size: 18px;
-        width: 90%
+        width: 90%;
 
     }
 }

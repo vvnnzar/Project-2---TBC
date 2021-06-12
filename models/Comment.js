@@ -1,4 +1,6 @@
 const { Model, DataTypes } = require("sequelize");
+const User = require("./User");
+const Question = require("./Question");
 
 const sequelize = require("../config/connection.js");
 
@@ -25,7 +27,7 @@ Comment.init(
             type: DataTypes.INTEGER.UNSIGNED,
             allowNull: false,
             references: {
-                model: "user",
+                model: User,
                 key: "id",
             },
         },
@@ -33,7 +35,7 @@ Comment.init(
             type: DataTypes.INTEGER.UNSIGNED,
             allowNull: false,
             references: {
-                model: "question",
+                model: Question,
                 key: "id",
             },
         },
@@ -43,7 +45,6 @@ Comment.init(
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: "comment",
     }
 );
 

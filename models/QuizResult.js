@@ -1,5 +1,6 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
+const User = require("./User");
 
 class QuizResult extends Model {}
 
@@ -21,7 +22,7 @@ QuizResult.init(
             type: DataTypes.INTEGER.UNSIGNED,
             allowNull: false,
             reference: {
-                model: "user",
+                model: User,
                 key: "id",
             },
         },
@@ -31,7 +32,6 @@ QuizResult.init(
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: "quizResult",
     }
 );
 
