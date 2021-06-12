@@ -342,7 +342,6 @@ li:hover {
 
 .question-card-header {
     padding: 10px;
-    margin-bottom: 10px;
     background-color: var(--note-green);
     color: var(--white);
     display: flex;
@@ -357,6 +356,7 @@ li:hover {
 
 #question-body {
     padding: 10px;
+    background-color: var(--white);
 }
 
 .question-margin {
@@ -391,18 +391,18 @@ li:hover {
     justify-content: center;
     padding: 0 15px;
 }
-.question-title::placeholder,
-.question-text::placeholder {
+#question-title::placeholder,
+#question-text::placeholder {
     color: var(--warm-grey);
     opacity: 1; /* Firefox */
 }
-.question-title:-ms-input-placeholder,
-.question-text:-ms-input-placeholder {
+#question-title:-ms-input-placeholder,
+#question-text:-ms-input-placeholder {
     /* Internet Explorer 10-11 */
     color: var(--warm-grey);
 }
-.question-title::-ms-input-placeholder,
-.question-text::-ms-input-placeholder {
+#question-title::-ms-input-placeholder,
+#question-text::-ms-input-placeholder {
     /* Microsoft Edge */
     color: var(--warm-grey);
 }
@@ -411,6 +411,10 @@ li:hover {
 
 .center {
   justify-content: center;
+}
+
+.pb {
+    padding-bottom: 200px;
 }
 
 #edit-question-container {
@@ -429,7 +433,7 @@ li:hover {
   text-align: center;
 }
 
-.question-title {
+#question-title {
     width: 90%;
     padding: 12px;
     font-size: 16px;
@@ -437,7 +441,7 @@ li:hover {
     margin: 0;
 }
 
-.question-text {
+#question-text {
     width: 90%;
     padding: 10px;
     font-size: 16px;
@@ -468,7 +472,7 @@ li:hover {
     text-align: center;
     padding: 20px;
     background-color: var(--white);
-    margin-top: 20px;
+    margin-top: 100px;
 }
 
 #comment-form {
