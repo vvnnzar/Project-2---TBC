@@ -373,7 +373,6 @@ li:hover {
 
 .question-card-header {
     padding: 10px;
-    margin-bottom: 10px;
     background-color: var(--note-green);
     color: var(--white);
     display: flex;
@@ -388,6 +387,7 @@ li:hover {
 
 #question-body {
     padding: 10px;
+    background-color: var(--white);
 }
 
 .question-margin {
@@ -403,7 +403,6 @@ li:hover {
 
 .ask-question-form {
   width: 100%;
-  background-color: var(--dark-blue);
   text-align: -webkit-center;
 
 }
@@ -411,13 +410,16 @@ li:hover {
 .ask-btn {
     background-color: var(--turquoise);
     color: var(--white);
+    font-size: 20px;
+    padding: 15px;
+    width: 40%;
 }
 
 .ask-question-card .titular {
     background-color: var(--turquoise);
     color: var(--white);
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     padding: 0 15px;
 }
 #question-title::placeholder,
@@ -442,6 +444,10 @@ li:hover {
   justify-content: center;
 }
 
+.pb {
+    padding-bottom: 200px;
+}
+
 #edit-question-container,
 #tutor-question-container {
   width: 80%;
@@ -455,23 +461,24 @@ li:hover {
 }
 
 .edit-card-body {
-  background-color: var(--dark-blue);
   width: 100%;
   text-align: center;
 }
 
 #question-title {
-  width: 90%;
-  padding: 6px;
-  height: 20px;
-  margin: 0;
+    width: 90%;
+    padding: 12px;
+    font-size: 16px;
+    height: 20px;
+    margin: 0;
 }
 
 #question-text {
-  width: 90%;
-  padding: 6px;
-  height: 150px;
-  color: var(--oxford-blue)
+    width: 90%;
+    padding: 10px;
+    font-size: 16px;
+    height: 150px;
+    color: var(--oxford-blue)
 }
 
 .space-around {
@@ -497,7 +504,7 @@ li:hover {
     text-align: center;
     padding: 20px;
     background-color: var(--white);
-    margin-top: 20px;
+    margin-top: 100px;
 }
 
 #comment-form {
@@ -525,6 +532,7 @@ li:hover {
 .btn-primary {
     background-color: var(--note-green);
     font-size: 24px;
+    padding: 10px;
 }
 #comment-font {
     font-size: 24px;
@@ -1129,9 +1137,9 @@ footer {
     justify-content: center;
   }
 
-  #question-title,
-  #question-text {
-    width: 80%;
+  .question-title,
+  .question-text {
+    width: 90%;
   }
 
   #tutor-search-btn {
@@ -1141,5 +1149,11 @@ footer {
 
    .tutor-search-bar {
        justify-content: center;
+
+    .ask-btn {
+        padding: 8px;
+        font-size: 18px;
+        width: 90%
+
     }
 }

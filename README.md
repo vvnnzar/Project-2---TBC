@@ -27,20 +27,27 @@ System development was driven by the following user story:
     
     AS A Graduate/Junior Developer
     I WANT to be apart of a Coding Network that focuses on nailing interviews
-    SO THAT I will be better prepared for interviews, reinforce  personal knowledge and can help others with theirs.
+    SO THAT I will be better prepared for interviews, 
+    reinforce personal knowledge and
+    can help others with theirs.
 
 
 ## Application Screen Design :
 
-INSERT SCREEN SHOTS
-    Laptop 	
-    Tablet 	
-    Phone
+Desktop
+
+![image](https://user-images.githubusercontent.com/77863744/121762504-af739100-cb79-11eb-93e6-f9c8446deca6.png)
+
+Mobile
+
+
+![image](https://user-images.githubusercontent.com/77863744/121762603-4c362e80-cb7a-11eb-9782-adaa1e26c930.png)
+
+
 
 
 ## Technology Used:
-node.js
-    
+  
     * node.js
     * npm packages:
     ** bcryt.js
@@ -69,6 +76,7 @@ node.js
 ## Acknowledgements
 
 Questions detailed throughout the application have been obtained from the following online sources:
+
     * W3Schools
     * Code Academy
     * MDN

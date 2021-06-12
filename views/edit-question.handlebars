@@ -1,15 +1,15 @@
-<section id="background-color" class="center">
+<section id="background-color" class="center pb">
     <div id="edit-question-container">
         <div class="edit-question-card">
             <h3 class="titular">Edit Question</h3>
             <form class="edit-card-body">
                 <div class="form-group">
                     <label  class="form-label" for="question-title"></label>
-                    <input id="question-title" value="{{question_title}}"/>
+                    <input id="question-title" type="text" value="{{question_title}}"/>
                 </div>
                 <div class="form-group">
                     <label for="question_text"></label>
-                    <textarea class="form-input" id="question-text">{{question_text}}</textarea>
+                    <textarea class="form-input" type="text" id="question-text">{{question_text}}</textarea>
                 </div>
                 <div class="form-group space-around">
                     <button id="update-question" class="btn btn-primary">Update Post</button>
